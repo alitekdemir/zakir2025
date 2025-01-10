@@ -81,6 +81,7 @@ const emit = defineEmits(['close'])
   border-radius: 20%;
   /* background-color: white; */
   color: var(--primary);
+  color: rgba(1, 121, 111, 0.952);
   cursor: pointer;
   transition: background-color 0.3s;
 }

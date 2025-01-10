@@ -1,35 +1,64 @@
 <!-- src/components/DropdownMenu.vue -->
 <script setup>
+import { ref, watchEffect } from 'vue';
+
 const props = defineProps({
   show: Boolean,
   items: {
     type: Array,
     default: () => [
       { id: 'info', icon: 'info', label: 'Bilgi' },
-      // { id: 'hint', icon: 'lightbulb', label: 'İpucu' },
       { id: 'memorized', icon: 'face', label: 'Ezberledim' },
-    ]
-  }
+    ],
+  },
 });
 
-const emit = defineEmits(['select', 'close']);
+const emit = defineEmits(['info', 'memorized', 'hint', 'close']);
 
-const handleSelect = (itemId) => {
-  emit('select', itemId);
-  emit('close');
+// Dropdown menüsüne tıklama işlemi
+const handleClick = (event) => {
+  const itemId = event.target.closest('.menu-item')?.dataset.id;
+  if (itemId) {
+    // Doğrudan ilgili event'i emit et
+    emit(itemId);
+    emit('close');
+  }
 };
+
+// Klavye navigasyonu için
+const handleKeydown = (event) => {
+  if (event.key === 'Escape') {
+    emit('close');
+  }
+};
+
+// Dropdown gösterildiğinde klavye event'ini dinle
+watchEffect(() => {
+  if (props.show) {
+    document.addEventListener('keydown', handleKeydown);
+  } else {
+    document.removeEventListener('keydown', handleKeydown);
+  }
+});
 </script>
 
+
 <template>
-  <div v-show="show" class="dropdown">
-    <div class="dropdown-menu">
-      <button 
-        v-for="item in items" 
+  <div
+    v-show="show"
+    class="dropdown"
+    @click="handleClick"
+  >
+    <div class="dropdown-menu" role="menu">
+      <button
+        v-for="item in items"
         :key="item.id"
         class="menu-item"
-        @click="handleSelect(item.id)"
+        :data-id="item.id"
+        role="menuitem"
+        tabindex="0"
       >
-        <i class="material-icons">{{ item.icon }}</i>
+        <i class="material-icons" aria-hidden="true">{{ item.icon }}</i>
         <span>{{ item.label }}</span>
       </button>
     </div>
@@ -62,8 +91,12 @@ const handleSelect = (itemId) => {
   width: 100%;
   padding: 10px 16px;
   color: var(--text-dark);
-  transition: background-color 0.2s;
+  transition: background-color 0.2s, color 0.2s;
   border-radius: 6px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  text-align: left;
 }
 
 .menu-item:hover {

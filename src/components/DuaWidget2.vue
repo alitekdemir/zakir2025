@@ -3,8 +3,9 @@
 import { ref, onMounted, onBeforeUnmount } from 'vue';
 import Modal from './Modal.vue';
 import DropdownMenu from './DropdownMenu.vue';
+import { useProgress, widgetWeights } from '../assets/useProgress';
 
-defineProps({
+const props = defineProps({
   number: {
     type: [String, Number],
     required: true
@@ -15,10 +16,28 @@ defineProps({
   }
 });
 
+const { updateProgress } = useProgress();
 const showDropdown = ref(false);
 const showInfoModal = ref(false);
 const showMemorizedModal = ref(false);
 const showHintModal = ref(false);
+const isMemorized = ref(false);
+
+onMounted(() => {
+  const memorizedState = localStorage.getItem(`memorized-${props.number}`);
+  isMemorized.value = memorizedState === 'true';
+  document.addEventListener('click', handleClickOutside);
+});
+
+const handleMemorized = () => {
+  isMemorized.value = true;
+  localStorage.setItem(`memorized-${props.number}`, 'true');
+  showMemorizedModal.value = false;
+  
+  const currentScore = parseInt(localStorage.getItem('memorization-score') || '0');
+  const widgetWeight = widgetWeights[props.number] || 1;
+  localStorage.setItem('memorization-score', currentScore + widgetWeight);
+};
 
 const closeDropdown = () => {
   showDropdown.value = false;
@@ -32,17 +51,30 @@ const handleClickOutside = (e) => {
   }
 };
 
-onMounted(() => {
-  document.addEventListener('click', handleClickOutside);
-});
-
 onBeforeUnmount(() => {
   document.removeEventListener('click', handleClickOutside);
 });
+
+const handleMemorizedToggle = () => {
+  isMemorized.value = !isMemorized.value;
+  localStorage.setItem(`memorized-${props.number}`, isMemorized.value);
+  showMemorizedModal.value = false;
+  
+  const currentScore = parseInt(localStorage.getItem('memorization-score') || '0');
+  const widgetWeight = widgetWeights[props.number] || 1;
+  
+  const newScore = isMemorized.value 
+    ? currentScore + widgetWeight 
+    : currentScore - widgetWeight;
+
+  localStorage.setItem('memorization-score', newScore);
+  updateProgress(newScore);
+};
+
 </script>
 
 <template>
-  <div class="dua-widget">
+  <div class="dua-widget" :class="{ 'memorized': isMemorized }">
     <div class="widget-header">
       <div class="number">{{ number }}</div>
       <span v-if="title" class="title">{{ title }}</span>
@@ -76,12 +108,18 @@ onBeforeUnmount(() => {
 
     <Modal
       :show="showMemorizedModal"
-      title="Ezberledim"
+      title="Ezberlenme Durumu"
       @close="showMemorizedModal = false"
     >
       <div class="memorized-content">
-        <p>Bu duayı ezberlediğinizi işaretlemek ister misiniz?</p>
-        <button class="confirm-btn">Evet, Ezberledim</button>
+        <p v-if="!isMemorized">Bu duayı ezberlediğinizi işaretlemek ister misiniz?</p>
+        <p v-else>Bu duayı ezberlenmedi olarak işaretlemek ister misiniz?</p>
+        <button 
+          class="confirm-btn" 
+          @click="handleMemorizedToggle"
+        >
+          {{ isMemorized ? 'Ezberlenmedi Olarak İşaretle' : 'Evet, Ezberledim' }}
+        </button>
       </div>
     </Modal>
 
@@ -98,14 +136,28 @@ onBeforeUnmount(() => {
 </template>
 
 <style scoped>
-/* Dropdown ile ilgili stiller DropdownMenu bileşenine taşındı */
-/* Diğer stiller aynı kalacak */
 .dua-widget {
   background: white;
   border-radius: 12px;
   padding: 0.8rem;
   box-shadow: 0 4px 12px hsl(0, 0%, 90%);
   border: 1px solid var(--primary-light);
+  transition: all 0.3s ease;
+}
+
+.dua-widget.memorized {
+  border: 1px solid rgba(1, 121, 111, 0.99);
+  background-color: #f8f8f8;
+}
+
+
+.dua-widget.memorized .widget-content {
+  opacity: 0.7;
+  color: #666;
+}
+
+.dua-widget.memorized .number {
+  background: rgba(1, 121, 111, 0.1);
 }
 
 .widget-header {
@@ -161,6 +213,12 @@ onBeforeUnmount(() => {
   padding: 8px 16px;
   border-radius: 6px;
   margin-top: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.confirm-btn:hover {
+  background: rgba(1, 121, 111, 0.9);
 }
 
 .memorized-content,
