@@ -1,0 +1,30 @@
+<!-- src/App.vue -->
+<script setup>
+import { ref, onMounted } from 'vue'
+import SplashScreen from './components/SplashScreen.vue'
+import Navbar from './components/Navbar.vue'
+import Home from './components/Home.vue'
+
+const showSplash = ref(true)
+
+onMounted(() => {
+  setTimeout(() => { showSplash.value = false }, 2000);
+  document.fonts.ready.then(() => { console.log('Tüm fontlar yüklendi.') });
+})
+</script>
+
+<template>
+  <SplashScreen :show="showSplash" />
+  <div class="app" v-show="!showSplash">
+    <Navbar />
+    <router-view v-if="$route.name !== 'home'" />
+    <Home v-else />
+  </div>
+</template>
+
+<style scoped>
+.app {
+  width: 100%;
+  min-height: 100vh;
+}
+</style>
