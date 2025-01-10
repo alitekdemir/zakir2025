@@ -27,7 +27,7 @@ const increment = () => {
                 {{ falemennehu[scriptStyle][0].text }}
                 <small class="info-text" dir="ltr">33 defa</small>
             </span>
-            <div class="info-text">Sabah ve Yatsı namazlarında 100 defa okunabilir</div>
+            <div class="info-text">Sabah ve Yatsı namazlarında <strong>100 defa</strong> okunabilir</div>
         </div>
 
         <!-- Sağ taraf: Sayaç -->
