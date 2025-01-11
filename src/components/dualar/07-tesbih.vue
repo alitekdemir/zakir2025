@@ -33,7 +33,7 @@ const increment = () => {
       </div>
 
     <!-- Sayaç butonu -->
-    <div class="counter-button buton" @click="increment">{{ count }}</div>
+    <div class="counter-button buton" @click="increment" v-vibrate>{{ count }}</div>
   </div>
 </template>
 

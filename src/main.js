@@ -6,6 +6,9 @@ import App from './App.vue'
 import router from './router'
 import { registerSW } from 'virtual:pwa-register'
 import { APP_VERSION, ASSETS_VERSION } from './assets/version'
+import { vibrate, setupGlobalVibration } from './assets/vibrate'
+// Global titreşimi kur
+// setupGlobalVibration()
 
 let app = null; // Global app değişkeni
 
@@ -61,6 +64,7 @@ const registerServiceWorker = () => {
   return updateSW
 }
 
+
 // Uygulama başlangıcı
 const initializeApp = async () => {
   try {
@@ -77,6 +81,7 @@ const initializeApp = async () => {
 
     // Yeni uygulamayı oluştur ve mount et
     app = createApp(App)
+    app.directive('vibrate', vibrate)
     app.use(router)
     app.mount('#app')
 

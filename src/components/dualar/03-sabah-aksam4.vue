@@ -27,7 +27,7 @@ const increment = () => { count.value = count.value >= 10 ? 1 : count.value + 1 
     </button>
 
     <button class="buton counter-button" :class="{ 'green': count === 10 }"
-      @click="increment">
+      @click="increment" v-vibrate>
       {{ count }}
     </button>
   </div>
