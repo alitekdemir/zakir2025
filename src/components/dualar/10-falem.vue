@@ -6,9 +6,9 @@ import { useScriptStyle } from '../../assets/useScriptStyle'
 
 const { falemennehu } = dualar
 const { scriptStyle } = useScriptStyle()
+
 const count = ref(0)
 const isGreen = computed(() => count.value >= 33)
-
 const increment = () => {
     count.value = count.value === 100 ? 0 : count.value + 1
 }

@@ -8,7 +8,7 @@ createProgress() // Progress provider'ı oluştur
 // Dualar
 import Entesselam from './dualar/01-entesselam.vue';
 import Tuncina from './dualar/02-tuncina.vue';
-import SabahAksam from './dualar/03-sabah-aksam.vue';
+import SabahAksam from './dualar/03-sabah-aksam5.vue';
 import Ecirna from './dualar/04-ecirna.vue';
 import Subhanallahi from './dualar/05-subhanallahi.vue';
 import AyetTrKursi from './dualar/06-kursi.vue';
@@ -34,7 +34,7 @@ import i09Dua from './info/i09Dua.vue';
 const duaList = [
   { number: 1, title: 'Farzdan Sonra', component: Entesselam, info: i01Entesselam },
   { number: 2, title: 'Salaten Tuncina', component: Tuncina, info: i02Tuncina },
-  { number: 3, title: 'Sünnetler kılınır sonra', component: SabahAksam, info: i03SabahAksam },
+  { number: 3, title: 'Sünnet kılınır sonra', component: SabahAksam, info: i03SabahAksam },
   { number: 4, title: 'İstiaze/Ecirna', component: Ecirna, info: null },
   { number: 5, title: ' ', component: Subhanallahi, info: null },
   { number: 6, title: ' ', component: AyetTrKursi, info: null },
