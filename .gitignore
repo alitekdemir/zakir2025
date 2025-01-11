@@ -10,11 +10,7 @@ lerna-debug.log*
 node_modules
 dist
 dist-ssr
-_Backups
 .local
-.firebase
-.idx
-.vscode
 
 # Editor directories and files
 .vscode/*
@@ -26,3 +22,9 @@ _Backups
 *.njsproj
 *.sln
 *.sw?
+
+# Red ettiklerim
+_Backups/
+.firebase/
+.idx/
+.vscode
