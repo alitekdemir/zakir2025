@@ -3,16 +3,18 @@
 import { ref, computed } from 'vue'
 import { dualar } from '../../assets/dualar.js'
 import { useScriptStyle } from '../../assets/useScriptStyle'
+import { useFalemVibration } from '../../assets/vibrate'
 
 const { falemennehu } = dualar
 const { scriptStyle } = useScriptStyle()
-
 const count = ref(0)
 const isGreen = computed(() => count.value >= 33)
-const increment = () => {
-    count.value = count.value === 100 ? 0 : count.value + 1
-}
 
+const increment = () => {
+  const newCount = count.value === 100 ? 0 : count.value + 1
+  useFalemVibration(newCount)
+  count.value = newCount
+}
 </script>
 
 <template>
@@ -30,11 +32,9 @@ const increment = () => {
             <div class="info-text">Sabah ve Yatsı namazlarında <strong>100 defa</strong> okunabilir</div>
         </div>
 
-        <!-- Sağ taraf: Sayaç -->
-        <div class="counter-button buton" @click="increment" v-vibrate>{{ count }}</div>
+        <!-- Sağ taraf: Sayaç - v-vibrate direktifini kaldırdık -->
+        <div class="counter-button buton" @click="increment">{{ count }}</div>
     </div>
-
-    <!-- Alt bilgi -->
 </template>
 
 <style scoped>

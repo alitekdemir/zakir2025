@@ -2,13 +2,20 @@
 import { ref } from 'vue'
 import { dualar } from '../../assets/dualar.js'
 import { useScriptStyle } from '../../assets/useScriptStyle.js'
+import { useTevhidVibration } from '../../assets/vibrate'
 
 const { nukaddimu, amenna, tevhid } = dualar
 const { scriptStyle } = useScriptStyle()
 const activeTab = ref(null)
 
 const count = ref(0)
-const increment = () => { count.value = count.value >= 10 ? 1 : count.value + 1 }
+// const increment = () => { count.value = count.value >= 10 ? 1 : count.value + 1 }
+const increment = () => {
+  const newCount = count.value === 10 ? 1 : count.value + 1
+  useTevhidVibration(newCount)
+  count.value = newCount
+}
+
 </script>
 
 <template>
@@ -26,10 +33,7 @@ const increment = () => { count.value = count.value >= 10 ? 1 : count.value + 1 
         Akşam
       </button>
   
-      <button class="buton counter-button" :class="{ 'green': count === 10 }"
-        @click="increment" v-vibrate>
-        {{ count }}
-      </button>
+      <div class="counter-button buton" @click="increment" :class="{ 'green': count === 10 }">{{ count }}</div>
     </div>
   
     <div class="flex-container column">

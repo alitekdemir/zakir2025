@@ -3,6 +3,7 @@
 import { ref, computed } from 'vue'
 import { dualar } from '../../assets/dualar.js'
 import { useScriptStyle } from '../../assets/useScriptStyle'
+import { useTesbihVibration } from '../../assets/vibrate'
 
 const { tesbih } = dualar
 const { scriptStyle } = useScriptStyle()
@@ -16,26 +17,29 @@ const greenIndexes = computed(() => {
 })
 
 const increment = () => {
-  count.value = count.value === 99 ? 1 : count.value + 1
+  const newCount = count.value === 99 ? 1 : count.value + 1
+  useTesbihVibration(newCount)
+  count.value = newCount
 }
 </script>
+
 
 <template>
   <div class="flex-container">
     <!-- Sol taraf: Metinler -->
-      <div class="flex-container column">
-        <div v-for="(item, index) in tesbih[scriptStyle]" :key="index" >
-          <span :class="scriptStyle">{{ item.title }}&nbsp;</span>
-          <span :class="[scriptStyle, 'red', { 'green': greenIndexes.includes(index) }]">
-            {{ item.text }}
-          </span>
-        </div>
+    <div class="flex-container column">
+      <div v-for="(item, index) in tesbih[scriptStyle]" :key="index">
+        <span :class="scriptStyle">{{ item.title }}&nbsp;</span>
+        <span :class="[scriptStyle, 'red', { 'green': greenIndexes.includes(index) }]">
+          {{ item.text }}
+        </span>
       </div>
+    </div>
 
-    <!-- Sayaç butonu -->
-    <div class="counter-button buton" @click="increment" v-vibrate>{{ count }}</div>
+    <div class="counter-button buton" @click="increment">{{ count }}</div>
   </div>
 </template>
+
 
 <style scoped>
 .flex-container{align-items: flex-start;}
