@@ -22,7 +22,7 @@ const toggleSabah = () => {
 
     <button class="sabah-btn" @click="toggleSabah">
       <span>{{ salavatlar[scriptStyle].sabah.title }}</span>
-      <i class="material-icons icon">{{ showSabah ? 'expand_less' : 'expand_more' }}</i>
+      <i class="material-symbols icon">{{ showSabah ? 'expand_less' : 'expand_more' }}</i>
     </button>
 
     <Transition name="fade">

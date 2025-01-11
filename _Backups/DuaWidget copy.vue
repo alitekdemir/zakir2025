@@ -27,7 +27,7 @@ const showInfoModal = ref(false)
         <p v-if="title" class="title">{{ title }}</p>
       </div>
       <button class="info-btn" @click="showInfoModal = true">
-        <i class="material-icons">info</i>
+        <i class="material-symbols">info</i>
       </button>
     </div>
     <div class="widget-content">

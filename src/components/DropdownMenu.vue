@@ -58,7 +58,7 @@ watchEffect(() => {
         role="menuitem"
         tabindex="0"
       >
-        <i class="material-icons" aria-hidden="true">{{ item.icon }}</i>
+        <i class="material-symbols" aria-hidden="true">{{ item.icon }}</i>
         <span>{{ item.label }}</span>
       </button>
     </div>

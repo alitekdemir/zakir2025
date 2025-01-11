@@ -9,14 +9,14 @@ const isOpen = ref(false)
         <!-- Başlık/Buton -->
         <button class="toggle-button" @click="isOpen = !isOpen">
             <span>Allahümme Ecirna Duası</span>
-            <span class="material-icons">{{ isOpen ? 'expand_less' : 'expand_more' }}</span>
+            <span class="material-symbols">{{ isOpen ? 'expand_less' : 'expand_more' }}</span>
         </button>
         <div v-if="isOpen" class="dua-wrapper">
             <!-- İlk bölüm - 2 sütunlu yapı -->
             <q class="blockquote" dir="ltr">A.e. = Allahümme Ecirna</q>
             <br>
             <q class="blockquote" dir="ltr">Eller aşağı çevrilir!</q>
-            <br><span class="material-icons" style="font-size: 1rem; color: var(--primary);">arrow_downward</span>
+            <br><span class="material-symbols" style="font-size: 1rem; color: var(--primary);">arrow_downward</span>
 
             <div class="two-column-container">
                 <!-- Sol sütun - tekrar eden kısım -->
@@ -70,7 +70,7 @@ const isOpen = ref(false)
 
             <!-- Son bölüm -->
             <div class="single-column">
-                <span class="material-icons" style="font-size: 1rem; color: var(--primary);">arrow_upward</span>
+                <span class="material-symbols" style="font-size: 1rem; color: var(--primary);">arrow_upward</span>
                 <q class="blockquote" dir="ltr">Eller yukarı açılır!</q>
 
                 <span class="color-green">Bi‘afvike yâ Mucîr bi fâḍlike yâ Ġaffâr</span>

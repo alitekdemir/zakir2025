@@ -14,7 +14,7 @@ const isOpen = ref(false)
     <div class="flex-container column">
         <button class="buton" @click="isOpen = !isOpen">
             <span>Allahümme Ecirna Duası</span>
-            <span class="material-icons">{{ isOpen ? 'expand_less' : 'expand_more' }}</span>
+            <span class="material-symbols">{{ isOpen ? 'expand_less' : 'expand_more' }}</span>
         </button>
 
         <div v-if="isOpen" class="flex-container column">
@@ -23,8 +23,8 @@ const isOpen = ref(false)
             </q>
 
             <div>
-                <span class="material-icons icon mirror">back_hand</span>
-                <span class="material-icons icon">back_hand</span>
+                <span class="material-symbols icon mirror">back_hand</span>
+                <span class="material-symbols icon">back_hand</span>
             </div>
             <q class="blockquote">Eller aşağı çevrilir!</q>
 
@@ -56,8 +56,8 @@ const isOpen = ref(false)
             <hr class="divider">
 
             <div>
-                <span class="material-icons icon">back_hand</span>
-                <span class="material-icons icon mirror">back_hand</span>
+                <span class="material-symbols icon">back_hand</span>
+                <span class="material-symbols icon mirror">back_hand</span>
             </div>
             <q class="blockquote">Eller yukarı açılır!</q>
 

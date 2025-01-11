@@ -49,28 +49,28 @@
         <!-- Dropdown için click event'in yayılmasını engelleyelim -->
         <div class="dropdown-container" @click.stop>
           <button class="more-btn" @click.stop="showDropdown = !showDropdown">
-            <i class="material-icons">more_vert</i>
+            <i class="material-symbols">more_vert</i>
           </button>
   
           <div v-show="showDropdown" class="dropdown">
             <div class="dropdown-menu">
               <button class="menu-item" @click="showInfoModal = true; closeDropdown()">
-                <i class="material-icons">info</i>
+                <i class="material-symbols">info</i>
                 <span>Bilgi</span>
               </button>
               <button class="menu-item" @click="showHintModal = true; closeDropdown()">
-                <i class="material-icons">lightbulb</i>
+                <i class="material-symbols">lightbulb</i>
                 <span>İpucu</span>  
               </button>
               <button class="menu-item" @click="showMemorizedModal = true; closeDropdown()">
-                <i class="material-icons">face</i>
+                <i class="material-symbols">face</i>
                 <span>Ezberledim</span>
               </button>
             </div>
           </div>
         </div>
         <!-- Accordion icon eklendi -->
-        <i class="material-icons accordion-icon" :class="{ 'rotated': isContentVisible }">
+        <i class="material-symbols accordion-icon" :class="{ 'rotated': isContentVisible }">
           expand_more
         </i>
       </div>

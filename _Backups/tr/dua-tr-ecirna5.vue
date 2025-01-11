@@ -61,7 +61,7 @@ const dua3 = [
         <!-- Başlık/Buton -->
         <button class="toggle-button" @click="isOpen = !isOpen">
             <span>Allahümme Ecirna Duası</span>
-            <span class="material-icons">{{ isOpen ? 'expand_less' : 'expand_more' }}</span>
+            <span class="material-symbols">{{ isOpen ? 'expand_less' : 'expand_more' }}</span>
         </button>
         <div v-if="isOpen" class="dua-wrapper">
             <!-- İlk bölüm - 2 sütunlu yapı -->
@@ -69,8 +69,8 @@ const dua3 = [
             <br>
             <br>
             <div>
-                <span class="material-icons icon mirror">back_hand</span>
-                <span class="material-icons icon">back_hand</span>
+                <span class="material-symbols icon mirror">back_hand</span>
+                <span class="material-symbols icon">back_hand</span>
             </div>
             <q class="blockquote" dir="ltr">Eller aşağı çevrilir!</q>
 
@@ -104,8 +104,8 @@ const dua3 = [
             <!-- Son bölüm -->
             <div class="column">
                 <div>
-                    <span class="material-icons icon">back_hand</span>
-                    <span class="material-icons icon mirror">back_hand</span>
+                    <span class="material-symbols icon">back_hand</span>
+                    <span class="material-symbols icon mirror">back_hand</span>
                 </div>
                 <q class="blockquote" dir="ltr">Eller yukarı açılır!</q>
 

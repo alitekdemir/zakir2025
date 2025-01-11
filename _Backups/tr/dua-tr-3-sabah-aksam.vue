@@ -12,12 +12,12 @@ const activeContent = ref('sabah') // 'sabah' veya 'aksam'
     <!-- Buton Grubu -->
     <div class="button-group">
       <button :class="['vird-btn', { active: activeContent === 'sabah' }]" @click="activeContent = 'sabah'">
-        <i class="material-icons">wb_sunny</i>
+        <i class="material-symbols">wb_sunny</i>
         Sabahları
       </button>
 
       <button :class="['vird-btn', { active: activeContent === 'aksam' }]" @click="activeContent = 'aksam'">
-        <i class="material-icons">nights_stay</i>
+        <i class="material-symbols">nights_stay</i>
         Akşamları
       </button>
     </div>

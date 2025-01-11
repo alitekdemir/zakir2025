@@ -51,7 +51,7 @@ const virdContent = {
         :class="['vird-btn', { active: activeContent === type }]" 
         @click="toggleContent(type)"
       >
-        <i class="material-icons">
+        <i class="material-symbols">
           {{ type === 'sabah' ? 'wb_sunny' : 'nights_stay' }}
         </i>
         {{ type === 'sabah' ? 'Sabahları' : 'Akşamları' }}

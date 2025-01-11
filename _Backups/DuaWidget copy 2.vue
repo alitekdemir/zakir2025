@@ -44,7 +44,7 @@ onMounted(() => {
       <span v-if="title" class="title">{{ title }}</span>
       <div class="dropdown-container">
         <button class="more-btn" @click.stop="showDropdown = !showDropdown">
-          <i class="material-icons">more_vert</i>
+          <i class="material-symbols">more_vert</i>
         </button>
 
         <DropdownMenu

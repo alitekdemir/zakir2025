@@ -11,8 +11,8 @@ const { scriptStyle } = useScriptStyle()
    <div class="flex-container column">
        <!-- El işaretleri -->
        <div>
-           <span class="material-icons icon">back_hand</span>
-           <span class="material-icons icon mirror">back_hand</span>
+           <span class="material-symbols icon">back_hand</span>
+           <span class="material-symbols icon mirror">back_hand</span>
        </div>
 
        <!-- Dua metni -->

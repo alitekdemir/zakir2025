@@ -21,7 +21,7 @@ const toggleContent = (type) => {
         :class="['buton', { active: activeContent === type }]"
         @click="toggleContent(type)"
       >
-        <i class="material-icons">{{ btn.icon }}</i>
+        <i class="material-symbols">{{ btn.icon }}</i>
         {{ btn.text }}
       </button>
     </div>

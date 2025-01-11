@@ -1,8 +1,8 @@
 <template>
   <div class="flex-container">
     <div>
-      <span class="material-icons icon">back_hand</span>
-      <span class="material-icons icon mirror">back_hand</span>
+      <span class="material-symbols icon">back_hand</span>
+      <span class="material-symbols icon mirror">back_hand</span>
     </div>
     <span>Allahümmahşurna fi zümretissalihin</span>
     <small class="info-text">Burada herkes elini açar, dua ve taleb eder.</small>

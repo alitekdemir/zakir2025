@@ -29,7 +29,7 @@ const handleClick = (itemId) => {
           class="menu-item"
           @click="handleClick(item.id)"
         >
-          <i class="material-icons">{{ item.icon }}</i>
+          <i class="material-symbols">{{ item.icon }}</i>
           <span>{{ item.label }}</span>
         </button>
       </div>

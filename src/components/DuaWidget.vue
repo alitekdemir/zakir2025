@@ -47,21 +47,21 @@ onBeforeUnmount(() => {
       <span v-if="title" class="title">{{ title }}</span>
       <div class="dropdown-container">
         <!-- <button class="more-btn" @click.stop="showDropdown = !showDropdown">
-          <i class="material-icons">more_vert</i>
+          <i class="material-symbols">more_vert</i>
         </button> -->
 
         <div v-show="showDropdown" class="dropdown">
           <div class="dropdown-menu">
             <button class="menu-item" @click="showInfoModal = true; closeDropdown()">
-              <i class="material-icons">info</i>
+              <i class="material-symbols">info</i>
               <span>Bilgi</span>
             </button>
             <button class="menu-item" @click="showHintModal = true; closeDropdown()">
-              <i class="material-icons">lightbulb</i>
+              <i class="material-symbols">lightbulb</i>
               <span>İpucu</span>  
             </button>
             <button class="menu-item" @click="showMemorizedModal = true; closeDropdown()">
-              <i class="material-icons">face</i>
+              <i class="material-symbols">face</i>
               <span>Ezberledim</span>
             </button>
           </div>

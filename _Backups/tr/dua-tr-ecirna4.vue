@@ -62,14 +62,14 @@ const kapanisDualari = [
     <div class="dua-wrapper">
         <button class="toggle-button" @click="isOpen = !isOpen">
             <span>Allahümme Ecirna Duası</span>
-            <span class="material-icons">{{ isOpen ? 'expand_less' : 'expand_more' }}</span>
+            <span class="material-symbols">{{ isOpen ? 'expand_less' : 'expand_more' }}</span>
         </button>
 
         <div v-if="isOpen" class="dua-content">
             <div class="info-section">
                 <q class="blockquote" dir="ltr">A.e. = Allahümme Ecirna</q>
                 <q class="blockquote" dir="ltr">Eller aşağı çevrilir!</q>
-                <span class="material-icons icon-down">arrow_downward</span>
+                <span class="material-symbols icon-down">arrow_downward</span>
             </div>
 
             <div class="main-prayers">
@@ -96,7 +96,7 @@ const kapanisDualari = [
 
             <div class="final-prayers">
                 <div class="info-section">
-                    <span class="material-icons icon-up">arrow_upward</span>
+                    <span class="material-symbols icon-up">arrow_upward</span>
                     <q class="blockquote" dir="ltr">Eller yukarı açılır!</q>
                 </div>
 

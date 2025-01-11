@@ -25,7 +25,7 @@ const tabs = {
         :class="['buton', { active: activeTab === type }]"
         @click="activeTab = activeTab === type ? null : type"
       >
-        <i class="material-icons">{{ btn.icon }}</i>
+        <i class="material-symbols">{{ btn.icon }}</i>
         {{ btn.text }}
       </button>
     </div>

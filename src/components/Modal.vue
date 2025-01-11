@@ -16,7 +16,7 @@ const emit = defineEmits(['close'])
         <div class="modal-header">
           <h3>{{ title }}</h3>
           <button class="close-button" @click="emit('close')">
-            <i class="material-icons">close</i>
+            <i class="material-symbols">close</i>
           </button>
         </div>
         <!-- <hr class="divider"> -->

@@ -24,7 +24,7 @@ const currentIcon = computed(() =>
   <nav class="navbar">
     <!-- Sol Taraf: Menü ve Başlık -->
     <div class="navbar-left">
-      <!-- <button class="menu-btn" aria-label="Menü"><i class="material-icons">menu</i></button> -->
+      <!-- <button class="menu-btn" aria-label="Menü"><i class="material-symbols">menu</i></button> -->
       <HamburgerMenu />
       <span class="title">Zâkir | Özlü Tesbihat</span>
     </div>
@@ -32,7 +32,7 @@ const currentIcon = computed(() =>
     <!-- Sağ Taraf: Temalar ve Font Değiştirici -->
     <div class="navbar-right">
       <!-- <button class="theme-btn" aria-label="Tema Değiştir">
-        <i class="material-icons">dark_mode</i>
+        <i class="material-symbols">dark_mode</i>
       </button> -->
       <button class="font-btn" @click="toggleScript" aria-label="Yazı Tipi Değiştir">
         <component :is="currentIcon" width="32" height="32" fill="#fff" />

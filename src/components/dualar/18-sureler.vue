@@ -53,7 +53,7 @@ const buttonData = {
       <span class="button-info">{{ buttonData.sabahAksam.info }}</span>&nbsp;
       <span class="info-text">{{ buttonData.sabahAksam.hint }}</span>
       <button class="buton" @click="modals.sabahAksam = true">
-        <i class="material-icons">{{ buttonData.sabahAksam.icon }}</i>
+        <i class="material-symbols">{{ buttonData.sabahAksam.icon }}</i>
         {{ buttonData.sabahAksam.title }}
       </button>
 
@@ -73,7 +73,7 @@ const buttonData = {
       <div v-for="(data, key) in buttonData" :key="key" v-show="key !== 'sabahAksam'">
         <span class="button-info">{{ data.info }}</span>
         <button class="buton" @click="modals[key] = true">
-          <i class="material-icons">{{ data.icon }}</i>
+          <i class="material-symbols">{{ data.icon }}</i>
           {{ data.title }}
         </button>
         <span class="info-text">{{ data.hint }}</span>
