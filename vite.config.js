@@ -131,6 +131,21 @@ export default defineConfig({
               }
             }
           },
+          // JS, CSS ve HTML için yeni strateji
+          {
+            urlPattern: /\.(?:js|css|html)$/,
+            handler: 'StaleWhileRevalidate', // veya 'NetworkFirst'
+            options: {
+              cacheName: 'static-resources',
+              expiration: {
+                maxAgeSeconds: 60 * 60 * 24, // 1 gün
+                maxEntries: 50
+              },
+              cacheableResponse: {
+                statuses: [0, 200]
+              }
+            }
+          },
         ],
         // Service Worker ayarları
         skipWaiting: true,
@@ -142,3 +157,6 @@ export default defineConfig({
   ]
 })
 
+
+// StaleWhileRevalidate: Önce cache'den hızlıca göster, sonra arka planda güncellemeleri kontrol et.
+// NetworkFirst: Önce internetten almaya çalış, başarısız olursa cache'den göster.
