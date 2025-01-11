@@ -8,7 +8,7 @@ createProgress() // Progress provider'ı oluştur
 // Dualar
 import Entesselam from './dualar/01-entesselam.vue';
 import Tuncina from './dualar/02-tuncina.vue';
-import SabahAksam from './dualar/03-sabah-aksam.vue';
+import SabahAksam from './dualar/03-sabah-aksam5.vue';
 import Ecirna from './dualar/04-ecirna.vue';
 import Subhanallahi from './dualar/05-subhanallahi.vue';
 import AyetTrKursi from './dualar/06-kursi.vue';
