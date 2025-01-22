@@ -44,13 +44,15 @@ const { scriptStyle } = useScriptStyle()
         
         <!-- İsmi Azam Modal İçeriği -->
         <template v-if="key === 'azam'">
-          <span class="besmele">Bismillâhir rahmânir rahîm</span>
-          <p>
-            <span class="latin">ya <strong class="red">Cemîlu</strong> yâ Allâh,</span>
-            <span class="latin"> yâ <strong class="red">Karîbu</strong> yâ Allâh,</span><br/>
-            <span class="latin">ya <strong class="red">Mücîbu</strong> yâ Allâh,</span>
-            <span class="latin"> yâ <strong class="red">Habîbu</strong> yâ Allâh</span>
-          </p>
+          <div class="flex-container column">
+
+            <span class="besmele">Bismillâhir rahmânir rahîm</span>
+            <div class="flex-container wrap">
+              <span class="latin">ya <strong class="red">Cemîlu</strong> yâ Allâh,</span>
+              <span class="latin"> yâ <strong class="red">Karîbu</strong> yâ Allâh,</span><br/>
+              <span class="latin">ya <strong class="red">Mücîbu</strong> yâ Allâh,</span>
+              <span class="latin"> yâ <strong class="red">Habîbu</strong> yâ Allâh</span>
+            </div>
 
           <div class="grid-container" :class="scriptStyle">
             <div v-for="(grup, index) in ismiazam[scriptStyle]" 
@@ -66,6 +68,7 @@ const { scriptStyle } = useScriptStyle()
                 </div>
             </div>
           </div>
+        </div>
         </template>
 
         <!-- Tercüman Modal İçeriği -->

@@ -4,9 +4,12 @@ import HamburgerMenu from './HamburgerMenu.vue'
 
 import { computed } from 'vue'
 import { useScriptStyle } from '../assets/useScriptStyle'
+import { useTheme } from '../assets/useTheme'
 
 // Script Style Hook
 const { scriptStyle, notification, toggleScript } = useScriptStyle()
+// Theme Hook
+const { theme, toggleTheme } = useTheme()
 
 // SVG İkonlar
 import elifbeIcon from '../assets/icon_elifbe.vue'
@@ -16,6 +19,11 @@ import abcIcon from '../assets/icon_abc.vue'
 const currentIcon = computed(() =>
   scriptStyle.value === 'latin' ? abcIcon : elifbeIcon
 )
+
+// Tema ikonunu belirle
+const themeIcon = computed(() => 
+  theme.value === 'light' ? 'dark_mode' : 'light_mode'
+)
 </script>
 
 
@@ -24,19 +32,26 @@ const currentIcon = computed(() =>
   <nav class="navbar">
     <!-- Sol Taraf: Menü ve Başlık public/favicon-32x32.png-->
     <div class="navbar-left">
-      <!-- <button class="menu-btn" aria-label="Menü"><i class="material-symbols">menu</i></button> -->
-      <!-- <HamburgerMenu /> -->
-      <!-- <img class="zakir" src="../assets/zakir.png" alt="Zakir ikon" /> -->
+      <HamburgerMenu />
       <img class="zakir" src="/zakir-alpha.svg" alt="Zakir ikon" />
-      <span class="title">Zâkir</span>
+      <span class="title">Zâkir - Özlü Tesbihat</span>
     </div>
 
     <!-- Sağ Taraf: Temalar ve Font Değiştirici -->
     <div class="navbar-right">
-      <!-- <button class="theme-btn" aria-label="Tema Değiştir">
-        <i class="material-symbols">dark_mode</i>
-      </button> -->
-      <button class="font-btn" @click="toggleScript" aria-label="Yazı Tipi Değiştir">
+      <button 
+        class="theme-btn" 
+        @click="toggleTheme" 
+        :aria-label="theme === 'light' ? 'Dark temaya geç' : 'Light temaya geç'"
+      >
+        <i class="material-symbols">{{ themeIcon }}</i>
+      </button>
+
+      <button 
+        class="font-btn" 
+        @click="toggleScript" 
+        aria-label="Yazı Türünü Değiştir"
+      >
         <component :is="currentIcon" width="32" height="32" fill="#fff" />
       </button>
     </div>
@@ -55,8 +70,12 @@ const currentIcon = computed(() =>
 
 /* Navbar Temel Yapısı */
 .navbar {
+  position: sticky;
+  top: 0;
   width: 100%;
-  background: linear-gradient(rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.1)), var(--primary);
+  background: linear-gradient(0.25turn, var(--primary), var(--primary));
+  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), var(--primary);
+  /* color: var(--text-primary); */
   color: white;
   height: 64px;
   display: flex;
@@ -106,10 +125,17 @@ button:active {
   transform: scale(0.95);
 }
 
+.theme-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: inherit;
+}
 .font-btn {
   display: flex;
   align-items: center;
   justify-content: center;
+  color: inherit;
 }
 
 svg {
@@ -145,7 +171,7 @@ svg {
 }
 
 
-@media (max-width: 230px) {
+@media (max-width: 320px) {
   .title {
     display: none;
   }

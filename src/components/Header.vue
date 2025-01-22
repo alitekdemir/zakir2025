@@ -10,8 +10,10 @@
 .header {
   width: 100%; /* Genişlik %100 */
   min-height: 10vh;
-  background-color: var(--primary);
-  color: var(--text-primary, #fff); /* Varsayılan birincil metin rengi */
+  /* background: var(--primary); */
+  background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), var(--primary);
+  /* color: var(--text-primary, #fff); */
+  color: white;
   padding: 2rem 1rem; /* Düzeltildi */
   text-align: center;
   transition: background-color 0.6s ease-in-out, color 0.6s ease-in-out; /* Yalnızca gerekli geçiş */

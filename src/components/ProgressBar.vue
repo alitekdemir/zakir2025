@@ -1,7 +1,6 @@
 <!-- src/components/ProgressBar.vue -->
 <script setup>
 import { ref, onMounted, watch } from 'vue'
-// import { widgetWeights } from '../assets/widgetData';
 import { useProgress, widgetWeights } from '../assets/useProgress';
 
 const { progress: score } = useProgress();
@@ -38,10 +37,11 @@ onMounted(() => {
 
 <style scoped>
 .progress-container {
+  background-color: var(--primary-lighter);
+  background-color: var(--background);
   width: 100%;
   max-width: 600px;
-  margin: 1rem auto;
-  padding: 0 0.25rem;
+  padding: 1rem 1rem;
 }
 
 .progress-stats {
@@ -53,27 +53,29 @@ onMounted(() => {
 
 .progress-text {
   font-size: 0.9rem;
-  color: #666;
+  color: var(--text-primary);
 }
 
 .progress-percentage {
   font-size: 0.9rem;
   font-weight: 500;
-  color: rgb(76, 0, 130);
+  /* color: rgb(76, 0, 130); */
+  color: var(--text-primary);
 }
 
 .progress-bar {
   width: 100%;
   height: 0.5rem;
-  background: #f0f0f0;
+  background: var(--primary-light);
   border-radius: 0.25rem;
   overflow: hidden;
 }
 
 .progress-fill {
   height: 100%;
-  background: rgb(76, 0, 130);
+  background: var(--primary);
   border-radius: 0.25rem;
   transition: width 0.3s ease;
 }
+
 </style>

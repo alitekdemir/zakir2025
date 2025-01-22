@@ -1,0 +1,66 @@
+/* src/assets/theme.css */
+
+/* Light theme (default) */
+:root {
+    /* Brand Colors */
+    --primary: hwb(0 42% 0%); /* Mevcut kırmızı ton */
+    --primary-light: hwb(0 42% 0% / 0.25);
+    --primary-lighter: hwb(0 42% 0% / 0.1);
+  
+    /* Theme Colors */
+    --background: #ffffff;
+    --surface: #f8f8f8;
+    --surface-variant: #f0f0f0;
+    
+    /* Text Colors */
+    --text-primary: #002233;
+    --text-secondary: #666666;
+    --text-tertiary: #888888;
+
+    /* Component Colors */
+    --card-background: #ffffff;
+    /* --card-border: 2px solid rgba(1, 121, 111, 0.9); */
+    --card-border: 1px solid var(--primary);
+    --card-shadow: 0 4px 12px hsl(0, 0%, 90%);
+    
+    /* Interactive Elements */
+    --hover-background: var(--primary-light);
+    --active-state: var(--primary);
+    
+    /* Dividers & Borders */
+    --divider: rgba(0, 0, 0, 0.08);
+    --border: rgba(0, 0, 0, 0.12);
+  }
+  
+  /* Dark theme */
+  [data-theme="dark"] {
+    /* Brand Colors - Aynı kalıyor */
+    --primary: hwb(0 42% 0%); /* Daha yumuşak kırmızı */
+    --primary-light: hwb(0 50% 10% / 0.25);
+    --primary-lighter: hwb(0 50% 10% / 0.05);
+    
+    /* Theme Colors */
+    --background: #121212;
+    --surface: #1e1e1e;
+    --surface-variant: #2c2c2c;
+    
+    /* Text Colors */
+    --text-primary: #ffffff;
+    --text-secondary: #b3b3b3;
+    --text-tertiary: #888888;
+    
+    /* Component Colors */
+    --card-background: #1e1e1e;
+    /* --card-border: rgba(255, 255, 255, 0.1); */
+    --card-border: 1px solid var(--primary-light);
+    --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    
+    /* Interactive Elements */
+    --hover-background: rgba(255, 255, 255, 0.05);
+    --active-state: var(--primary);
+    
+    /* Dividers & Borders */
+    --divider: rgba(255, 255, 255, 0.08);
+    --border: rgba(255, 255, 255, 0.12);
+  }
+  

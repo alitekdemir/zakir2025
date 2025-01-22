@@ -71,13 +71,14 @@ watchEffect(() => {
   top: 100%;
   right: 0;
   margin-top: 4px;
-  background: white;
+  background: var(--background);
   border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--card-shadow);
   z-index: 1000;
   min-width: 120px;
   overflow: hidden;
   animation: slideDown 0.2s ease-out;
+
 }
 
 .dropdown-menu {
@@ -90,7 +91,7 @@ watchEffect(() => {
   gap: 8px;
   width: 100%;
   padding: 10px 16px;
-  color: var(--text-dark);
+  color: var(--text-primary);
   transition: background-color 0.2s, color 0.2s;
   border-radius: 6px;
   cursor: pointer;

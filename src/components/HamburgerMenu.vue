@@ -1,11 +1,18 @@
 <!-- src/components/HamburgerMenu.vue -->
 <script setup>
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 const isOpen = ref(false)
+
+// Menu açılıp kapandığında body overflow'unu kontrol et
+watch(isOpen, (newValue) => {
+  document.body.style.overflow = newValue ? 'hidden' : 'auto'
+})
+
 const toggleMenu = () => {
   isOpen.value = !isOpen.value
 }
 </script>
+
 
 <template>
   <div>
@@ -19,17 +26,35 @@ const toggleMenu = () => {
     <!-- Menü -->
     <div class="menu" :class="{ 'open': isOpen }">
       <router-link to="/" @click="toggleMenu">
-          <span style="font-size: x-large; line-height: 1rem; font-weight: 300; color: white;">
-            TESBİHAT
-          </span>
+          <i class="material-symbols">home</i>
+          <span class="main">Ana Sayfa</span>
       </router-link>
+
       <hr class="divider">
-      <router-link to="/font-ayarlari" @click="toggleMenu">Font Ayarları</router-link>
-      <router-link to="/istatistikler" @click="toggleMenu">İstatistikler</router-link>
-      <hr class="divider">
-      <router-link to="/nasil-kullanilir" @click="toggleMenu">Nasıl Kullanılır</router-link>
-      <router-link to="/tesbihatin-faziletleri" @click="toggleMenu">Tesbihatın Faziletleri</router-link>
-      <router-link to="/geri-bildirim" @click="toggleMenu">Geri Bildirim</router-link>
+      
+      <router-link to="/font-ayarlari" @click="toggleMenu">
+        <i class="material-symbols">text_format</i>
+        Font Ayarları
+      </router-link>
+      <router-link to="/istatistikler" @click="toggleMenu">
+        <i class="material-symbols">analytics</i>
+        İstatistikler
+      </router-link>
+
+      <hr class="divider" style="align-items: left; text-align: left;">
+
+      <router-link to="/nasil-kullanilir" @click="toggleMenu">
+        <i class="material-symbols">help</i>
+        Nasıl Kullanılır
+      </router-link>
+      <router-link to="/tesbihatin-faziletleri" @click="toggleMenu">
+        <i class="material-symbols">auto_awesome</i>
+        Tesbihatın Faziletleri
+      </router-link>
+      <router-link to="/geri-bildirim" @click="toggleMenu">
+        <i class="material-symbols">feedback</i>
+        Geri Bildirim
+      </router-link>
     </div>
 
     <!-- Overlay -->
@@ -76,20 +101,35 @@ const toggleMenu = () => {
   padding: 20px 0;
   z-index: 99;
   /* text-align: left; */
+  align-items: left;
+}
+
+.main {
+  /* font-size: 1.5rem; */
+  font-size: x-large; 
+  line-height: 1rem;
+  font-weight: 300;
 }
 
 .menu.open {left: 0;}
 
 .menu a {
-  color: white;
+  color: rgba(255, 255, 255, 0.7);
   text-decoration: none;
   padding: 1rem;
   transition: 0.2s;
   /* text-align: left; */
 }
+.menu a {
+  display: flex;
+  align-items: center;
+  gap: 1rem; /* ikon ile metin arasında boşluk */
+}
 
 .menu a:hover {
+  color: white;
   background: rgba(255, 255, 255, 0.1);
+  font-weight: 500;
 }
 
 .overlay {
@@ -98,8 +138,8 @@ const toggleMenu = () => {
   left: 0;
   width: 100%;
   height: calc(100vh - 64px); /* Navbar'ı hariç tut */
-  background-color: rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(3px);
+  /* background-color: rgba(0, 0, 0, 0.2); */
+  backdrop-filter: blur(3px) brightness(70%);
   visibility: hidden;
   opacity: 0;
   transition: 0.3s;
@@ -113,9 +153,9 @@ const toggleMenu = () => {
 }
 
 .divider {
-  width: 70%; 
+  width: 100%; 
   border-bottom: 1px solid rgba(255, 255, 255, 0.3); /* Saydamlık arttırıldı */
-  margin: 0 auto;
+  margin: 1rem auto;
 }
 
 

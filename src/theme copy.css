@@ -1,0 +1,62 @@
+/* src/theme.css */
+
+/* Light theme (default) */
+:root {
+    /* Ana renkler */
+    --primary: hwb(0 42% 0%); /* ff6b6b */
+    --primary-light: hwb(0 42% 0% / 0.25);
+    --primary-light-more: hwb(0 42% 0% / 0.1);
+    
+    /* Arka plan renkleri */
+    --background: #ffffff;
+    --surface: #f8f8f8;
+    --surface-variant: #f0f0f0;
+    
+    /* Metin renkleri */
+    --text-primary: #032535;
+    --text-secondary: #666666;
+    --text-tertiary: #888888;
+    
+    /* Border ve Divider renkleri */
+    --border: rgba(0, 0, 0, 0.12);
+    --divider: rgba(0, 0, 0, 0.08);
+    
+    /* Overlay ve Modal renkleri */
+    --overlay: rgba(0, 0, 0, 0.5);
+    --modal-background: #ffffff;
+    
+    /* Gölge efektleri */
+    --shadow-light: 0 2px 4px rgba(0, 0, 0, 0.04);
+    --shadow-medium: 0 4px 8px rgba(0, 0, 0, 0.06);
+  }
+  
+  /* Dark theme */
+  [data-theme="dark"] {
+    /* Ana renkler */
+    --primary: hwb(0 42% 0%);
+    --primary-light: hwb(0 42% 0% / 0.25);
+    --primary-light-more: hwb(0 42% 0% / 0.1);
+    
+    /* Arka plan renkleri */
+    --background: #121212;
+    --surface: #1e1e1e;
+    --surface-variant: #2c2c2c;
+    
+    /* Metin renkleri */
+    --text-primary: #ffffff;
+    --text-secondary: #b3b3b3;
+    --text-tertiary: #808080;
+    
+    /* Border ve Divider renkleri */
+    --border: rgba(255, 255, 255, 0.12);
+    --divider: rgba(255, 255, 255, 0.08);
+    
+    /* Overlay ve Modal renkleri */
+    --overlay: rgba(0, 0, 0, 0.8);
+    --modal-background: #1e1e1e;
+    
+    /* Gölge efektleri */
+    --shadow-light: 0 2px 4px rgba(0, 0, 0, 0.4);
+    --shadow-medium: 0 4px 8px rgba(0, 0, 0, 0.6);
+  }
+  

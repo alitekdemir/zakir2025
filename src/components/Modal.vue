@@ -1,13 +1,20 @@
 <!-- src/components/Modal.vue -->
 <script setup>
-defineProps({
+import { watch } from 'vue'
+
+const props = defineProps({
   show: Boolean,
   title: String
 })
 
-// Modal'ı kapatmak için emit tanımlıyoruz
+// Modal açılıp kapandığında body overflow'unu kontrol et
+watch(() => props.show, (newValue) => {
+  document.body.style.overflow = newValue ? 'hidden' : 'auto'
+})
+
 const emit = defineEmits(['close'])
 </script>
+
 
 <template>
   <Transition name="modal">
@@ -35,7 +42,8 @@ const emit = defineEmits(['close'])
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  /* background-color: rgba(0, 0, 0, 0.35); */
+  backdrop-filter: blur(3px) brightness(70%);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -43,7 +51,7 @@ const emit = defineEmits(['close'])
 }
 
 .modal-content {
-  background: white;
+  background: var(--surface);
   border-radius: .5rem;
   width: min(100vw - 1rem, var(--max-width));
   min-width: 100vw - 1rem;
@@ -58,7 +66,7 @@ const emit = defineEmits(['close'])
   justify-content: space-between;
   align-items: center;
   /* background-color: rgba(0, 0, 0, 0.5); */
-  background: rgba(0, 0, 0, 0.03);
+  background: var(--surface-variant);
 }
 .modal-body {
   padding: .75rem;
@@ -69,7 +77,7 @@ const emit = defineEmits(['close'])
   /* font-weight: lighter; */
   font-weight: 400;
   margin: 0;
-  color: var(--text-dark);
+  color: var(--text-secondary);
 }
 
 .close-button {
@@ -80,8 +88,8 @@ const emit = defineEmits(['close'])
   justify-content: center; /* Yatay ortalama */
   border-radius: 20%;
   /* background-color: white; */
+  /* color: rgba(1, 121, 111, 0.952); */
   color: var(--primary);
-  color: rgba(1, 121, 111, 0.952);
   cursor: pointer;
   transition: background-color 0.3s;
 }

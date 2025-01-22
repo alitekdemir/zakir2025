@@ -1,6 +1,6 @@
 <!-- src/components/DuaWidget.vue -->
 <script setup>
-import { ref, onMounted, onBeforeUnmount } from 'vue';
+import { ref, onMounted, onBeforeUnmount, watch } from 'vue'; // watch eklendi
 import Modal from './Modal.vue';
 import DropdownMenu from './DropdownMenu.vue';
 import { useProgress, widgetWeights } from '../assets/useProgress';
@@ -16,6 +16,8 @@ const props = defineProps({
   }
 });
 
+// Collapse için yeni ref ekliyoruz
+const isCollapsed = ref(false);
 const { updateProgress } = useProgress();
 const showDropdown = ref(false);
 const showInfoModal = ref(false);
@@ -26,7 +28,15 @@ const isMemorized = ref(false);
 onMounted(() => {
   const memorizedState = localStorage.getItem(`memorized-${props.number}`);
   isMemorized.value = memorizedState === 'true';
+  isCollapsed.value = isMemorized.value;
   document.addEventListener('click', handleClickOutside);
+});
+
+// Ezberlenme durumu değiştiğinde collapse durumunu güncelle
+watch(isMemorized, (newValue) => {
+  if (newValue) {
+    isCollapsed.value = true;
+  }
 });
 
 const handleMemorized = () => {
@@ -77,12 +87,18 @@ const handleMemorizedToggle = () => {
 </script>
 
 <template>
-  <div class="dua-widget" :class="{ 'memorized': isMemorized }">
+  <div class="dua-widget" :class="{ 'memorized': isMemorized, 'collapsed': isCollapsed }">
     <div class="widget-header">
-      <div class="number">
-        {{ number }}
+      <div class="header-main" @click="isCollapsed = !isCollapsed">
+        <div class="number">
+          {{ number }}
+        </div>
+        <span v-if="title" class="title">{{ title }}</span>
+        <div class="collapse-indicator">
+          {{ isCollapsed ? '▼' : '▲' }}
+        </div>
       </div>
-      <span v-if="title" class="title">{{ title }}</span>
+      
       <div class="dropdown-container">
         <button class="more-btn" @click.stop="showDropdown = !showDropdown">
           <i class="material-symbols">more_vert</i>
@@ -98,9 +114,11 @@ const handleMemorizedToggle = () => {
       </div>
     </div>
 
-    <div class="widget-content">
-      <slot></slot>
-    </div>
+    <transition name="collapse">
+      <div v-show="!isCollapsed" class="widget-content">
+        <slot></slot>
+      </div>
+    </transition>
 
     <!-- Modals -->
     <Modal 
@@ -110,6 +128,7 @@ const handleMemorizedToggle = () => {
     >
       <slot name="info-content"></slot>
     </Modal>
+
 
     <Modal
       :show="showMemorizedModal"
@@ -152,6 +171,16 @@ const handleMemorizedToggle = () => {
   transition: all 0.3s ease;
 }
 
+/* Collapsed durumunda padding ve margin'leri azalt */
+.dua-widget.collapsed {
+  padding: 0.4rem 0.8rem;
+}
+
+/* Header margin'i collapsed durumunda sıfırla */
+.dua-widget.collapsed .widget-header {
+  margin-bottom: 0;
+}
+
 
 .dua-widget.memorized {
   border: none;
@@ -180,7 +209,37 @@ const handleMemorizedToggle = () => {
   align-items: center;
   gap: 12px;
   margin-bottom: 16px;
+  cursor: pointer;
+  justify-content: space-between;
+  transition: margin-bottom 0.3s ease;
 }
+
+.collapse-indicator {
+  margin-left: auto;
+  margin-right: 0.5rem;
+  color: var(--primary);
+  font-size: 0.8rem;
+}
+
+.widget-content {
+  display: grid;
+  grid-template-rows: 1fr;
+  transition: grid-template-rows 0.3s ease;
+  overflow: hidden;
+  padding-top: 0.5rem;
+  transition: padding 0.3s ease;
+}
+
+.dua-widget.collapsed .widget-content {
+  padding-top: 0;
+}
+
+
+
+.widget-content.collapsed {
+  grid-template-rows: 0fr;
+}
+
 
 .number {
   min-width: 32px;
@@ -203,6 +262,15 @@ const handleMemorizedToggle = () => {
   /* color: var(--primary); */
   color: var(--text-tertiary);
   text-align: left;
+}
+
+
+.header-main {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+  cursor: pointer;
 }
 
 
@@ -246,4 +314,23 @@ const handleMemorizedToggle = () => {
   padding: 1rem;
   text-align: center;
 }
+
+
+/* Collapse Animation */
+.collapse-enter-active,
+.collapse-leave-active {
+  transition: all 0.3s ease;
+  max-height: 500px; /* max-height değerini düşür */
+  opacity: 1;
+  overflow: hidden;
+}
+
+.collapse-enter-from,
+.collapse-leave-to {
+  max-height: 0;
+  opacity: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
 </style>
