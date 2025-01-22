@@ -148,7 +148,7 @@ export const sureler = {
             "Ellezî hüm fîhi muḥtelifûn.",
             "Kellâ seya’lemûn.",
             "Sümme kellâ seya’lemûn.",
-            "Elem nece’a lil arda mihedâ.",
+            "Elem nece’alil arda mihedâ.",
             "Vel cibâle evtâdâ.",
             "Ve ḥalaknâküm eẕvâcâ.",
             "Ve cealne nevmeküm sûbâtâ.",
@@ -172,7 +172,13 @@ export const sureler = {
             "İnnehum kânû lâ yercûne hisâbâ.",
             "Ve keẕẕebû bi âyâtinâ kiẕẕâbâ.",
             "Ve külle şey'in ahsâynâhü kitâbâ.",
-            "Feẕukû felen neẕîdeküm illâ aẕâbâ."
+            "Feẕukû felen neẕîdeküm illâ aẕâbâ.",
+            "İnne lil muttekîne mefâzâ",
+            "Hadâika ve a’nâbâ",
+            "Ve kevâ’ibe etrâbâ",
+            "Ve ke’sen dihâkâ",
+            "Lâ yesme’ûne fîhâ lağven ve lâ kizzâbâ",
+            "Cezâen min rabbike ‘atâen hisâbâ."
         ],
         arabic: [
             "عَمَّ يَتَسَٓاءَلُونَۚ",
@@ -204,7 +210,14 @@ export const sureler = {
             "اِنَّهُمْ كَانُوا لَا يَرْجُونَ حِسَاباًۙ",
             "وَكَذَّبُوا بِاٰيَاتِنَا كِذَّاباًؕ",
             "وَكُلَّ شَيْءٍ اَحْصَيْنَاهُ كِتَاباً",
-            "فَذُوقُوا فَلَنْ نَزٖيدَكُمْ اِلَّا عَذَاباًࣖ"
+            "فَذُوقُوا فَلَنْ نَزٖيدَكُمْ اِلَّا عَذَاباًࣖ",
+            "اِنَّ لِلْمُتَّقٖينَ مَفَازاًۙ",
+            "حَدَٓائِقَ وَاَعْنَاباًۙ",
+            "وَكَوَاعِبَ اَتْرَاباًۙ",
+            "وَكَأْساً دِهَاقاًؕ",
+            "لَا يَسْمَعُونَ فٖيهَا لَغْواً وَلَا كِذَّاباًۚ",
+            "جَزَٓاءً مِنْ رَبِّكَ عَطَٓاءً حِسَاباًۙ",
+
         ]
     }
 };

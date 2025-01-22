@@ -10,9 +10,7 @@ const { isInstallable, showInstallPrompt, installPWA } = usePWA()
   <!-- <div  class="install-banner"> -->
     <div class="flex-container column">
       <!-- <span class="install-icon">📱</span> -->
-      <span>
-        Bu uygulamayı yükle
-      </span>
+      <p>Daha hızlı ve çevrimdışı erişim için yükle.</p>
       <button @click="installPWA" class="buton">
         <i class="material-symbols">apk_install</i>
         Yükle
@@ -28,37 +26,35 @@ const { isInstallable, showInstallPrompt, installPWA } = usePWA()
 
 <!-- ekranın ortasında görünür -->
 <style scoped>
-.flex-container {
+/* .flex-container {
     gap: 1rem;
-}
+} */
 
 .install-banner {
   position: fixed;
-  top: 50%; /* Ekranın dikey ortası */
-  left: 50%; /* Ekranın yatay ortası */
-  transform: translate(-50%, -50%); /* Tam merkeze hizalama */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   background: #24292e;
   color: white;
-  padding: 20px; /* Padding'i biraz artırdım */
+  padding: 20px;
   z-index: 1000;
-  border-radius: 10px; /* Köşeleri yumuşattım */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Gölge ekledim */
-  width: 90%; /* Mobil uyumluluk için */
-  max-width: 300px; /* Maksimum genişlik */
+  border-radius: 10px;
+  border: 2px solid var(--primary);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: rgb(38, 57, 77) 0px 10px 20px -10px;
+  width: 90%;
+  max-width: 320px;
+  text-align: center;
 }
 
-.install-content {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  margin: 0 auto;
-}
 
 .buton {
-  background: #ff6b6b;
+  background: var(--primary);
   color: white;
   cursor: pointer;
+  user-select: none;
+  padding: 1.2rem 1.5rem;
 }
 
 .close-button {
@@ -66,14 +62,11 @@ const { isInstallable, showInstallPrompt, installPWA } = usePWA()
   color: white;
   border: none;
   cursor: pointer;
+  user-select: none;
   padding: 4px 8px;
   position: absolute; /* Kapatma butonunu sağ üste sabitledim */
   top: 8px;
   right: 8px;
-}
-
-.install-button:hover {
-  background: #2c974b; /* Hover efekti ekledim */
 }
 
 .close-button:hover {
@@ -123,45 +116,3 @@ const { isInstallable, showInstallPrompt, installPWA } = usePWA()
 }
 
 </style>
-
-
-
-<!-- ekranın üstünde görünür -->
-<!-- <style scoped>
-.install-banner {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  background: #24292e;
-  color: white;
-  padding: 12px;
-  z-index: 1000;
-}
-
-.install-content {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.install-button {
-  background: #2ea44f;
-  color: white;
-  border: none;
-  padding: 6px 12px;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-.close-button {
-  background: transparent;
-  color: white;
-  border: none;
-  cursor: pointer;
-  padding: 4px 8px;
-}
-</style> -->

@@ -1,6 +1,6 @@
 <!-- src/components/Tesbihat.vue -->
 <script setup>
-import DuaWidget from './DuaWidget3.vue';
+import DuaWidget from './DuaWidget.vue';
 import { duaList } from '../assets/duaList.js';
 </script>
 

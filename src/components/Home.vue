@@ -9,6 +9,7 @@ import { duaList } from '../assets/duaList'; // Tesbihat yerine doğrudan data'd
 import Tesbihat from './Tesbihat.vue'
 import ZakirGullu from './ZakirGullu.vue'
 import InstallPWAPrompt from './InstallPWAPrompt.vue'
+
 </script>
 
 <template>

@@ -79,6 +79,7 @@ button {
     background: var(--primary-light);
     cursor: pointer;
     user-select: none;
+    touch-action: manipulation; /* Sadece sayaç butonu için hızlı tıklama yakınlaştırmasını engeller */
 }
   
 .counter-button:hover {
