@@ -1,7 +1,7 @@
 <!-- src/components/UpdateCheck.vue -->
 <script setup>
 import { ref, onMounted } from 'vue'
-import { APP_VERSION, ASSETS_VERSION } from '../assets/version'
+import { APP_VERSION, ASSETS_VERSION } from '../../public/version'
 
 const currentVersion = ref(localStorage.getItem('app-version') || APP_VERSION)
 const updateStatus = ref('')
@@ -17,9 +17,7 @@ defineProps({
 // Önbelleği temizle
 const clearCache = async () => {
   try {
-    // Tüm önbellekleri listele
     const keys = await caches.keys()
-    // Her bir önbelleği sil
     const clearPromises = keys.map(key => caches.delete(key))
     await Promise.all(clearPromises)
     return true
@@ -29,22 +27,54 @@ const clearCache = async () => {
   }
 }
 
+// Sunucudan version.js'i kontrol et
+const fetchLatestVersion = async () => {
+  try {
+    // Firebase hosting için tam URL kullanıyoruz
+    const versionUrl = `${window.location.origin}/version.js?t=${Date.now()}`
+    const response = await fetch(versionUrl)
+    
+    if (!response.ok) {
+      throw new Error('Version dosyası bulunamadı')
+    }
+    
+    const text = await response.text()
+    
+    // Version parse işlemini geliştirdik
+    const appVersionMatch = text.match(/APP_VERSION\s*=\s*['"](.+?)['"]/)
+    const assetsVersionMatch = text.match(/ASSETS_VERSION\s*=\s*['"](.+?)['"]/)
+    
+    if (!appVersionMatch) {
+      throw new Error('Version formatı geçersiz')
+    }
+
+    return {
+      appVersion: appVersionMatch[1],
+      assetsVersion: assetsVersionMatch ? assetsVersionMatch[1] : null
+    }
+  } catch (error) {
+    console.error('Versiyon kontrol hatası:', error)
+    throw new Error('Versiyon bilgisi alınamadı: ' + error.message)
+  }
+}
+
 // Manuel güncelleme kontrolü
 const checkForUpdates = async () => {
   if (isUpdating.value) return
   
   try {
     isUpdating.value = true
+    updateStatus.value = 'Güncellemeler kontrol ediliyor...'
 
-    // Eğer localStorage'da versiyon yoksa, güncel versiyonu kaydet
-    if (!localStorage.getItem('app-version')) {
-      localStorage.setItem('app-version', APP_VERSION)
-      localStorage.setItem('assets-version', ASSETS_VERSION)
-      currentVersion.value = APP_VERSION
+    const { appVersion, assetsVersion } = await fetchLatestVersion()
+
+    if (!appVersion) {
+      throw new Error('Versiyon bilgisi alınamadı')
     }
 
-    if (currentVersion.value !== APP_VERSION) {
-      updateStatus.value = `Yeni sürüm: ${APP_VERSION}`
+    // Versiyon kontrolü
+    if (currentVersion.value !== appVersion) {
+      updateStatus.value = `Yeni sürüm bulundu: ${appVersion}`
       await clearCache()
 
       const registration = await navigator.serviceWorker.getRegistration()
@@ -52,12 +82,11 @@ const checkForUpdates = async () => {
         await registration.unregister()
       }
 
-      localStorage.setItem('app-version', APP_VERSION)
-      localStorage.setItem('assets-version', ASSETS_VERSION)
-      currentVersion.value = APP_VERSION
+      localStorage.setItem('app-version', appVersion)
+      localStorage.setItem('assets-version', assetsVersion)
+      currentVersion.value = appVersion
 
       setTimeout(() => {
-        window.location.href = window.location.href + '?t=' + new Date().getTime()
         window.location.reload(true)
       }, 1000)
     } else {
@@ -70,33 +99,31 @@ const checkForUpdates = async () => {
 
   } catch (error) {
     console.error('Güncelleme hatası:', error)
-    updateStatus.value = 'Güncelleme hatası: ' + error.message
+    updateStatus.value = 'Güncelleme kontrolü başarısız: ' + error.message
     isUpdating.value = false
   }
 }
 
-// Sayfa yüklendiğinde versiyon kontrolü
-onMounted(() => {
-  // Eğer localStorage'da versiyon yoksa, güncel versiyonu kaydet
-  if (!localStorage.getItem('app-version')) {
-    localStorage.setItem('app-version', APP_VERSION)
-    localStorage.setItem('assets-version', ASSETS_VERSION)
-    currentVersion.value = APP_VERSION
-    return
-  }
+// Sayfa yüklendiğinde otomatik kontrol
+onMounted(async () => {
+  try {
+    const { appVersion } = await fetchLatestVersion()
+    
+    if (!localStorage.getItem('app-version')) {
+      localStorage.setItem('app-version', appVersion)
+      currentVersion.value = appVersion
+      return
+    }
 
-  // Sadece localStorage'daki versiyon güncel versiyondan eskiyse mesaj göster
-  if (currentVersion.value !== APP_VERSION) {
-    updateStatus.value = `Yeni sürüm: ${APP_VERSION}`
+    if (currentVersion.value !== appVersion) {
+      updateStatus.value = `Yeni sürüm mevcut: ${appVersion}`
+    }
+  } catch (error) {
+    console.error('Otomatik versiyon kontrolü hatası:', error)
   }
 })
-
-// onMounted(() => {
-//   const storedVersion = localStorage.getItem('app-version')
-//   if (storedVersion && storedVersion !== APP_VERSION) {
-//     updateStatus.value = `Yeni versiyon mevcut! (${storedVersion} → ${APP_VERSION})`}})
-
 </script>
+
 
 <template>
     <div class="update-container">

@@ -7,7 +7,7 @@ import router from './router'
 import './style.css'
 import './ilaveler.css'
 import { registerSW } from 'virtual:pwa-register'
-import { APP_VERSION, ASSETS_VERSION } from './assets/version'
+import { APP_VERSION, ASSETS_VERSION } from '../public/version'
 import { vibrate, setupGlobalVibration } from './assets/vibrate'
 import { useThemeStore } from './assets/themeStore'
 

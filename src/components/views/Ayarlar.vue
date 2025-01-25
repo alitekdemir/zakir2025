@@ -73,7 +73,7 @@ const updateArabicSize = (value) => {
 // Sıfırlama fonksiyonları
 const resetFonts = async () => {
   await updateLatinFont('barlow-condensed')
-  await updateArabicFont('scheherazade')
+  await updateArabicFont('emine')
   updateLatinSize(16)
   updateArabicSize(1.4)
 }
