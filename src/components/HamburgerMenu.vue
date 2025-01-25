@@ -1,6 +1,8 @@
 <!-- src/components/HamburgerMenu.vue -->
 <script setup>
 import { ref, watch } from 'vue'
+import UpdateCheck from './UpdateCheck.vue'
+
 const isOpen = ref(false)
 
 // Menu açılıp kapandığında body overflow'unu kontrol et
@@ -41,7 +43,7 @@ const toggleMenu = () => {
         İstatistikler
       </router-link>
 
-      <hr class="divider" style="align-items: left; text-align: left;">
+      <hr class="divider">
 
       <router-link to="/nasil-kullanilir" @click="toggleMenu">
         <i class="material-symbols">help</i>
@@ -55,12 +57,19 @@ const toggleMenu = () => {
         <i class="material-symbols">feedback</i>
         Geri Bildirim
       </router-link>
+
+      <hr class="divider">
+      
+      <!-- Güncelleme Kontrolü Bileşeni -->
+      <!-- <UpdateCheck /> -->
+      <UpdateCheck :closeMenu="toggleMenu" />
     </div>
 
     <!-- Overlay -->
     <div class="overlay" :class="{ 'open': isOpen }" @click="toggleMenu"></div>
   </div>
 </template>
+
 
 <style scoped>
 .hamburger-btn {
