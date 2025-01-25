@@ -30,7 +30,7 @@ const arabicFonts = [
 
 // Font seçimleri için ref'ler
 const selectedLatinFont = ref(localStorage.getItem('latin-font') || 'barlow-condensed')
-const selectedArabicFont = ref(localStorage.getItem('arabic-font') || 'scheherazade')
+const selectedArabicFont = ref(localStorage.getItem('arabic-font') || 'emine')
 
 // Font güncelleme fonksiyonları
 const updateLatinFont = async (value) => {
