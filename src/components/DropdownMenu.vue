@@ -1,15 +1,12 @@
 <!-- src/components/DropdownMenu.vue -->
 <script setup>
-import { ref, watchEffect } from 'vue';
+import { watchEffect } from 'vue';
 
 const props = defineProps({
   show: Boolean,
   items: {
     type: Array,
-    default: () => [
-      { id: 'info', icon: 'info', label: 'Bilgi' },
-      { id: 'memorized', icon: 'face', label: 'Ezberledim' },
-    ],
+    required: true,
   },
 });
 
@@ -19,7 +16,6 @@ const emit = defineEmits(['info', 'memorized', 'hint', 'close']);
 const handleClick = (event) => {
   const itemId = event.target.closest('.menu-item')?.dataset.id;
   if (itemId) {
-    // Doğrudan ilgili event'i emit et
     emit(itemId);
     emit('close');
   }
@@ -27,9 +23,7 @@ const handleClick = (event) => {
 
 // Klavye navigasyonu için
 const handleKeydown = (event) => {
-  if (event.key === 'Escape') {
-    emit('close');
-  }
+  if (event.key === 'Escape') {emit('close');}
 };
 
 // Dropdown gösterildiğinde klavye event'ini dinle
@@ -72,13 +66,14 @@ watchEffect(() => {
   right: 0;
   margin-top: 4px;
   background: var(--background);
-  border-radius: 8px;
   box-shadow: var(--card-shadow);
+  border: 1px solid var(--border);
+  border: 1px solid var(--primary);
+  border-radius: 8px;
   z-index: 1000;
   min-width: 120px;
   overflow: hidden;
   animation: slideDown 0.2s ease-out;
-
 }
 
 .dropdown-menu {
@@ -106,7 +101,7 @@ watchEffect(() => {
 }
 
 .menu-item i {
-  font-size: 20px;
+  font-size: 1.5rem;
 }
 
 .menu-item span {

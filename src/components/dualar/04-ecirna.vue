@@ -36,7 +36,7 @@ const isOpen = ref(false)
                         <span class="ae-box">AE </span>
                         <!-- <span class="ae" :class="scriptStyle">☔</span> -->
                         <!-- <span class="ae" :class="scriptStyle">{{ scriptStyle === 'latin' ? 'A.e. ' : 'اَللّٰهُمَّ اَجِرْنَا ' }}</span> -->
-                        <span :class="[scriptStyle, `text ${dua.color}`]" v-html="dua.text"></span>
+                        <span :class="[scriptStyle, `text ${dua.color}`]" v-html="dua.text"/>
                         <small v-if="dua.info" class="info-text" dir="ltr">({{ dua.info }})</small>
                     </div>
                 </template>
@@ -74,7 +74,7 @@ const isOpen = ref(false)
 </template>
 
 
-<style>
+<style scoped>
 .dua-line {
     width: 100%;
     align-items: baseline;
@@ -82,7 +82,7 @@ const isOpen = ref(false)
     gap: 0.2rem;
 }
 
-.dua-line.arabic{text-align: right;}
+.text.arabic{text-align: right;}
 
 .ae {
     color: var(--text-gray);

@@ -1,0 +1,93 @@
+/* src/theme-green.css */
+
+/* Light theme (default) */
+:root {
+  /* Brand Colors */
+  /* --primary-dark: #F35E5E;  */
+  /* --primary: #FFA552; */
+  --primary: hwb(175 0% 53%);
+  --primary-dark: hwb(177 0% 60%);
+  --primary-light: hwb(175 0% 53% / 0.25);
+  --primary-lighter: hwb(175 0% 53% / 0.1);
+
+  /* Theme Colors */
+  --background: #ffffff;
+  --surface: hsl(136, 100%, 97%);
+  --surface-variant: hsl(136, 44%, 88%);
+  
+  /* Text Colors */
+  --text-primary: #002233;
+  --text-secondary: #666666;
+  --text-tertiary: #888888;
+  --text-emphasis: #FFA552;
+
+  /* Component Colors */
+  --card-background: #ffffff;
+  /* --card-border: 2px solid rgba(1, 121, 111, 0.9); */
+  --card-border: 1px solid var(--primary);
+  --card-shadow: 0 4px 12px hsl(0, 0%, 90%);
+  
+  /* Interactive Elements */
+  --hover-background: var(--primary-light);
+  --active-state: var(--primary);
+  
+  /* Dividers & Borders */
+  --divider: rgba(0, 0, 0, 0.08);
+  --border: rgba(0, 0, 0, 0.12);
+
+  /* Renk sınıfları */
+  /* .red {color: #D10000;} */
+  /* .red {color: crimson;} */
+  .primary {color: var(--primary);}
+  .red {color: #FF6666;}
+  .green {color: #1AB800;}
+  .magenta {color: #D1008A;}
+  .orange {color: #ff7322;}
+  .yellow-dark {color: #FFA552;}
+  .blue {color: MediumSlateBlue;}
+}
+
+/* Dark theme */
+[data-theme="dark"] {
+  /* Brand Colors - Aynı kalıyor */
+  --primary: hwb(175 0% 53%);
+  --primary-dark: hwb(177 0% 60%);
+  --primary-light: hwb(175 0% 53% / 0.25);
+  --primary-lighter: hwb(175 0% 53% / 0.1);
+  
+  /* Theme Colors */
+  --background: hsl(180, 39%, 6%);
+  --surface: hsl(180, 39%, 9%);
+  --surface-variant: hsl(180, 44%, 11%);
+  
+  /* Text Colors */
+  --text-primary: #ffffff;
+  --text-secondary: #b3b3b3;
+  --text-tertiary: #888888;
+  --text-emphasis: #FFA552;
+  
+  /* Component Colors */
+  --card-background: #181920;
+  /* --card-border: rgba(255, 255, 255, 0.1); */
+  --card-border: 1px solid var(--primary-light);
+  --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  
+  /* Interactive Elements */
+  --hover-background: rgba(255, 255, 255, 0.05);
+  --active-state: var(--primary);
+  
+  /* Dividers & Borders */
+  --divider: rgba(255, 255, 255, 0.08);
+  --border: rgba(255, 255, 255, 0.12);
+
+  /* Renk sınıfları */
+  .red {color: #FF6666;}
+  .green {color: #1AB800;}
+  .green-wonderfull{color: hwb(175 0% 53%);}
+  .magenta {color: #D1008A;}
+  .orange {color: #ff7322;}
+  .yellow-dark {color: #FFA552;}
+  .gold {color: gold;}
+  .blue {color: MediumSlateBlue;}
+}
+

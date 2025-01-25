@@ -58,12 +58,15 @@ const buttonData = {
       </button>
 
       <Modal :show="modals.sabahAksam" :title="buttonData.sabahAksam.title" @close="modals.sabahAksam = false">
-        <span class="besmele" :class="scriptStyle">{{ sureler.bismillah[scriptStyle] }}</span>
+        <span class="besmele" :class="scriptStyle">
+          {{ sureler.bismillah[scriptStyle] }}
+        </span>
         <div class="flex-container column" :class="scriptStyle">
           <span v-for="(line, index) in buttonData.sabahAksam.component[scriptStyle]" :key="index">
             {{ line }}
           </span>
         </div>
+        <!-- Sadakallahül Azim -->
         <span class="besmele" :class="scriptStyle">{{ sureler.sadakallah[scriptStyle] }}</span>
       </Modal>
     </div>

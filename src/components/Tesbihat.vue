@@ -29,7 +29,9 @@ import { duaList } from '../assets/duaList.js';
   flex-direction: column;
   padding: 0 0.25rem;
   /* margin: 1.5rem auto; */
-  max-width: 600px;
   gap: 1rem;
+  width: 100%;
+  max-width: 600px;
 }
+
 </style>

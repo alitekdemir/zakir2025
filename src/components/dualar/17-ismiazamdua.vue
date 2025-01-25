@@ -7,11 +7,7 @@ import { useScriptStyle } from '../../assets/useScriptStyle.js'
 
 // const { ismiazamDua, tercumanDua } = dualar
 const { scriptStyle } = useScriptStyle()
-
-const modals = ref({
-  azam: false,
-  tercuman: false
-})
+const modals = ref({azam: false, tercuman: false})
 
 const duaData = {
   tercuman: {
@@ -46,9 +42,16 @@ const duaData = {
       >
         <div class="flex-container wrap" :class="scriptStyle">
           <template v-for="(line, index) in item.component[scriptStyle]" :key="index">
-            <!-- Info type için color binding eklendi -->
+            <div class="flex-container hand" v-if="line.type === 'info' && line.color === 'blue'" >
+              <span class="material-symbols icon">back_hand</span>
+              <span class="material-symbols icon mirror">back_hand</span>
+            </div>
+            <div class="flex-container hand" v-if="line.type === 'info' && line.color === 'red'" >
+              <span class="material-symbols icon mirror">back_hand</span>
+              <span class="material-symbols icon">back_hand</span>
+            </div>
             <small v-if="line.type === 'info'" 
-                   class="info-text" 
+                   class="info-text latin" 
                    dir="ltr"
                    :class="line.color"
             >
@@ -67,6 +70,7 @@ const duaData = {
 </template>
 
 <style scoped>
+.hand{gap:0;}
 .info-text {
   display: block;
   width: 100%;

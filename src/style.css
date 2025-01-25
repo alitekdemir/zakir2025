@@ -4,10 +4,15 @@
     --latin-height: calc(var(--latin-size) * 1.2);
     --arabic-size: 1.4rem;
     --arabic-height: calc(var(--arabic-size) * 1.6);
+    --info-text-size: 0.9rem;
+    --button-text-size: 0.9rem;
     --font-family: "Barlow Condensed", "Roboto Condensed", Roboto, Inter, system-ui, sans-serif;
+    --arabic-font-family: "Emine", "Scheherazade New", "Amiri", "Noto Naskh Arabic", serif;
     --content-width: min(600px, 90%);
     --max-width: clamp(16rem, 38rem, 42rem);
     --full-width: 100%;
+    --red: #FF6666;
+
   }
 
 *,
@@ -22,6 +27,11 @@ body, button, input, textarea, select {
     font-weight: 400;
 }
 /*font-family: inherit;  çevreden miras al demek */
+  
+h1 { font-size: 1.5rem; }
+h2 { font-size: 1.3rem; }
+h3 { font-size: 1.1rem; }
+
 
 body {
     margin: 0 auto;
@@ -36,7 +46,7 @@ button {
     border: none;
     background: none;
     cursor: pointer;
-    font-size: 0.9rem;
+    font-size: var(--button-text-size);
     font-weight: 500;
 }
 
@@ -56,6 +66,7 @@ button {
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
+    font-size: var(--button-text-size);
 }
 
 .buton:hover {
@@ -67,7 +78,7 @@ button {
     background: var(--primary);
     color: white;
 }
-
+  
 
 .counter-button {
     min-width: 4rem;
@@ -113,8 +124,7 @@ button {
 
 .arabic {
     direction: rtl;
-    /* font-family: Emine, "Scheherazade New", serif; */
-    font-family: "Emine", "Scheherazade New", "Amiri", "Noto Naskh Arabic", serif !important;
+    font-family: var(--arabic-font-family);
     font-size: var(--arabic-size);
     line-height: var(--arabic-height);
     /* padding: 0px 0.2rem; */
@@ -123,24 +133,27 @@ button {
 
 .latin {
     direction: ltr;
+    font-family: var(--font-family);
     font-size: var(--latin-size);
     line-height: var(--latin-height);
     /* padding: 0px 0.2rem; */
     text-align: center;
+    
 }
+
 
 .info-text {
     /* background-color: var(--primary-light-more); */
     /* padding: .25rem; */
     color: var(--text-secondary);
-    font-size: 0.9rem;
+    font-size: var(--info-text-size);
     font-style: italic;
 }
 
 .info-container {
     /* padding: 0.25rem; */
     text-align: left;
-  }
+}
 
 .info-link {
     color: var(--primary);
@@ -153,6 +166,9 @@ button {
     color: var(--primary);
     /* margin-bottom: 0.2rem; */
 }
+.emphasis {
+    color: var(--text-emphasis);
+    }
 
 .divider {
     width: 80%;
@@ -166,21 +182,12 @@ button {
     text-align: center;
     color: var(--text-secondary);
     font-style: italic;
-    font-size: 0.9em;
+    font-size: 0.9rem;
     margin: 0.25rem 0;
     border-bottom: 1px solid var(--text-secondary);
     border-bottom: 1px solid var(--primary);
     padding-bottom: 0.5rem;
 }
-
-/* Renk sınıfları */
-/* .red {color: #D10000;} */
-.primary {color: var(--primary);}
-.red {color: crimson;}
-.green {color: #1AB800;}
-.magenta {color: #D1008A;}
-.orange {color: #ff7322;}
-.blue {color: MediumSlateBlue;}
 
 .icon {color: var(--primary);}
 .mirror {

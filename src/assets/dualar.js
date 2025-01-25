@@ -320,7 +320,41 @@ export const dualar = {
 
         }
     },
-    biadedievrakil: {
+    salavatlar1: {
+        latin: [
+          { text: "Muhammedun Rasûlullâhi," },
+          { text: "sallallâhu teâlâ aleyhi ve sellem." },
+          { type: "sabah", 
+            title: "Sabahları",
+            info: "sabahları 10 defa okunur",
+            lines: [
+              { text: "Lâ ilâhe illallâhü'l melikü'l hakku'l mubîn." },
+              { text: "Muhammedun Rasûlullâhi sâdikul va'dil emîn." }
+            ]
+          },
+          { text: "İnnallâhe ve melâiketehû yusallûne ale'n-nebiyy." },
+          { text: "Yâ eyyühe'l-lezîne âmenû" },
+          { text: "sallû aleyhi ve sellimû teslîmâ." },
+          { text: "Lebbeyk" }
+        ],
+        arabic: [
+          { text: "مُحَمَّدٌ رَسُولُ اللّٰهِ" },
+          { text: "صَلَّى اللّٰهُ تَعَالٰى عَلَيْهِ وَ سَلَّمَ" },
+          { type: "sabah",
+            title: "Sabahları",
+            info: "sabahları 10 defa okunur",
+            lines: [
+              { text: "لَا اِلٰهَ اِلَّا اللّٰهُ الْمَلِكُ الْحَقُّ الْمُبِينُ" },
+              { text: "مُحَمَّدٌ رَسُولُ اللّٰهِ صَادِقُ الْوَعْدِ الْاَمِينُ" }
+            ]
+          },
+          { text: "اِنَّ اللّٰهَ وَمَلٰٓئِكَتَهُ يُصَلُّونَ عَلَى النَّبِيِّؕ" },
+          { text: "يَٓا اَيُّهَا الَّذٖينَ اٰمَنُ" },
+          { text: "وا صَلُّوا عَلَيْهِ وَسَلِّمُوا تَسْلٖيماً" },
+          { text: "لَبَّيْكَ" }
+        ]
+      },
+        biadedievrakil: {
         latin: [
             { text: "Allahümme salli ve sellim" },
             { text: "ve bârik alâ seyyidinâ Muhammedin" },
@@ -330,8 +364,8 @@ export const dualar = {
             { text: "ve katarâti'l-emtâr." },
             { type: 'break' },
             { text: "Vağfirlenâ verhamnâ veltuf binâ" },
-            { text: "ve bi'üstâdinâ Saîd en-Nûrsî", color: "red" },
-            { text: "radıyallâhu anh", color: "red" },
+            { text: "ve bi'üstâdinâ Saîd en-Nûrsî r.a.", color: "red" },
+            // { text: "radıyallâhu anh", color: "red" },
             { type: 'break' },
             { text: "ve vâlideynâ" },
             { text: "ve bi'talabeti Resâili'n Nûri's sâdikîne", color: "red" },
@@ -349,8 +383,9 @@ export const dualar = {
             { text: "وَأَمْوَاجِ الْبِحَارِ وَقَطَرَاتِ الْأَمْطَارِ" },
             { type: 'break' },
             { text: "وَاغْفِرْ لَنَا وَارْحَمْنَا وَالطُّفْ بِنَا" },
-            { text: "وَبِأُستَادِنَا سَعِيدِ النُّورْسِي", color: "red" },
-            { text: "رَضِيَ اللّٰهُ عَنْهُ", color: "red" },
+            // { text: "وَبِأُستَادِنَا سَعِيدِ النُّورْسِي", color: "red" },
+            // { text: "رَضِيَ اللّٰهُ عَنْهُ", color: "red" },
+            { text: "وَبِأُستَادِنَا سَعِيدِ النُّورْسِي رَضِيَ اللّٰهُ عَنْهُ", color: "red" },
             { type: 'break' },
             { text: "وَوَالِدَيْنَا" },
             { text: "وَبِطَلَبَةِ رَسَائِلِ النُّورِ الصَّادِقِينَ", color: "red" },

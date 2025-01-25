@@ -25,7 +25,7 @@ const { scriptStyle } = useScriptStyle()
                class="isim-kutu"
                :class="{ 'son-kutu': index === ismiazam[scriptStyle].length - 1 }">
               <div class="number">{{ index + 1 }}</div>
-              <div class="primary" :class="scriptStyle">
+              <div class="red" :class="scriptStyle">
                   {{ grup[0] }} - {{ grup[1] }}
               </div>
               <div :class="scriptStyle">

@@ -5,7 +5,7 @@ import { sureler } from '../../assets/sureler.js'
 import { useScriptStyle } from '../../assets/useScriptStyle'
 
 const showModal = ref(false)
-const { bismillah, kursi } = sureler
+const { bismillah, kursi, sadakallah } = sureler
 const { scriptStyle } = useScriptStyle()
 </script>
 
@@ -22,18 +22,15 @@ const { scriptStyle } = useScriptStyle()
 
                 <!-- Sure metni -->
                 <div class="flex-container wrap" :class="scriptStyle">
-                    <span
-                        v-for="(line, index) in (scriptStyle === 'latin' ? kursi.latin : kursi.arabic)"
-                        :key="index"
-                        :class="scriptStyle"
-                    >
+                    <span v-for="(line, index) in (scriptStyle === 'latin' ? kursi.latin : kursi.arabic)" :key="index"
+                        :class="scriptStyle">
                         {{ line }}
                     </span>
                 </div>
+
+                <!-- Sadakallahül Azim -->
+                <span class="besmele" :class="scriptStyle">{{ sureler.sadakallah[scriptStyle] }}</span>
             </div>
         </Modal>
     </div>
 </template>
-
-<style scoped>
-</style>

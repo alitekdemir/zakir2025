@@ -20,7 +20,7 @@ const { scriptStyle } = useScriptStyle()
       <div class="isimler-grid" :class="scriptStyle">
           <div v-for="(grup, index) in tercuman[scriptStyle]" 
                :key="index" class="row">
-                <span class="red">{{ index + 1 }}.</span>
+                <span class="latin number" style="font-size: 0.9rem;">{{ index + 1 }}.</span>
                 {{ grup[0] }} - {{ grup[1] }}
           </div>
       </div>
@@ -40,7 +40,8 @@ const { scriptStyle } = useScriptStyle()
   cursor: pointer;
   user-select: none;
 }
-.red{
+.latin.number{
+  color: var(--primary);
   padding-right: .1rem;
 }
 .row{

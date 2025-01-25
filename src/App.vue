@@ -4,7 +4,7 @@ import { ref, onMounted } from 'vue'
 import SplashScreen from './components/SplashScreen.vue'
 import Navbar from './components/Navbar.vue'
 import Home from './components/Home.vue'
-import InstallPWAPrompt from './components/InstallPWAPrompt.vue'
+// import InstallPWAPrompt from './components/InstallPWAPrompt.vue'
 
 const showSplash = ref(true)
 
@@ -17,7 +17,7 @@ onMounted(() => {
 <template>
   <SplashScreen :show="showSplash" />
   <div class="app" v-show="!showSplash">
-    <InstallPWAPrompt />
+    <!-- <InstallPWAPrompt /> -->
     <Navbar />
     <router-view v-if="$route.name !== 'home'" />
     <Home v-else />

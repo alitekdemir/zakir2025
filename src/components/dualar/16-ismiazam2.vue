@@ -84,7 +84,7 @@ const { scriptStyle } = useScriptStyle()
             <div class="tercuman-grid" :class="scriptStyle">
               <div v-for="(grup, index) in tercuman[scriptStyle]" 
                    :key="index" class="row">
-                    <span class="red">{{ index + 1 }}.</span>
+                    <span class="latin red">{{ index + 1 }}.</span>
                     {{ grup[0] }} - {{ grup[1] }}
               </div>
             </div>

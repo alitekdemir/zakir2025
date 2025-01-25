@@ -50,14 +50,8 @@ const emit = defineEmits(['close'])
   z-index: 1000;
 }
 
-.modal-content {
-  background: var(--surface);
-  border-radius: .5rem;
-  width: min(100vw - 1rem, var(--max-width));
-  min-width: 100vw - 1rem;
-  /* max-width: min(100vw - 1rem, var(--max-width)); */
-  max-height: 80vh;
-  overflow-y: auto;
+.modal-body {
+  padding: .75rem;
 }
 
 .modal-header {
@@ -66,20 +60,30 @@ const emit = defineEmits(['close'])
   justify-content: space-between;
   align-items: center;
   /* background-color: rgba(0, 0, 0, 0.5); */
-  background: var(--surface-variant);
-}
-.modal-body {
-  padding: .75rem;
+  /* background: var(--surface-variant); */
+  /* background: var(--surface); */
+  background: var(--card-background);
+  filter: brightness(0.9);
+  filter: brightness(1.5);
 }
 
 .modal-header h3 {
   font-size: small;
-  /* font-weight: lighter; */
-  font-weight: 400;
+  font-weight: inherit;
   margin: 0;
   color: var(--text-secondary);
 }
 
+.modal-content {
+  /* background: var(--surface); */
+  background: var(--card-background);
+  border-radius: .5rem;
+  width: min(100vw - 1rem, var(--max-width));
+  min-width: 100vw - 1rem;
+  /* max-width: min(100vw - 1rem, var(--max-width)); */
+  max-height: 80vh;
+  overflow-y: auto;
+}
 .close-button {
   width: 32px;
   height: 32px;
@@ -89,7 +93,7 @@ const emit = defineEmits(['close'])
   border-radius: 20%;
   /* background-color: white; */
   /* color: rgba(1, 121, 111, 0.952); */
-  color: var(--primary);
+  color: var(--red);
   cursor: pointer;
   transition: background-color 0.3s;
 }

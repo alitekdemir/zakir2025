@@ -23,13 +23,13 @@ const increment = () => {
         <div class="flex-container column" :class="scriptStyle">
             <span :class="scriptStyle">
                 {{ falemennehu[scriptStyle][0].title }}
-                <small class="info-text" dir="ltr">1 defa</small>
+                <small class="latin info-text" dir="ltr">1 defa</small>
             </span>
             <span :class="[scriptStyle, 'red', { 'green': isGreen }]">
                 {{ falemennehu[scriptStyle][0].text }}
-                <small class="info-text" dir="ltr">33 defa</small>
+                <small class="latin info-text" dir="ltr">33 defa</small>
             </span>
-            <div class="info-text">Sabah ve Yatsı namazlarında <strong>100 defa</strong> okunabilir</div>
+            <span class="latin info-text">Sabah ve Yatsı namazlarında <strong>100 defa</strong> okunabilir</span>
         </div>
 
         <!-- Sağ taraf: Sayaç - v-vibrate direktifini kaldırdık -->
@@ -39,6 +39,7 @@ const increment = () => {
 
 <style scoped>
 /* .info-text {margin-top: 0.5rem;} */
-.flex-container.latin{align-items: flex-start;}
+.latin{text-align: left;}
+.flex-container.latin{align-items: flex-start; }
 .flex-container.arabic{align-items: flex-end;}
 </style>

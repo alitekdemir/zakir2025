@@ -14,8 +14,8 @@ export default defineConfig({
         name: 'Zakir Özlü Tesbihat',
         short_name: 'Zakir',
         description: 'Zakir, Özlü Namaz Tesbihatı',
-        theme_color: '#ff6b6b',
-        background_color: '#ff6b6b',
+        theme_color: '#ff6666',
+        background_color: '#ff6666',
         display: 'standalone',
         orientation: 'portrait',
         start_url: '/',
@@ -34,14 +34,7 @@ export default defineConfig({
           }
         ],
         categories: ['lifestyle', 'religious'],
-        screenshots: [
-          {
-            src: 'screenshot1.png',
-            sizes: '1280x720',
-            type: 'image/png',
-            platform: 'wide'
-          }
-        ],
+        // screenshots: [ { src: 'screenshot1.png', sizes: '1280x720', type: 'image/png', platform: 'wide' } ],
         shortcuts: [
           {
             name: "Zakir",

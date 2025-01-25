@@ -20,8 +20,8 @@ const router = createRouter({
       component: () => import('../components/views/TesbihatinFaziletleri.vue')
     },
     {
-      path: '/font-ayarlari',
-      component: () => import('../components/views/FontAyarlari.vue')
+      path: '/ayarlar',
+      component: () => import('../components/views/Ayarlar.vue')
     },
     {
       path: '/istatistikler',
@@ -30,7 +30,11 @@ const router = createRouter({
     {
       path: '/geri-bildirim',
       component: () => import('../components/views/GeriBildirim.vue')
-    }
+    },
+    // {
+    //   path: '/privacy',
+    //   component: () => import('../components/views/privacy.vue')
+    // }
   ]
 })
 

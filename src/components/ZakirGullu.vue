@@ -6,16 +6,7 @@
       <img src="../assets/zakir.png" class="zakir" alt="Zakir ikonu" loading="lazy" />
       <img src="../assets/rose.svg" class="rose" alt="Gül süslemesi" loading="lazy" />
     </div>
-    <p class="info-text">Allah kabul etsin kardeşim</p>
-
-    <div class="flex-container column feedback">
-      Uygulamayı geliştirmek için yardımınıza ihtiyacımız var. <br>
-      Görüş, öneri veya tespit ettiğiniz hataları bize iletirseniz çok memnun oluruz.
-    </div>
-    <button class="buton" onclick="window.location.href='https://tally.so/r/mJXPP4'">
-      <i class="material-symbols">edit_note</i>
-      Geri Bildirim Gönder
-    </button>
+    <span class="info-text">Allah kabul etsin kardeşim.</span>
   </div>
 </template>
 
@@ -26,7 +17,7 @@
   gap:1rem;
   align-items: center;
   background: var(--background);
-  padding: 2rem;
+  padding: 1rem;
 }
 
 .rose {
@@ -40,15 +31,5 @@
 
 .zakir:hover {
   filter: drop-shadow(0 0 2em hwb(0 42% 0%));
-}
-
-.feedback {
-  color: var(--text-primary);
-}
-
-.buton {
-  font-size: 1.1rem;
-  /* font-weight: normal; */
-  align-items: center;
 }
 </style>

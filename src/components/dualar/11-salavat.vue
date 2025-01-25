@@ -13,7 +13,7 @@ const toggleSabah = () => {
 </script>
 
 <template>
-  <div class="flex-container" :class="scriptStyle">
+  <div class="flex-container column" :class="scriptStyle">
     <p>
       <span class="text-segment">{{ salavatlar[scriptStyle].ana[0] }}</span>
       <img src="../../assets/rose.svg" class="rose"/>
@@ -27,14 +27,12 @@ const toggleSabah = () => {
 
     <Transition name="fade">
       <div v-if="showSabah" class="sabah">
-        <i>{{ salavatlar[scriptStyle].sabah.info }}</i>
-        <p>
+        <span class="latin info-text">{{ salavatlar[scriptStyle].sabah.info }}</span>
           <span v-for="(line, index) in salavatlar[scriptStyle].sabah.lines" 
                 :key="index" 
                 class="text-segment">
             {{ line }}
           </span>
-        </p>
       </div>
     </Transition>
 
@@ -50,11 +48,6 @@ const toggleSabah = () => {
 
 
 <style scoped>
-.flex-container {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
 
 .text-segment {
   margin-right: 0.25rem;
@@ -100,7 +93,7 @@ const toggleSabah = () => {
   /* border-left: 2px solid var(--primary-light); */
 }
 
-.sabah i {
+.sabah1 i {
   color: var(--text-gray);
   font-size: 0.875rem;
   line-height: 0.8rem;

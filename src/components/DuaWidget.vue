@@ -1,20 +1,23 @@
 <!-- src/components/DuaWidget.vue -->
 <script setup>
-import { ref, onMounted, onBeforeUnmount, watch } from 'vue'; // watch eklendi
+import { ref, onMounted, onBeforeUnmount, watch, computed } from 'vue';
 import Modal from './Modal.vue';
 import DropdownMenu from './DropdownMenu.vue';
 import { useProgress, widgetWeights } from '../assets/useProgress';
 
 const props = defineProps({
-  number: {
-    type: [String, Number],
-    required: true
-  },
-  title: {
-    type: String,
-    default: ''
-  }
+  number: { type: [String, Number], required: true },
+  title: { type: String, default: '' }
 });
+
+// Computed property olarak dropdownItems'ı tanımla
+const dropdownItems = computed(() => [
+  { id: 'info', icon: 'info', label: 'Bilgi' },
+  { id: 'memorized', icon: 'face', label: isMemorized.value ? 'Unuttum' : 'Ezberledim'},
+]);
+const modalTitle = computed(() => 
+  isMemorized.value ? 'Duayı Unuttuğunuzu mu Düşünüyorsunuz?' : 'Duayı Ezberlediniz mi?'
+);
 
 // Collapse için yeni ref ekliyoruz
 const isCollapsed = ref(false);
@@ -39,19 +42,7 @@ watch(isMemorized, (newValue) => {
   }
 });
 
-const handleMemorized = () => {
-  isMemorized.value = true;
-  localStorage.setItem(`memorized-${props.number}`, 'true');
-  showMemorizedModal.value = false;
-  
-  const currentScore = parseInt(localStorage.getItem('memorization-score') || '0');
-  const widgetWeight = widgetWeights[props.number] || 1;
-  localStorage.setItem('memorization-score', currentScore + widgetWeight);
-};
-
-const closeDropdown = () => {
-  showDropdown.value = false;
-};
+const closeDropdown = () => { showDropdown.value = false; };
 
 const handleClickOutside = (e) => {
   const dropdown = document.querySelector('.dropdown');
@@ -61,9 +52,7 @@ const handleClickOutside = (e) => {
   }
 };
 
-onBeforeUnmount(() => {
-  document.removeEventListener('click', handleClickOutside);
-});
+onBeforeUnmount(() => { document.removeEventListener('click', handleClickOutside); });
 
 const handleMemorizedToggle = () => {
   isMemorized.value = !isMemorized.value;
@@ -104,8 +93,10 @@ const handleMemorizedToggle = () => {
           <i class="material-symbols">more_vert</i>
         </button>
 
+        <!-- items prop'unu dinamik items ile değiştir -->
         <DropdownMenu
           :show="showDropdown"
+          :items="dropdownItems"
           @info="showInfoModal = true; closeDropdown()"
           @hint="showHintModal = true; closeDropdown()"
           @memorized="showMemorizedModal = true; closeDropdown()"
@@ -131,21 +122,37 @@ const handleMemorizedToggle = () => {
 
 
     <Modal
-      :show="showMemorizedModal"
-      title="Ezberlenme Durumu"
-      @close="showMemorizedModal = false"
-    >
-      <div class="memorized-content">
-        <p v-if="!isMemorized">Bu duayı ezberlediğinizi işaretlemek ister misiniz?</p>
-        <p v-else>Bu duayı ezberlenmedi olarak işaretlemek ister misiniz?</p>
-        <button 
-          class="confirm-btn" 
-          @click="handleMemorizedToggle"
-        >
-          {{ isMemorized ? 'Ezberlenmedi Olarak İşaretle' : 'Evet, Ezberledim' }}
-        </button>
-      </div>
-    </Modal>
+    :show="showMemorizedModal"
+    :title="modalTitle"
+    @close="showMemorizedModal = false"
+  >
+    <div class="memorized-content">
+      <p v-if="!isMemorized">
+        <div style="font-size: large;">Bu duayı ezberlediğinizden emin misiniz?</div>
+        <span>Ezberledim olarak işaretlerseniz:</span>
+        <ul>
+          <li>Dua kartı küçültülecek</li>
+          <li>İlerleme çubuğunuz güncellenecek</li>
+          <li>İstediğiniz zaman tekrar "Unuttum" diyebilirsiniz</li>
+        </ul>
+      </p>
+      <p v-else>
+        <div style="font-size: large;">Bu duayı tekrar çalışmanız mı gerekiyor?</div>
+        <span>"Unuttum" derseniz:</span>
+        <ul>
+          <li>Dua kartı tekrar açılacak</li>
+          <li>İlerleme çubuğunuz güncellenecek</li>
+          <li>Duayı tekrar çalışıp ezberleyince işaretleyebilirsiniz</li>
+        </ul>
+      </p>
+      <button 
+        class="confirm-btn" 
+        @click="handleMemorizedToggle"
+      >
+        {{ isMemorized ? 'Evet, Tekrar Çalışmam Gerek' : 'Evet, Bu Duayı Ezberledim' }}
+      </button>
+    </div>
+  </Modal>
 
     <Modal
       :show="showHintModal"
@@ -165,10 +172,15 @@ const handleMemorizedToggle = () => {
   background: var(--card-background);
   padding: 0.8rem;
   box-shadow: var(--card-shadow);
-  border-radius: 12px;
+  border-radius: 1rem;
   border: 1px solid var(--primary);
   border: var(--card-border);
   transition: all 0.3s ease;
+}
+
+.dua-widget {
+  width: 100%;
+  box-sizing: border-box;
 }
 
 /* Collapsed durumunda padding ve margin'leri azalt */
@@ -186,12 +198,13 @@ const handleMemorizedToggle = () => {
   border: none;
   box-shadow: none;
   border: 1px solid var(--primary-light);
-  /* background-color: var(--primary-lighter); */
+  /* background-color: rgba(1, 121, 111, 0.1); */
+  background-color: var(--primary-light);
 }
 
 
 .dua-widget.memorized .widget-content {
-  opacity: 0.35;
+  opacity: 0.935;
   /* color: var(--text-primary); */
 }
 
@@ -201,23 +214,37 @@ const handleMemorizedToggle = () => {
   color: var(--primary-light);
 }
 .dua-widget.memorized .title {
-  opacity: 0.5;
+  opacity: 0.935;
 }
+
+.dua-widget.memorized .title {
+  opacity: 0.5;
+  color: indianred;
+  color: var(--text-primary);
+  color: var(--primary-light);
+  color: var(--primary-dark);
+  color: var(--primary);
+}
+
 
 .widget-header {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 0.1rem;
   margin-bottom: 16px;
   cursor: pointer;
+  user-select: none;
   justify-content: space-between;
   transition: margin-bottom 0.3s ease;
 }
+.widget-header {
+  width: 100%;
+}
 
 .collapse-indicator {
+  color: var(--primary-light);
   margin-left: auto;
-  margin-right: 0.5rem;
-  color: var(--primary);
+  margin-right: 0.25rem;
   font-size: 0.8rem;
 }
 
@@ -234,12 +261,9 @@ const handleMemorizedToggle = () => {
   padding-top: 0;
 }
 
-
-
 .widget-content.collapsed {
   grid-template-rows: 0fr;
 }
-
 
 .number {
   min-width: 32px;
@@ -271,6 +295,8 @@ const handleMemorizedToggle = () => {
   gap: 12px;
   flex: 1;
   cursor: pointer;
+  width: 100%;
+  min-width: 0;
 }
 
 
@@ -303,11 +329,14 @@ const handleMemorizedToggle = () => {
   margin-top: 1rem;
   cursor: pointer;
   transition: background-color 0.2s;
+  transition: all 0.2s ease;
 }
 
 .confirm-btn:hover {
-  background: rgba(1, 121, 111, 0.9);
+  background: var(--primary-dark);
+  transform: translateY(-1px);
 }
+
 
 .memorized-content,
 .hint-content {
@@ -332,5 +361,24 @@ const handleMemorizedToggle = () => {
   margin-top: 0;
   margin-bottom: 0;
 }
+
+
+
+
+
+
+.memorized-content ul {
+  text-align: left;
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+  color: var(--text-secondary);
+}
+
+.memorized-content li {
+  margin: 0.5rem 0;
+  font-size: 0.9rem;
+}
+
+
 
 </style>

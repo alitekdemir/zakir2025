@@ -12,7 +12,7 @@ const { scriptStyle } = useScriptStyle()
 
 
 <template>
-    <div class="flex-container">
+    <div class="flex-container column">
         <button class="buton" @click="showModal = true">Salaten Tüncina</button>
 
         <Modal 
@@ -30,6 +30,17 @@ const { scriptStyle } = useScriptStyle()
             </span>
         </div>
         </Modal>
+        
+        <p class="info-text">
+            Bundan sonra varsa sünnet namaz kılınır.<br>
+            <i>(Öğle, Akşam, Yatsı)</i><br>
+            Sonra tesbihata devam edilir.
+        </p>
     </div>
 </template>
 
+<style scoped>
+:deep(.info-text) {
+    font-size: var(--info-text-size) !important;
+}
+</style>

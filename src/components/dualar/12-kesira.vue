@@ -10,18 +10,19 @@ const { scriptStyle } = useScriptStyle()
 
 
 <template>
-  <div class="flex-container wrap" :class="scriptStyle">
-    <div class="info-text">3 defa okunur. ilk ikisinde <span class="red">'kesîrâ'</span>,
-      <br>son tekrarda <span class="red">kesîran kesîrâ</span> denir.
-    </div>
-  
-    <hr class="divider">
-    
-    <template v-for="(line, index) in kesira[scriptStyle]" :key="index">
-      <span :class="scriptStyle" v-if="line.suffix" v-html="line.text + line.suffix"></span>
-      <span :class="scriptStyle" v-else>{{ line.text }}</span>
-    </template>
+  <div class="info-text latin">
+    3 defa okunur. ilk ikisinde <span class="red">kesîrâ</span>,
+    <br>son tekrarda <span class="red">kesîran kesîrâ</span> denir.
   </div>
 
-</template>
+  <hr class="divider">
 
+  <div class="flex-container wrap" :class="scriptStyle">
+      <span 
+      v-for="(line, index) in kesira[scriptStyle]" 
+      :key="index"
+      :class="scriptStyle"
+      v-html="line.suffix ? line.text + line.suffix : line.text"
+    />
+  </div>
+</template>

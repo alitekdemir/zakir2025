@@ -79,8 +79,6 @@ const scrollToSection = (number) => {
   z-index: 100;
   border-bottom: 3px solid var(--primary);
   box-shadow: rgba(38, 57, 77, 0.20) 0px 10px 15px -5px;
-  
-
 }
 
 

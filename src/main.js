@@ -1,7 +1,7 @@
 // src/main.js
 import { createApp } from 'vue'
 import './style.css'
-import './theme.css'
+// import './themes/default.css'
 import './ilaveler.css'
 import App from './App.vue'
 import router from './router'
@@ -10,6 +10,11 @@ import { APP_VERSION, ASSETS_VERSION } from './assets/version'
 import { vibrate, setupGlobalVibration } from './assets/vibrate'
 // Global titreşimi kur
 // setupGlobalVibration()
+
+
+// Başlangıç temasını yükle
+import { ThemeManager } from './assets/theme-manager'
+ThemeManager.loadTheme(ThemeManager.getCurrentTheme())
 
 let app = null; // Global app değişkeni
 

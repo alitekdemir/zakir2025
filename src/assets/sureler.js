@@ -178,7 +178,12 @@ export const sureler = {
             "Ve kevâ’ibe etrâbâ",
             "Ve ke’sen dihâkâ",
             "Lâ yesme’ûne fîhâ lağven ve lâ kizzâbâ",
-            "Cezâen min rabbike ‘atâen hisâbâ."
+            "Cezâen min rabbike ‘atâen hisâbâ.",
+            "Rabbis semâvâti vel ardi ve mâ beynehumâr rahmâni lâ yemlikûne minhu hitâbâ",
+            "Yevme yekûmur rûhu vel melâiketu saffâ, lâ yetekellemûne illâ men ezine lehur rahmânu ve kâle savâbâ",
+            "Zâlikel yevmul hakku fe men şâe ittehaze ilâ rabbihi me’âbâ",
+            "İnnâ enzernâkum azâben karîbâ, yevme yanzurul mer’u mâ kaddemet yedâhu ve yekûlul kâfiru yâ leytenî kuntu turâbâ"
+    
         ],
         arabic: [
             "عَمَّ يَتَسَٓاءَلُونَۚ",
@@ -217,6 +222,11 @@ export const sureler = {
             "وَكَأْساً دِهَاقاًؕ",
             "لَا يَسْمَعُونَ فٖيهَا لَغْواً وَلَا كِذَّاباًۚ",
             "جَزَٓاءً مِنْ رَبِّكَ عَطَٓاءً حِسَاباًۙ",
+            "رَبِّ السَّمٰوَاتِ وَالْاَرْضِ وَمَا بَيْنَهُمَاۙ الرَّحْمٰنِ لَا يَمْلِكُونَ مِنْهُ خِطَاباًۙ",
+            "يَوْمَ يَقُومُ الرُّوحُ وَالْمَلٰٓئِكَةُ صَفاًّؕ لَا يَتَكَلَّمُونَ اِلَّا مَنْ اَذِنَ لَهُ الرَّحْمٰنُ وَقَالَ صَوَاباً",
+            "ذٰلِكَ الْيَوْمُ الْحَقُّۚ فَمَنْ شَٓاءَ اتَّخَذَ اِلٰى رَبِّهٖ مَاٰباً",
+            "اِنَّٓا اَنْذَرْنَاكُمْ عَذَاباً قَرٖيباًۚ يَوْمَ يَنْظُرُ الْمَرْءُ مَا قَدَّمَتْ يَدَاهُ وَيَقُولُ الْكَافِرُ يَا لَيْتَنٖي كُنْتُ تُرَاباً",
+
 
         ]
     }

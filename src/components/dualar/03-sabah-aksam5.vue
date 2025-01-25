@@ -84,7 +84,7 @@ const increment = () => {
               </p>
             </div>
 
-            <p class="divider"><strong>9 defa</strong></p>
+            <p class="divider"><strong>9 defa okunur</strong></p>
             <p class="flex-container wrap" :class="[scriptStyle]">
               <template v-for="line in tevhid[scriptStyle]" :key="line.text">
                 <span v-if="!line.last && !line.emphasis" 
@@ -111,6 +111,8 @@ const increment = () => {
   
 
 <style scoped>
+
+.divider{text-align:left;}
 .special-line { 
   color: var(--primary); 
   width: 100%; 

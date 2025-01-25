@@ -73,7 +73,8 @@ const themeIcon = computed(() =>
   position: sticky;
   top: 0;
   width: 100%;
-  background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), var(--primary);
+  background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), var(--primary);
+  background: var(--primary-dark);
   /* color: var(--text-primary); */
   color: white;
   height: 64px;
