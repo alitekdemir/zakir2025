@@ -73,8 +73,7 @@ const themeIcon = computed(() =>
   position: sticky;
   top: 0;
   width: 100%;
-  background: linear-gradient(0.25turn, var(--primary), var(--primary));
-  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), var(--primary);
+  background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), var(--primary);
   /* color: var(--text-primary); */
   color: white;
   height: 64px;
@@ -82,7 +81,7 @@ const themeIcon = computed(() =>
   justify-content: space-between;
   align-items: center;
   padding: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); */
   z-index: 102;
 }
 

@@ -11,7 +11,8 @@
   width: 100%; /* Genişlik %100 */
   min-height: 10vh;
   /* background: var(--primary); */
-  background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), var(--primary);
+  /* background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), var(--primary); */
+  background: var(--primary);
   /* color: var(--text-primary, #fff); */
   color: white;
   padding: 2rem 1rem; /* Düzeltildi */
