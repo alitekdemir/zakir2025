@@ -1,17 +1,15 @@
 <!-- src/components/views/Ayarlar.vue -->
-
 <script setup>
 import { ref, onMounted } from 'vue'
+import { useThemeStore } from '../../assets/themeStore'
 import { fontConfigs } from '../../assets/font-loader'
-import { ThemeManager } from '../../assets/theme-manager'
-import { themes, DEFAULT_THEME, DEFAULT_MODE } from '../../assets/themes'
+import { themes } from '../../assets/themes'
 
-// Tema seçimi için ref tanımlayalım
-const selectedTheme = ref(ThemeManager.getCurrentTheme())
-const selectedMode = ref(ThemeManager.getCurrentMode())
+const themeStore = useThemeStore()
 
-const latinSize = ref(16)
-const arabicSize = ref(1.4)
+// Font boyutları için ref'ler
+const latinSize = ref(parseInt(localStorage.getItem('latin-size')) || 16)
+const arabicSize = ref(parseFloat(localStorage.getItem('arabic-size')) || 1.4)
 
 // Font seçenekleri
 const latinFonts = [
@@ -30,20 +28,21 @@ const arabicFonts = [
   { value: 'amiri', label: 'Amiri', family: 'Amiri, system-ui, serif' },
 ]
 
-const selectedLatinFont = ref('barlow-condensed') // Varsayılan Latin fontu
-const selectedArabicFont = ref('scheherazade') // Varsayılan Arapça fontu
+// Font seçimleri için ref'ler
+const selectedLatinFont = ref(localStorage.getItem('latin-font') || 'barlow-condensed')
+const selectedArabicFont = ref(localStorage.getItem('arabic-font') || 'scheherazade')
 
+// Font güncelleme fonksiyonları
 const updateLatinFont = async (value) => {
   selectedLatinFont.value = value
   const font = latinFonts.find(f => f.value === value)
   document.documentElement.style.setProperty('--font-family', font.family)
   
-  // Font yükleme
   if (fontConfigs[value]) {
     await fontConfigs[value]()
   }
   
-  saveSettings()
+  localStorage.setItem('latin-font', value)
 }
 
 const updateArabicFont = async (value) => {
@@ -51,108 +50,49 @@ const updateArabicFont = async (value) => {
   const font = arabicFonts.find(f => f.value === value)
   document.documentElement.style.setProperty('--arabic-font-family', font.family)
   
-  // Font yükleme
   if (fontConfigs[value]) {
     await fontConfigs[value]()
   }
   
-  saveSettings()
+  localStorage.setItem('arabic-font', value)
 }
 
 const updateLatinSize = (value) => {
   latinSize.value = value
   document.documentElement.style.fontSize = `${value}px`
-  saveSettings()
+  localStorage.setItem('latin-size', value)
 }
 
 const updateArabicSize = (value) => {
   arabicSize.value = value
   document.documentElement.style.setProperty('--arabic-size', `${value}rem`)
   document.documentElement.style.setProperty('--arabic-height', `${value * 1.6}rem`)
-  saveSettings()
+  localStorage.setItem('arabic-size', value)
 }
 
-const resetSettings = async () => {
-  // Font ayarlarını sıfırla
-  updateLatinSize(16)
-  updateArabicSize(1.4)
+// Sıfırlama fonksiyonları
+const resetFonts = async () => {
   await updateLatinFont('barlow-condensed')
   await updateArabicFont('scheherazade')
-  
-  // Temayı varsayılana döndür
-  updateTheme('default') // varsayılan temaya döndür
-}
-
-// Tema değiştirme fonksiyonu
-const updateTheme = (value) => {
-  selectedTheme.value = value
-  ThemeManager.loadTheme(value, selectedMode.value)
-  // Tema değişikliğini kaydet
-  const savedSettings = localStorage.getItem('font-settings')
-  const settings = savedSettings ? JSON.parse(savedSettings) : {}
-  settings.theme = value
-  localStorage.setItem('font-settings', JSON.stringify(settings))
-}
-
-const updateMode = (mode) => {
-  selectedMode.value = mode
-  ThemeManager.loadTheme(selectedTheme.value, mode)
-  // Mode değişikliğini kaydet
-  const savedSettings = localStorage.getItem('font-settings')
-  const settings = savedSettings ? JSON.parse(savedSettings) : {}
-  settings.mode = mode
-  localStorage.setItem('font-settings', JSON.stringify(settings))
+  updateLatinSize(16)
+  updateArabicSize(1.4)
 }
 
 const resetTheme = () => {
-  updateTheme(DEFAULT_THEME)
-  updateMode(DEFAULT_MODE)
+  themeStore.setTheme('default')
+  themeStore.setMode('light')
 }
 
-const resetFonts = async () => {
-  updateLatinSize(16)
-  updateArabicSize(1.4)
-  await updateLatinFont('barlow-condensed')
-  await updateArabicFont('scheherazade')
-}
-
-const resetStats = () => {
-  // İstatistik sıfırlama kodları
-}
-
-
-// Ayarları kaydet fonksiyonunu güncelle
-const saveSettings = () => {
-  localStorage.setItem('font-settings', JSON.stringify({
-    latinSize: latinSize.value,
-    arabicSize: arabicSize.value,
-    latinFont: selectedLatinFont.value,
-    arabicFont: selectedArabicFont.value,
-    theme: selectedTheme.value // tema ayarını da kaydet
-  }))
-}
-
-// Sayfa yüklendiğinde ayarları geri yükle
-onMounted(() => {
-  const savedSettings = localStorage.getItem('font-settings')
-  if (savedSettings) {
-    const settings = JSON.parse(savedSettings)
-    updateLatinSize(settings.latinSize)
-    updateArabicSize(settings.arabicSize)
-    updateLatinFont(settings.latinFont)
-    updateArabicFont(settings.arabicFont)
-    // Eğer kaydedilmiş bir tema varsa onu yükle
-    if (settings.theme) {
-      updateTheme(settings.theme)
-    }
-  }
-  // Eğer hiç kayıtlı ayar yoksa varsayılan temayı yükle
-  else {
-    ThemeManager.loadTheme(DEFAULT_THEME, DEFAULT_MODE)
-  }
+// Sayfa yüklendiğinde ayarları yükle
+onMounted(async () => {
+  await updateLatinFont(selectedLatinFont.value)
+  await updateArabicFont(selectedArabicFont.value)
+  updateLatinSize(latinSize.value)
+  updateArabicSize(arabicSize.value)
 })
-
 </script>
+
+
 
 <template>
   <div class="settings-container">
@@ -165,18 +105,37 @@ onMounted(() => {
           <small>Varsayılan</small>
         </button>
       </div>
-      
+
+      <!-- Tema Seçenekleri -->
       <div class="theme-grid">
         <div 
           v-for="(theme, key) in themes" 
           :key="key"
           class="theme-option"
-          :class="{ active: selectedTheme === key }"
-          @click="updateTheme(key)"
+          :class="{ active: themeStore.currentTheme === key }"
+          @click="themeStore.setTheme(key)"
         >
           <div class="theme-color" :style="{ backgroundColor: theme.color }"></div>
           <span>{{ theme.name }}</span>
         </div>
+      </div>
+
+      <!-- Mode Seçici -->
+      <div class="mode-selector">
+        <button 
+          class="mode-button"
+          :class="{ active: !themeStore.isDark }"
+          @click="themeStore.setMode('light')"
+        >
+          Aydınlık
+        </button>
+        <button 
+          class="mode-button"
+          :class="{ active: themeStore.isDark }"
+          @click="themeStore.setMode('dark')"
+        >
+          Karanlık
+        </button>
       </div>
     </div>
 
@@ -189,14 +148,16 @@ onMounted(() => {
           <small>Sıfırla</small>
         </button>
       </div>
-            <!-- Önizleme -->
+
+      <!-- Önizleme -->
       <div class="preview-card">
         <div class="preview arabic">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّح۪يمِ</div>
         <div class="preview latin">Bismillahirrahmanirrahim</div>
       </div>
 
-      <!-- Font Seçimleri -->
+      <!-- Font Ayarları -->
       <div class="font-settings">
+        <!-- Latin Font Seçimi -->
         <div class="setting-group">
           <label>Latin Font</label>
           <select 
@@ -209,6 +170,7 @@ onMounted(() => {
           </select>
         </div>
 
+        <!-- Arapça Font Seçimi -->
         <div class="setting-group">
           <label>Arapça Font</label>
           <select 
@@ -221,6 +183,7 @@ onMounted(() => {
           </select>
         </div>
 
+        <!-- Latin Boyut Ayarı -->
         <div class="setting-group">
           <div class="setting-header">
             <label>Latin Boyut</label>
@@ -234,6 +197,7 @@ onMounted(() => {
           >
         </div>
 
+        <!-- Arapça Boyut Ayarı -->
         <div class="setting-group">
           <div class="setting-header">
             <label>Arapça Oran</label>
@@ -250,6 +214,7 @@ onMounted(() => {
     </div>
   </div>
 </template>
+
 
 <style scoped>
 .settings-container {
@@ -449,4 +414,33 @@ input[type="range"]::-webkit-slider-thumb {
   text-align: center;
   color: var(--text-secondary);
 }
+
+
+.mode-selector {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.mode-button {
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--divider);
+    border-radius: 6px;
+    background: var(--surface);
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.mode-button:hover {
+    border-color: var(--primary);
+}
+
+.mode-button.active {
+    background: var(--primary-lighter);
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
 </style>

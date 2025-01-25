@@ -1,20 +1,18 @@
 // src/main.js
 import { createApp } from 'vue'
-import './style.css'
-// import './themes/default.css'
-import './ilaveler.css'
+import { createPinia } from 'pinia'
 import App from './App.vue'
 import router from './router'
+
+import './style.css'
+import './ilaveler.css'
 import { registerSW } from 'virtual:pwa-register'
 import { APP_VERSION, ASSETS_VERSION } from './assets/version'
 import { vibrate, setupGlobalVibration } from './assets/vibrate'
-// Global titreşimi kur
-// setupGlobalVibration()
+import { useThemeStore } from './assets/themeStore'
 
-
-// Başlangıç temasını yükle
-import { ThemeManager } from './assets/theme-manager'
-ThemeManager.loadTheme(ThemeManager.getCurrentTheme())
+// Pinia store'u oluştur
+const pinia = createPinia()
 
 let app = null; // Global app değişkeni
 
@@ -70,6 +68,14 @@ const registerServiceWorker = () => {
   return updateSW
 }
 
+// Tema yükleme fonksiyonu
+const initializeTheme = async () => {
+  const themeStore = useThemeStore()
+  // Sayfa yüklenirken modu da uygula
+  document.documentElement.setAttribute('data-theme', themeStore.currentMode)
+  await themeStore.applyTheme()
+}
+
 
 // Uygulama başlangıcı
 const initializeApp = async () => {
@@ -87,9 +93,14 @@ const initializeApp = async () => {
 
     // Yeni uygulamayı oluştur ve mount et
     app = createApp(App)
+    app.use(pinia) // Pinia'yı ekle
     app.directive('vibrate', vibrate)
     app.use(router)
+    
     app.mount('#app')
+
+    // Temayı yükle
+    await initializeTheme()
 
     // Service worker'ı kaydet
     registerServiceWorker()

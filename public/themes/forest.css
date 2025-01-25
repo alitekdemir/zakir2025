@@ -1,10 +1,18 @@
-/* src/theme-green.css */
-
-/* Light theme (default) */
+/* src/themes/forest.css */
+/* Base theme variables */
 :root {
+  /* Ortak değişkenler */
+  --theme-red: #FF6666;
+  --theme-green: #1AB800;
+  --theme-magenta: #D1008A;
+  --theme-orange: #ff7322;
+  --theme-yellow-dark: #FFA552;
+  --theme-blue: MediumSlateBlue;
+}
+
+/* Light theme */
+:root[data-theme="light"] {
   /* Brand Colors */
-  /* --primary-dark: #F35E5E;  */
-  /* --primary: #FFA552; */
   --primary: hwb(175 0% 53%);
   --primary-dark: hwb(177 0% 60%);
   --primary-light: hwb(175 0% 53% / 0.25);
@@ -23,7 +31,6 @@
 
   /* Component Colors */
   --card-background: #ffffff;
-  /* --card-border: 2px solid rgba(1, 121, 111, 0.9); */
   --card-border: 1px solid var(--primary);
   --card-shadow: 0 4px 12px hsl(0, 0%, 90%);
   
@@ -34,22 +41,11 @@
   /* Dividers & Borders */
   --divider: rgba(0, 0, 0, 0.08);
   --border: rgba(0, 0, 0, 0.12);
-
-  /* Renk sınıfları */
-  /* .red {color: #D10000;} */
-  /* .red {color: crimson;} */
-  .primary {color: var(--primary);}
-  .red {color: #FF6666;}
-  .green {color: #1AB800;}
-  .magenta {color: #D1008A;}
-  .orange {color: #ff7322;}
-  .yellow-dark {color: #FFA552;}
-  .blue {color: MediumSlateBlue;}
 }
 
 /* Dark theme */
-[data-theme="dark"] {
-  /* Brand Colors - Aynı kalıyor */
+:root[data-theme="dark"] {
+  /* Brand Colors */
   --primary: hwb(175 0% 53%);
   --primary-dark: hwb(177 0% 60%);
   --primary-light: hwb(175 0% 53% / 0.25);
@@ -68,7 +64,6 @@
   
   /* Component Colors */
   --card-background: #181920;
-  /* --card-border: rgba(255, 255, 255, 0.1); */
   --card-border: 1px solid var(--primary-light);
   --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
   
@@ -80,14 +75,16 @@
   --divider: rgba(255, 255, 255, 0.08);
   --border: rgba(255, 255, 255, 0.12);
 
-  /* Renk sınıfları */
-  .red {color: #FF6666;}
-  .green {color: #1AB800;}
-  .green-wonderfull{color: hwb(175 0% 53%);}
-  .magenta {color: #D1008A;}
-  .orange {color: #ff7322;}
-  .yellow-dark {color: #FFA552;}
-  .gold {color: gold;}
-  .blue {color: MediumSlateBlue;}
+  /* Dark theme specific colors */
+  --theme-green-wonderfull: hwb(175 0% 53%);
 }
 
+/* Color classes */
+.primary { color: var(--primary); }
+.red { color: var(--theme-red); }
+.green { color: var(--theme-green); }
+.magenta { color: var(--theme-magenta); }
+.orange { color: var(--theme-orange); }
+.yellow-dark { color: var(--theme-yellow-dark); }
+.blue { color: var(--theme-blue); }
+.gold { color: gold; }

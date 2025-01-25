@@ -1,28 +1,28 @@
 <!-- src/components/Navbar.vue -->
 <script setup>
-import HamburgerMenu from './HamburgerMenu.vue'
 
+import { useThemeStore } from '../assets/themeStore'
+import HamburgerMenu from './HamburgerMenu.vue'
 import { computed } from 'vue'
 import { useScriptStyle } from '../assets/useScriptStyle'
-import { useTheme } from '../assets/useTheme'
+
+const themeStore = useThemeStore()
 
 // Script Style Hook
 const { scriptStyle, notification, toggleScript } = useScriptStyle()
-// Theme Hook
-const { theme, toggleTheme } = useTheme()
 
 // SVG İkonlar
 import elifbeIcon from '../assets/icon_elifbe.vue'
 import abcIcon from '../assets/icon_abc.vue'
 
 // Aktif ikonu belirle
-const currentIcon = computed(() =>
+const currentIcon = computed(() => 
   scriptStyle.value === 'latin' ? abcIcon : elifbeIcon
 )
 
 // Tema ikonunu belirle
 const themeIcon = computed(() => 
-  theme.value === 'light' ? 'dark_mode' : 'light_mode'
+  themeStore.isDark ? 'light_mode' : 'dark_mode'
 )
 </script>
 
@@ -40,15 +40,14 @@ const themeIcon = computed(() =>
           <span class="short-title">Zâkir</span>
         </span>
       </router-link>
-
     </div>
 
     <!-- Sağ Taraf: Temalar ve Font Değiştirici -->
     <div class="navbar-right">
       <button 
         class="theme-btn" 
-        @click="toggleTheme" 
-        :aria-label="theme === 'light' ? 'Dark temaya geç' : 'Light temaya geç'"
+        @click="themeStore.toggleMode()" 
+        :aria-label="themeStore.isDark ? 'Aydınlık temaya geç' : 'Karanlık temaya geç'"
       >
         <i class="material-symbols">{{ themeIcon }}</i>
       </button>
