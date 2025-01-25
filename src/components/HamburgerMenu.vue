@@ -27,7 +27,7 @@ const toggleMenu = () => {
     <div class="menu" :class="{ 'open': isOpen }">
       <router-link to="/" @click="toggleMenu">
           <i class="material-symbols">home</i>
-          Tesbihat
+          <span class="main">Ana Sayfa</span>
       </router-link>
 
       <hr class="divider">
@@ -106,6 +106,7 @@ const toggleMenu = () => {
 
 .main {
   /* font-size: 1.5rem; */
+  font-size: x-large; 
   line-height: 1rem;
   font-weight: 300;
 }

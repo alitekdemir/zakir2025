@@ -33,8 +33,14 @@ const themeIcon = computed(() =>
     <!-- Sol Taraf: Menü ve Başlık public/favicon-32x32.png-->
     <div class="navbar-left">
       <HamburgerMenu />
-      <img class="zakir" src="/zakir-alpha.svg" alt="Zakir ikon" />
-      <span class="title">Zâkir - Özlü Tesbihat</span>
+      <router-link to="/" class="home-link">
+        <img class="zakir" src="/zakir-alpha.svg" alt="Zakir ikon" />
+        <span class="title">
+          <span class="full-title">Zâkir - Özlü Tesbihat</span>
+          <span class="short-title">Zâkir</span>
+        </span>
+      </router-link>
+
     </div>
 
     <!-- Sağ Taraf: Temalar ve Font Değiştirici -->
@@ -90,7 +96,7 @@ const themeIcon = computed(() =>
 .navbar-left {
   display: flex;
   align-items: center;
-  /* gap: 12px; */
+  gap: 0.5rem;
 }
 
 .title {
@@ -98,6 +104,11 @@ const themeIcon = computed(() =>
   /* font-weight: bold; */
   white-space: nowrap;
 }
+
+.short-title {
+  display: none;
+}
+
 
 /* Sağ Bölüm */
 .navbar-right {
@@ -158,6 +169,45 @@ svg {
   z-index: 1000;
 }
 
+/* ---------------------------- */
+.home-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 4px 8px;
+  border-radius: 8px;
+}
+
+.home-link:hover {
+  transform: translateY(-2px);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.home-link:active {
+  transform: translateY(0px);
+}
+
+/* Logo ve başlık için ayrı hover efektleri */
+.home-link .zakir {
+  transition: transform 0.3s ease;
+}
+
+.home-link:hover .zakir {
+  transform: scale(1.05) rotate(-9deg);
+}
+
+.home-link .title {
+  transition: transform 0.3s ease;
+}
+
+.home-link:hover .title {
+  transform: translateX(-4px) rotate(2deg);
+}
+
+
 /* Animasyon */
 @keyframes slideDown {
   from {
@@ -170,11 +220,22 @@ svg {
   }
 }
 
+/* Responsive tasarım için media queries */
 
-@media (max-width: 320px) {
+@media (max-width: 360px) {
+  .full-title {
+    display: none;
+  }
+  .short-title {
+    display: inline;
+  }
+}
+
+@media (max-width: 260px) {
   .title {
     display: none;
   }
 }
+
 
 </style>
