@@ -3,7 +3,7 @@
 import { ref, onMounted } from 'vue'
 import { useThemeStore } from '../../assets/themeStore'
 import { fontConfigs } from '../../assets/font-loader'
-import { themes } from '../../assets/themes'
+import { themes, resetThemeToDefault } from '../../assets/themes'
 
 const themeStore = useThemeStore()
 
@@ -79,8 +79,7 @@ const resetFonts = async () => {
 }
 
 const resetTheme = () => {
-  themeStore.setTheme('default')
-  themeStore.setMode('light')
+    resetThemeToDefault(themeStore)
 }
 
 // Sayfa yüklendiğinde ayarları yükle

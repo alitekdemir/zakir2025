@@ -1,12 +1,16 @@
 <!-- src/components/Navbar.vue -->
 <script setup>
 
+import { ref, computed } from 'vue'
 import { useThemeStore } from '../assets/themeStore'
 import HamburgerMenu from './HamburgerMenu.vue'
-import { computed } from 'vue'
 import { useScriptStyle } from '../assets/useScriptStyle'
 
 const themeStore = useThemeStore()
+
+const isMenuOpen = ref(false)
+const toggleMenu = () => {isMenuOpen.value = !isMenuOpen.value}
+const closeMenu = () => {isMenuOpen.value = false}
 
 // Script Style Hook
 const { scriptStyle, notification, toggleScript } = useScriptStyle()
@@ -32,8 +36,11 @@ const themeIcon = computed(() =>
   <nav class="navbar">
     <!-- Sol Taraf: Menü ve Başlık public/favicon-32x32.png-->
     <div class="navbar-left">
-      <HamburgerMenu />
-      <router-link to="/" class="home-link">
+      <HamburgerMenu 
+        :is-open="isMenuOpen" 
+        @toggle="toggleMenu" 
+      />
+      <router-link to="/" class="home-link" @click="closeMenu">
         <img class="zakir" src="/zakir-alpha.svg" alt="Zakir ikon" />
         <span class="title">
           <span class="full-title">Zâkir - Özlü Tesbihat</span>

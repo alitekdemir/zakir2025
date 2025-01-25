@@ -1,75 +1,76 @@
 <!-- src/components/HamburgerMenu.vue -->
 <script setup>
-import { ref, watch } from 'vue'
+import { watch } from 'vue'
 import UpdateCheck from './UpdateCheck.vue'
 
-const isOpen = ref(false)
-
-// Menu açılıp kapandığında body overflow'unu kontrol et
-watch(isOpen, (newValue) => {
-  document.body.style.overflow = newValue ? 'hidden' : 'auto'
+const props = defineProps({
+  isOpen: {
+    type: Boolean,
+    required: true
+  }
 })
 
-const toggleMenu = () => {
-  isOpen.value = !isOpen.value
-}
+const emit = defineEmits(['toggle'])
+
+watch(() => props.isOpen, (newValue) => {
+  document.body.style.overflow = newValue ? 'hidden' : 'auto'
+})
 </script>
+
 
 
 <template>
   <div>
-    <!-- Menü Butonu -->
-    <button class="hamburger-btn" @click="toggleMenu" :class="{ 'open': isOpen }">
+    <button 
+      class="hamburger-btn" 
+      @click="emit('toggle')" 
+      :class="{ 'open': isOpen }"
+    >
       <span></span>
       <span></span>
       <span></span>
     </button>
 
-    <!-- Menü -->
     <div class="menu" :class="{ 'open': isOpen }">
-      <router-link to="/" @click="toggleMenu">
+      <router-link to="/" @click="emit('toggle')">
           <i class="material-symbols">home</i>
           <span class="main">Ana Sayfa</span>
       </router-link>
 
       <hr class="divider">
       
-      <router-link to="/ayarlar" @click="toggleMenu">
+      <router-link to="/ayarlar" @click="emit('toggle')">
         <i class="material-symbols">text_format</i>
         Ayarlar
       </router-link>
-      <router-link to="/istatistikler" @click="toggleMenu">
+      <router-link to="/istatistikler" @click="emit('toggle')">
         <i class="material-symbols">analytics</i>
         İstatistikler
       </router-link>
 
       <hr class="divider">
 
-      <router-link to="/nasil-kullanilir" @click="toggleMenu">
+      <router-link to="/nasil-kullanilir" @click="emit('toggle')">
         <i class="material-symbols">help</i>
         Nasıl Kullanılır
       </router-link>
-      <router-link to="/tesbihatin-faziletleri" @click="toggleMenu">
+      <router-link to="/tesbihatin-faziletleri" @click="emit('toggle')">
         <i class="material-symbols">auto_awesome</i>
         Tesbihatın Faziletleri
       </router-link>
-      <router-link to="/geri-bildirim" @click="toggleMenu">
+      <router-link to="/geri-bildirim" @click="emit('toggle')">
         <i class="material-symbols">feedback</i>
         Geri Bildirim
       </router-link>
 
       <hr class="divider">
       
-      <!-- Güncelleme Kontrolü Bileşeni -->
-      <!-- <UpdateCheck /> -->
-      <UpdateCheck :closeMenu="toggleMenu" />
+      <UpdateCheck :closeMenu="() => emit('toggle')" />
     </div>
 
-    <!-- Overlay -->
-    <div class="overlay" :class="{ 'open': isOpen }" @click="toggleMenu"></div>
+    <div class="overlay" :class="{ 'open': isOpen }" @click="emit('toggle')"></div>
   </div>
 </template>
-
 
 <style scoped>
 .hamburger-btn {
