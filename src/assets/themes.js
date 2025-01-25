@@ -1,11 +1,20 @@
 // src/assets/themes.js
-export const DEFAULT_THEME = 'default'
+export const DEFAULT_THEME = 'nur'
 export const DEFAULT_MODE = 'light'
 
 export const themes = {
-    default: {
+    ziya: {
+        name: 'Ziya',
+        path: './themes/ziya.css',
+        color: 'hwb(33 41% 0%)',
+        modes: {
+            light: { name: 'Aydınlık' },
+            dark: { name: 'Karanlık' }
+        }
+    },
+    nur: {
         name: 'Nur',
-        path: './themes/default.css',
+        path: './themes/nur.css',
         color: '#FF6666',
         modes: {
             light: { name: 'Aydınlık' },
@@ -21,13 +30,5 @@ export const themes = {
             dark: { name: 'Karanlık' }
         }
     },
-    ziya: {
-        name: 'Ziya',
-        path: './themes/ziya.css',
-        color: 'hwb(33 41% 0%)',
-        modes: {
-            light: { name: 'Aydınlık' },
-            dark: { name: 'Karanlık' }
-        }
-    }
+    
 }
