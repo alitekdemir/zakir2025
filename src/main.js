@@ -3,6 +3,7 @@ import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import App from './App.vue'
 import router from './router'
+import VueScrollTo from 'vue-scrollto'
 
 import './style.css'
 import './ilaveler.css'
@@ -96,7 +97,7 @@ const initializeApp = async () => {
     app.use(pinia) // Pinia'yı ekle
     app.directive('vibrate', vibrate)
     app.use(router)
-    
+    app.use(VueScrollTo)
     app.mount('#app')
 
     // Temayı yükle

@@ -68,8 +68,6 @@ const emit = defineEmits(['close'])
 }
 
 .modal-header h3 {
-  font-size: small;
-  font-weight: inherit;
   margin: 0;
   color: var(--text-secondary);
 }

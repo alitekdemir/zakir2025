@@ -16,7 +16,7 @@ const dropdownItems = computed(() => [
   { id: 'memorized', icon: 'face', label: isMemorized.value ? 'Unuttum' : 'Ezberledim'},
 ]);
 const modalTitle = computed(() => 
-  isMemorized.value ? 'Duayı Unuttuğunuzu mu Düşünüyorsunuz?' : 'Duayı Ezberlediniz mi?'
+  isMemorized.value ? 'Unuttuğunuzu mu Düşünüyorsunuz?' : 'Ezberlediniz mi?'
 );
 
 // Collapse için yeni ref ekliyoruz
@@ -176,6 +176,7 @@ const handleMemorizedToggle = () => {
   border: 1px solid var(--primary);
   border: var(--card-border);
   transition: all 0.3s ease;
+  scroll-margin-top: 80px; /* Navbar + Navigator yüksekliği */
 }
 
 .dua-widget {
@@ -378,7 +379,5 @@ const handleMemorizedToggle = () => {
   margin: 0.5rem 0;
   font-size: 0.9rem;
 }
-
-
 
 </style>
