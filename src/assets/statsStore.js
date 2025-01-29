@@ -20,7 +20,7 @@ export const useStatsStore = defineStore('stats', {
       streak7: false,
       streak10: false,
       streak15: false,
-      daily5: false,
+      oneDay5: false,
       threeDay5: false,
       sevenDay5: false,
       zakir: false
@@ -73,8 +73,8 @@ export const useStatsStore = defineStore('stats', {
       this.dailyTesbihatCounts[today]++
 
       // Günlük 5 tesbihat rozeti kontrolü
-      if (this.dailyTesbihatCounts[today] >= 5 && !this.badges.daily5) {
-        this.badges.daily5 = true
+      if (this.dailyTesbihatCounts[today] >= 5 && !this.badges.oneDay5) {
+        this.badges.oneDay5 = true
       }
 
       // 3 günlük ve 7 günlük tesbihat kontrolleri
@@ -190,7 +190,7 @@ export const useStatsStore = defineStore('stats', {
           streak7: false,
           streak10: false,
           streak15: false,
-          daily5: false,
+          oneDay5: false,
           threeDay5: false,
           sevenDay5: false,
           zakir: false
@@ -249,7 +249,7 @@ export const useStatsStore = defineStore('stats', {
         'streak7',
         'streak10',
         'streak15',
-        'daily5',
+        'oneDay5',
         'threeDay5',
         'sevenDay5'
       ]

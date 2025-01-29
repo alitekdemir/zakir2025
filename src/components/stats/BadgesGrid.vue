@@ -30,33 +30,43 @@ const badgeInfo = {
   },
   streak3: {
     icon: '🔥',
-    title: '3 Günlük Seri',
+    title: 'Art arda 3 gün',
     description: '3 gün kesintisiz kullanım'
   },
   streak5: {
     icon: '🔥',
-    title: '5 Günlük Seri',
+    title: 'Art arda 5 gün',
     description: '5 gün kesintisiz kullanım'
   },
   streak7: {
     icon: '🔥',
-    title: '7 Günlük Seri',
+    title: 'Art arda 7 gün',
     description: '7 gün kesintisiz kullanım'
   },
   streak10: {
     icon: '🔥',
-    title: '10 Günlük Seri',
+    title: 'Art arda 10 gün',
     description: '10 gün kesintisiz kullanım'
   },
   streak15: {
     icon: '🏆',
-    title: '15 Günlük Seri',
+    title: 'Art arda 15 gün',
     description: '15 gün kesintisiz kullanım'
   },
-  daily5: {
+  oneDay5: {
     icon: '⭐',
-    title: 'Günlük 5',
+    title: '1 X 5',
     description: '1 günde 5 tesbihat'
+  },
+  threeDay5: {
+    icon: '⭐',
+    title: '3 X 5',
+    description: '3 günde 5 tesbihat'
+  },
+  sevenDay5: {
+    icon: '⭐',
+    title: '7 X 5',
+    description: '7 günde 5 tesbihat'
   },
   zakir: {
     icon: '👑',
@@ -90,6 +100,7 @@ const getBadgeInfo = (badge) => {
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
   gap: 0.5rem;
   cursor: pointer;
   position: relative;

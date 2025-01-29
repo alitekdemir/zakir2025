@@ -65,8 +65,4 @@
   /* Dividers & Borders */
   --divider: rgba(255, 255, 255, 0.08);
   --border: rgba(255, 255, 255, 0.12);
-
-  /* Dark theme specific colors */
-  --theme-red: #FFA552;
-  --theme-green-wonderfull: hwb(175 0% 53%);
 }
