@@ -59,17 +59,19 @@ const emit = defineEmits(['close'])
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* background-color: rgba(0, 0, 0, 0.5); */
   /* background: var(--surface-variant); */
-  /* background: var(--surface); */
-  background: var(--card-background);
-  filter: brightness(0.9);
-  filter: brightness(1.5);
+  background-color: rgba(128, 128, 128, 0.1);
+  /* filter: brightness(1.2); */
+  /* filter: brightness(1.5); */
 }
 
 .modal-header h3 {
   margin: 0;
   color: var(--text-secondary);
+  color: var(--text-primary);
+  text-decoration: none;
+  border: none;
+  /* font-weight: bold; */
 }
 
 .modal-content {

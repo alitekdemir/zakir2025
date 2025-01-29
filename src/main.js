@@ -3,6 +3,7 @@ import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import App from './App.vue'
 import router from './router'
+import { useStatsStore } from './assets/statsStore'
 import VueScrollTo from 'vue-scrollto'
 
 import './style.css'
@@ -95,6 +96,12 @@ const initializeApp = async () => {
     // Yeni uygulamayı oluştur ve mount et
     app = createApp(App)
     app.use(pinia) // Pinia'yı ekle
+
+    // Stats store'u başlat
+    const statsStore = useStatsStore()
+    statsStore.initializeStats()
+    statsStore.startSession()
+
     app.directive('vibrate', vibrate)
     app.use(router)
     app.use(VueScrollTo)

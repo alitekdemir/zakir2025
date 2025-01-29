@@ -139,8 +139,8 @@ const scrollToSection = (number) => {
 
 .number-btn.active {
   box-shadow: inset 0 -3px 0 0 var(--primary);
-  background: var(--primary-light);
-  color: white;
+  /* background: var(--primary-light); */
+  /* color: white; */
 }
 
 </style>

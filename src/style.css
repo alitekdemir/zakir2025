@@ -1,5 +1,6 @@
 /* src/style.css */
 :root {
+    /* Ortak değişkenler */
     --latin-size: 1.1rem;
     --latin-height: calc(var(--latin-size) * 1.2);
     --arabic-size: 1.4rem;
@@ -8,11 +9,19 @@
     --button-text-size: 0.9rem;
     --font-family: "Barlow Condensed", "Roboto Condensed", Roboto, Inter, system-ui, sans-serif;
     --arabic-font-family: "Emine", "Scheherazade New", "Amiri", "Noto Naskh Arabic", serif;
-    --content-width: min(600px, 90%);
+    --content-width: min(600px, 100%);
     --max-width: clamp(16rem, 38rem, 42rem);
     --full-width: 100%;
-    --red: #FF6666;
 
+    --error-color: #dc3545;
+    --error-color-dark: #c82333;
+    --red: #FF6666;
+    --red: crimson;
+    --green: #1AB800;
+    --magenta: #D1008A;
+    --orange: #ff7322;
+    --yellow-dark: #FFA552;
+    --blue: MediumSlateBlue;
   }
 
 *,
@@ -28,9 +37,11 @@ body, button, input, textarea, select {
 }
 /*font-family: inherit;  çevreden miras al demek */
   
-h1 { font-size: 1.5rem; }
-h2 { font-size: 1.3rem; }
-h3 { font-size: 1.0rem; }
+h1 { font-size: 1.5rem; font-weight: normal; color: var(--primary); border-bottom: 1px solid var(--primary-light);}
+h2 { font-size: 1.3rem; font-weight: normal; color: var(--primary); border-bottom: 1px solid var(--primary-light);}
+h3 { font-size: 1.2rem; font-weight: normal; color: var(--primary); border-bottom: 1px solid var(--primary-light);}
+h4 { font-size: 1.1rem; font-weight: normal; color: var(--primary); border-bottom: 1px solid var(--primary-light);}
+h4 { font-size: 1.0rem; font-weight: normal; color: var(--primary); border-bottom: 1px solid var(--primary-light);}
 
 
 body {
@@ -61,10 +72,10 @@ button {
     border-radius: 8px;
     padding: 6px 16px;
     margin-bottom: 2px;
-    text-align: center;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+    text-align: center;
     gap: 0.5rem;
     font-size: var(--button-text-size);
 }
@@ -195,3 +206,14 @@ button {
     display: inline-block;
 }
 
+
+/* Color classes */
+.gold { color: gold; }
+.primary { color: var(--primary); }
+.red { color: var(--theme-red); }
+.green { color: var(--theme-green); }
+.green-wonderfull { color: var(--theme-green-wonderfull); }
+.magenta { color: var(--theme-magenta); }
+.orange { color: var(--theme-orange); }
+.blue { color: var(--theme-blue); }
+.gold { color: var(--theme-gold); }

@@ -77,13 +77,22 @@ watch(() => props.isOpen, (newValue) => {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 24px;
-  height: 20px;
+  width: 48px;
+  height: 48px;
   background: none;
   border: none;
-  padding: 0;
+  border-radius: 0.5rem;
+  padding: 14px 12px;
   cursor: pointer;
   z-index: 100;
+}
+
+.hamburger-btn:hover {
+  background-color: rgba(0, 0, 0, 0.15);
+}
+
+.hamburger-btn:active {
+  transform: scale(0.95);
 }
 
 .hamburger-btn span {

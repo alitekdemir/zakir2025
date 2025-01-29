@@ -1,5 +1,7 @@
 <!-- src/components/SplashScreen.vue -->
 <script setup>
+import zakirIcon from '../assets/icon_zakir.vue'
+
 defineProps({
   show: Boolean
 })
@@ -9,7 +11,8 @@ defineProps({
   <Transition name="fade">
     <div v-if="show" class="splash-screen">
       <div class="splash-content">
-        <img src="../assets/zakir.png" class="splash-logo" alt="Zakir Logo"/>
+        <!-- <img src="../assets/zakir.png" class="splash-logo" alt="Zakir Logo"/> -->
+        <component :is="zakirIcon" width="512" height="512" fill="none" class="splash-logo"/>
         <div class="splash-text">
           <h1>ZAKİR</h1>
           <h3>Namaz Tesbihatı</h3>
@@ -41,8 +44,9 @@ defineProps({
 }
 
 .splash-logo {
-  width: min(20vw, 20vh); /* Uzun kenarın 1/5'i */
-  height: auto;
+  /* Uzun kenarın 1/5'i */
+  width: min(20vw, 20vh); 
+  /* height: auto; */
   animation: pulse 2s infinite;
 }
 

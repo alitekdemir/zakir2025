@@ -4,6 +4,7 @@ import { ref, onMounted } from 'vue'
 import { APP_VERSION, ASSETS_VERSION } from '../../public/version'
 
 const currentVersion = ref(localStorage.getItem('app-version') || APP_VERSION)
+const currentAssetsVersion = ref(localStorage.getItem('assets-version') || ASSETS_VERSION)
 const updateStatus = ref('')
 const isUpdating = ref(false)
 
@@ -72,9 +73,9 @@ const checkForUpdates = async () => {
       throw new Error('Versiyon bilgisi alınamadı')
     }
 
-    // Versiyon kontrolü
-    if (currentVersion.value !== appVersion) {
-      updateStatus.value = `Yeni sürüm bulundu: ${appVersion}`
+    // Hem APP_VERSION hem de ASSETS_VERSION kontrolü
+    if (currentVersion.value !== appVersion || currentAssetsVersion.value !== assetsVersion) {
+      updateStatus.value = `Yeni sürüm bulundu: ${appVersion} (Assets: ${assetsVersion})`
       await clearCache()
 
       const registration = await navigator.serviceWorker.getRegistration()
@@ -85,6 +86,7 @@ const checkForUpdates = async () => {
       localStorage.setItem('app-version', appVersion)
       localStorage.setItem('assets-version', assetsVersion)
       currentVersion.value = appVersion
+      currentAssetsVersion.value = assetsVersion
 
       setTimeout(() => {
         window.location.reload(true)
@@ -107,16 +109,18 @@ const checkForUpdates = async () => {
 // Sayfa yüklendiğinde otomatik kontrol
 onMounted(async () => {
   try {
-    const { appVersion } = await fetchLatestVersion()
+    const { appVersion, assetsVersion } = await fetchLatestVersion()
     
-    if (!localStorage.getItem('app-version')) {
+    if (!localStorage.getItem('app-version') || !localStorage.getItem('assets-version')) {
       localStorage.setItem('app-version', appVersion)
+      localStorage.setItem('assets-version', assetsVersion)
       currentVersion.value = appVersion
+      currentAssetsVersion.value = assetsVersion
       return
     }
 
-    if (currentVersion.value !== appVersion) {
-      updateStatus.value = `Yeni sürüm mevcut: ${appVersion}`
+    if (currentVersion.value !== appVersion || currentAssetsVersion.value !== assetsVersion) {
+      updateStatus.value = `Yeni sürüm mevcut: ${appVersion} (Assets: ${assetsVersion})`
     }
   } catch (error) {
     console.error('Otomatik versiyon kontrolü hatası:', error)
@@ -126,28 +130,28 @@ onMounted(async () => {
 
 
 <template>
-    <div class="update-container">
-      <button 
-        class="update-check" 
-        @click="checkForUpdates"
-        :disabled="isUpdating"
-      >
-        <i class="material-symbols" :class="{ 'spinning': isUpdating }">
-          {{ isUpdating ? 'sync' : 'system_update' }}
-        </i>
-        <span>Güncelleme Kontrolü</span>
-        <small class="version">v{{ currentVersion }}</small>
-      </button>
-      
-      <div 
-        v-if="updateStatus" 
-        class="update-status"
-        :class="{ 'updating': isUpdating }"
-      >
-        {{ updateStatus }}
-      </div>
+  <div class="update-container">
+    <button 
+      class="update-check" 
+      @click="checkForUpdates"
+      :disabled="isUpdating"
+    >
+      <i class="material-symbols" :class="{ 'spinning': isUpdating }">
+        {{ isUpdating ? 'sync' : 'system_update' }}
+      </i>
+      <span>Güncelleme Kontrolü</span>
+      <small class="version">v{{ currentVersion }} ({{ currentAssetsVersion }})</small>
+    </button>
+    
+    <div 
+      v-if="updateStatus" 
+      class="update-status"
+      :class="{ 'updating': isUpdating }"
+    >
+      {{ updateStatus }}
     </div>
-  </template>
+  </div>
+</template>
   
 
 <style scoped>

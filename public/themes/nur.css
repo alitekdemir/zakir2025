@@ -1,13 +1,5 @@
 /* src/themes/default.css */
 /* Base theme variables */
-:root {
-  /* Ortak değişkenler */
-  --theme-red: crimson;
-  --theme-green: #1AB800;
-  --theme-magenta: #D1008A;
-  --theme-orange: #ff7322;
-  --theme-blue: MediumSlateBlue;
-}
 
 /* Light theme */
 :root[data-theme="light"] {
@@ -78,12 +70,3 @@
   --theme-red: #FFA552;
   --theme-green-wonderfull: hwb(175 0% 53%);
 }
-
-/* Color classes */
-.primary { color: var(--primary); }
-.red { color: var(--theme-red); }
-.green { color: var(--theme-green); }
-.magenta { color: var(--theme-magenta); }
-.orange { color: var(--theme-orange); }
-.blue { color: var(--theme-blue); }
-.gold { color: gold; }

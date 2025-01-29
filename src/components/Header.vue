@@ -10,32 +10,27 @@
 .header {
   width: 100%; /* Genişlik %100 */
   min-height: 10vh;
-  /* background: var(--primary); */
-  /* background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), var(--primary); */
   background: var(--primary);
-  /* color: var(--text-primary, #fff); */
   color: white;
-  padding: 2rem 1rem; /* Düzeltildi */
+  padding: 2rem 0.5rem; /* Düzeltildi */
   text-align: center;
-  transition: background-color 0.6s ease-in-out, color 0.6s ease-in-out; /* Yalnızca gerekli geçiş */
+  transition: background-color 0.6s ease-in-out, color 0.6s ease-in-out;
+}
+
+.subtitle {
+  font-size: clamp(1rem, 3vw, 1.5rem); /* Dinamik font boyutu */
+  line-height: 1.2;
+  margin: 0.2rem auto;
 }
 
 .title {
   font-size: clamp(2rem, 8vw, 4rem); /* Dinamik font boyutu */
   line-height: 1.2;
-  font-weight: 400; /* Standart font ağırlığı */
-  margin: 0.2rem auto;
-}
-.subtitle {
-  font-size: clamp(1rem, 3vw, 1.5rem); /* Dinamik font boyutu */
-  line-height: 1.2;
-  font-weight: 400; /* Standart font ağırlığı */
-  margin: 0.2rem auto;
+  color: white;
+  margin: 0.5rem auto;
 }
 
 @media (max-width: 230px) {
-  .header {
-    display: none;
-  }
+  .header { display: none; }
 }
 </style>
