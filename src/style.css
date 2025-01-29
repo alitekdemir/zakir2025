@@ -210,10 +210,10 @@ button {
 /* Color classes */
 .gold { color: gold; }
 .primary { color: var(--primary); }
-.red { color: var(--theme-red); }
-.green { color: var(--theme-green); }
-.green-wonderfull { color: var(--theme-green-wonderfull); }
-.magenta { color: var(--theme-magenta); }
-.orange { color: var(--theme-orange); }
-.blue { color: var(--theme-blue); }
-.gold { color: var(--theme-gold); }
+.red { color: var(--red); }
+.green { color: var(--green); }
+.green-wonderfull { color: var(--green-wonderfull); }
+.magenta { color: var(--magenta); }
+.orange { color: var(--orange); }
+.blue { color: var(--blue); }
+.gold { color: var(--gold); }
