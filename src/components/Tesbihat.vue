@@ -23,9 +23,9 @@ const completeTesbihat = async () => {
     // Rozetleri kontrol et
     await badgesStore.checkBadges();
     
-    alert('Tesbihat tamamlandı!');
+    // alert('Tesbihat tamamlandı!');
   } else {
-    alert('Lütfen iki tamamlama arasında en az 5 dakika bekleyin.');
+    // alert('Lütfen iki tamamlama arasında en az 5 dakika bekleyin.');
   }
 };
 </script>
