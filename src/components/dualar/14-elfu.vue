@@ -11,7 +11,7 @@ const { scriptStyle } = useScriptStyle()
   <div class="flex-container column" :class="scriptStyle">
     <template v-for="(line, index) in elfu[scriptStyle].slice(1)">
       <span :class="scriptStyle">{{ elfu[scriptStyle][0].text }}</span>
-      <span class="emphasis" :class="scriptStyle">
+      <span class="primary" :class="scriptStyle">
         {{ line.text }}
         <!-- <span v-if="index === 0" class="material-symbols icon">mail</span>
         <span v-if="index === 1" class="material-symbols icon">favorite</span>

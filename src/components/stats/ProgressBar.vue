@@ -1,4 +1,4 @@
-<!-- src/components/ProgressBar.vue -->
+<!-- src/components/stats/ProgressBar.vue -->
 <script setup>
 import { ref, onMounted, watch } from 'vue'
 import { useProgress, widgetWeights } from '../../assets/useProgress';

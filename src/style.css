@@ -174,13 +174,6 @@ button {
     margin-top: 0.3rem;
 }
 
-.besmele {
-    color: var(--primary);
-    /* margin-bottom: 0.2rem; */
-}
-.emphasis {
-    color: var(--text-emphasis);
-    }
 
 .divider {
     width: 80%;
@@ -209,6 +202,9 @@ button {
 
 
 /* Color classes */
+.besmele {color: var(--primary);}
+.emphasis {color: var(--text-emphasis);}
+
 .gold { color: gold; }
 .primary { color: var(--primary); }
 .red { color: var(--red); }

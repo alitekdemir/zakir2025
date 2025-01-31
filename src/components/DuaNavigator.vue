@@ -1,7 +1,6 @@
 <!-- src/components/DuaNavigator.vue -->
 <script setup>
 import { ref, onMounted, onBeforeUnmount } from 'vue';
-import { useProgress } from '../assets/useProgress';
 import VueScrollTo from 'vue-scrollto'
 
 const props = defineProps({

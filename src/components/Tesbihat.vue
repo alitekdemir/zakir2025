@@ -2,33 +2,37 @@
 <script setup>
 import DuaWidget from './DuaWidget.vue';
 import { duaList } from '../assets/duaList.js';
-
 import { ref, computed } from 'vue'
-import { useStatsStore } from '../assets/statsStore'
+import { useStatsTimeStore } from './stats/statsTimeStore.js';
+import { useStatsBadgesStore } from './badges/statsBadgesStore.js';
+import BadgeSplash from './badges/BadgeSplash.vue';
 
-const statsStore = useStatsStore()
+const timeStore = useStatsTimeStore();
+const badgesStore = useStatsBadgesStore();
 
 const canComplete = computed(() => {
-  if (!statsStore.lastTesbihatTime) return true
-  const timeDiff = Date.now() - new Date(statsStore.lastTesbihatTime)
-  return timeDiff >= 300000 // 5 dakika
-})
+  if (!timeStore.lastTesbihatTime) return true;
+  const timeDiff = Date.now() - new Date(timeStore.lastTesbihatTime);
+  return timeDiff >= 300000; // 5 dakika
+});
 
-const completeTesbihat = () => {
-  if (statsStore.completeTesbihat()) {
-    // Başarılı tamamlama
-    alert('Tesbihat tamamlandı!')
+const completeTesbihat = async () => {
+  const result = timeStore.completeTesbihat();
+  
+  if (result) {
+    // Rozetleri kontrol et
+    await badgesStore.checkBadges();
+    
+    alert('Tesbihat tamamlandı!');
   } else {
-    // 5 dakika geçmedi
-    alert('Lütfen iki tamamlama arasında en az 5 dakika bekleyin.')
+    alert('Lütfen iki tamamlama arasında en az 5 dakika bekleyin.');
   }
-}
-
+};
 </script>
+
 
 <template>
   <div class="tesbihat-container">
-
     <DuaWidget
       v-for="dua in duaList"
       :key="dua.number"
@@ -47,6 +51,13 @@ const completeTesbihat = () => {
         Tesbihatı Tamamladım
       </button>
     </div>
+
+    <BadgeSplash
+      v-if="badgesStore.latestBadge"
+      :badge="badgesStore.latestBadge"
+      :show="true"
+      @close="badgesStore.clearLatestBadge()"
+    />
 
   </div>
 </template>

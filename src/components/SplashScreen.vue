@@ -12,7 +12,7 @@ defineProps({
     <div v-if="show" class="splash-screen">
       <div class="splash-content">
         <!-- <img src="../assets/zakir.png" class="splash-logo" alt="Zakir Logo"/> -->
-        <component :is="zakirIcon" width="512" height="512" fill="none" class="splash-logo"/>
+        <component :is="zakirIcon" width="512" height="512" fill="none" class="splash-logo" alt="Zakir Logo"/>
         <div class="splash-text">
           <h1>ZAKİR</h1>
           <h3>Namaz Tesbihatı</h3>
@@ -45,7 +45,7 @@ defineProps({
 
 .splash-logo {
   /* Uzun kenarın 1/5'i */
-  width: min(20vw, 20vh); 
+  width: min(25vw, 25vh); 
   /* height: auto; */
   animation: pulse 2s infinite;
 }
@@ -56,6 +56,7 @@ defineProps({
 }
 
 .splash-text h1 {
+  color: #ffffff;
   font-size: 2.5rem;
   font-weight: 400;
   margin: 0;
@@ -63,9 +64,10 @@ defineProps({
 }
 
 .splash-text h3 {
+  color: #ffffff;
   font-size: 1.5rem;
   font-weight: 400;
-  margin: 0.0rem 0 0 0;
+  margin: 0;
   /* letter-spacing: 1px; */
 }
 
@@ -92,12 +94,12 @@ defineProps({
 }
 
 .splash-text h3 {
-  animation-delay: 0.2s;
+  animation-delay: 0.3s;
 }
 
 @keyframes slideUp {
   from {
-    transform: translateY(20px);
+    transform: translateY(3rem);
     opacity: 0;
   }
   to {

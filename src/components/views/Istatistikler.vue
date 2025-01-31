@@ -1,32 +1,21 @@
-<!-- src/components/views/Istatistikler.vue -->
+<!-- src/components/Istatistikler.vue -->
 <script setup>
-import { onMounted } from 'vue';
-import { useStatsStore } from '../../assets/statsStore';
-
 import ProgressBar from '../stats/ProgressBar.vue';
 import StatsCards from '../stats/StatsCards.vue';
-import LastWeek from '../stats/LastWeek.vue';
-import BadgesGrid from '../stats/BadgesGrid.vue';
-import ResetStats from '../stats/ResetStats.vue';
-
-const stats = useStatsStore();
-
-onMounted(() => {
-  stats.initializeStats();
-});
+import LastWeek from '../badges/LastWeek.vue';
+import BadgesGrid from '../badges/BadgesGrid.vue';
+import ResetStats from '../stats/ResetStats.vue'
 </script>
 
 <template>
-  <div class="container">
-    <ProgressBar /> <!-- Ezberleme İlerlemesi -->
-    <StatsCards /> <!-- Ana İstatistikler -->
-    <LastWeek /> <!-- Günlük Aktivite Grafiği -->
-    <BadgesGrid /> <!-- Rozetler -->
-    <ResetStats /> <!-- İstatistikleri Sıfırla -->
-  </div>
+    <div class="container">
+      <ProgressBar />
+      <StatsCards />
+      <LastWeek />
+      <BadgesGrid />
+      <ResetStats />
+    </div>
 </template>
-
-
 
 <style scoped>
 .container {

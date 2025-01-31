@@ -1,14 +1,16 @@
 <!-- src/components/stats/ResetStats.vue -->
 <script setup>
 import { ref } from 'vue'
-import { useStatsStore } from '../../assets/statsStore'
-import Modal from '../Modal.vue'
+import { useStatsBadgesStore } from '../badges/statsBadgesStore'
+import { useStatsTimeStore } from './statsTimeStore'
 
-const stats = useStatsStore()
+const timeStore = useStatsTimeStore()
+const badgesStore = useStatsBadgesStore()
 const showResetModal = ref(false)
 
 const resetStats = () => {
-  stats.resetStats()
+  timeStore.resetStats()
+  badgesStore.resetBadges()
   showResetModal.value = false
   // Sayfayı yenile
   window.location.reload()
@@ -18,16 +20,13 @@ const resetStats = () => {
 <template>
   <div class="reset-section">
     <button @click="showResetModal = true" class="reset-button">
-      <span class="material-symbols icon">delete</span>
+      <span class="material-symbols-outlined">delete</span>
       İstatistikleri Sıfırla
     </button>
 
-    <Modal 
-      :show="showResetModal" 
-      title="İstatistikleri Sıfırla" 
-      @close="showResetModal = false"
-    >
-      <div class="modal-content-wrapper">
+    <div v-if="showResetModal" class="modal-overlay" @click="showResetModal = false">
+      <div class="modal-content" @click.stop>
+        <h3>İstatistikleri Sıfırla</h3>
         <p>İstatistikleri sıfırlamak istediğinizden emin misiniz? Bu işlem geri alınamaz.</p>
         <div class="modal-buttons">
           <button 
@@ -44,14 +43,11 @@ const resetStats = () => {
           </button>
         </div>
       </div>
-    </Modal>
+    </div>
   </div>
 </template>
 
 <style scoped>
-
-.icon {font-size: 1.25rem; color: white;}
-
 .reset-section {
   margin-top: 2rem;
   padding: 1rem;
@@ -69,31 +65,50 @@ const resetStats = () => {
   font-size: 1rem;
   transition: background-color 0.2s;
   display: inline-flex;
-  justify-content: center;
   align-items: center;
-  gap: 0.25rem;
+  gap: 0.5rem;
 }
 
 .reset-button:hover {
   background-color: var(--error-color-dark, #c82333);
 }
 
-.reset-note {
-  margin-top: 0.75rem;
-  font-size: 0.875rem;
-  color: var(--text-secondary);
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
 }
 
-.modal-content-wrapper {
-  padding: 1rem;
+.modal-content {
+  background: var(--surface);
+  border-radius: 1rem;
+  padding: 2rem;
+  max-width: 90%;
+  width: 400px;
   text-align: center;
+}
+
+.modal-content h3 {
+  margin: 0 0 1rem;
+  color: var(--text-primary);
+}
+
+.modal-content p {
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
 }
 
 .modal-buttons {
   display: flex;
   gap: 1rem;
   justify-content: center;
-  margin-top: 1.5rem;
 }
 
 .confirm-button, .cancel-button {

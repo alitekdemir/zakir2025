@@ -5,6 +5,7 @@ import { VitePWA } from 'vite-plugin-pwa';
 
 // https://vite.dev/config/
 export default defineConfig({
+  assetsInclude: ['**/*.mp3'], // Ses dosyalarını asset olarak işle
   plugins: [
     vue(),
     VitePWA({

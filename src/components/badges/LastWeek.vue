@@ -1,8 +1,10 @@
+<!-- src/components/stats/LastWeek.vue -->
 <script setup>
 import { computed } from 'vue'
 import { useStatsStore } from '../../assets/statsStore'
 
 const stats = useStatsStore()
+
 
 const weeklyData = computed(() => {
   const last7Days = {}
