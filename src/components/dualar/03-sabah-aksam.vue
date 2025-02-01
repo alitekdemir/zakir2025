@@ -33,7 +33,7 @@ const increment = () => {
         Akşam
       </button>
   
-      <div class="counter-button buton" @click="increment" :class="{ 'green': count === 10 }">{{ count }}</div>
+      <button class="counter-button buton" @click="increment" :class="{ 'green': count === 10 }">{{ count }}</button>
     </div>
   
     <div class="flex-container column">
@@ -127,7 +127,7 @@ const increment = () => {
 }
 
 .counter-button.green {
-  background-color: #8bd867;
+  background-color: var(--green, #8bd867, brown);
   color: white;
 }
 

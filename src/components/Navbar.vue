@@ -18,15 +18,14 @@ const toggleMenu = () => {isMenuOpen.value = !isMenuOpen.value}
 const closeMenu = () => {isMenuOpen.value = false}
 
 // Computed properties
-const currentIcon = computed(() =>  scriptStyle.value === 'latin' ? abcIcon : elifbeIcon )
-const themeIcon = computed(() =>  themeStore.isDark ? 'light_mode' : 'dark_mode' )
+const currentIcon = computed(() => scriptStyle.value === 'latin' ? abcIcon : elifbeIcon)
+const themeIcon = computed(() => themeStore.isDark ? 'light_mode' : 'dark_mode')
 </script>
 
 
 
 <template>
   <nav class="navbar">
-    <!-- Sol Taraf: Menü ve Başlık public/favicon-32x32.png-->
     <div class="navbar-left">
       <HamburgerMenu 
         :is-open="isMenuOpen" 
@@ -98,29 +97,32 @@ const themeIcon = computed(() =>  themeStore.isDark ? 'light_mode' : 'dark_mode'
 }
 
 .short-title { display: none; }
+.home-link { padding: 0.2rem; }
 
-button {
+button,
+.home-link {
   color: inherit;
-  background: none;
-  border: none;
   padding: 0.5rem;
   border-radius: 0.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background-color 0.2s ease, transform 0.2s ease;
+  transition: all 0.3s ease;
   user-select: none;
   height: 3rem;
+  text-decoration: none;
 }
 
 
 /* Buton Hover ve Aktif Durumları */
-button:hover {
+button:hover,
+.home-link:hover {
   background-color: rgba(0, 0, 0, 0.15);
 }
 
-button:active {
-  transform: scale(0.95);
+button:active,
+.home-link:active {
+  transform: scale(0.9);
 }
 
 
@@ -141,18 +143,6 @@ button:active {
 }
 
 /* ---------------------------- */
-.home-link {
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  color: inherit;
-  cursor: pointer;
-  border-radius: 0.5rem;
-  padding: 0.25rem;
-  transition: all 0.3s ease;
-  gap: 0.2rem; 
-  height: 3rem;
-}
 
 .home-link:hover {
   background-color: rgba(0, 0, 0, 0.15);
@@ -163,21 +153,18 @@ button:active {
   transform: translateY(0) scale(0.95); /* Güncellendi */
 }
 
-/* Logo ve başlık için ayrı hover efektleri */
-.home-link .zakir {
-  transition: transform 0.3s ease;
-}
-
 .home-link:hover .zakir {
   transform: scale(1.05) rotate(-9deg);
 }
 
-.home-link .title {
-  transition: transform 0.3s ease;
-}
-
 .home-link:hover .title {
   transform: translateX(-4px) rotate(2deg);
+}
+
+/* Logo ve başlık için ayrı hover efektleri */
+.home-link .zakir,
+.home-link .title {
+  transition: transform 0.3s ease;
 }
 
 
@@ -194,12 +181,12 @@ button:active {
 }
 
 /* Responsive tasarım için media queries */
-@media (max-width: 360px) {
+@media (max-width: 22rem) {
   .full-title { display: none; }
   .short-title { display: inline; }
 }
 
-@media (max-width: 260px) {
+@media (max-width: 16rem) {
   .title { display: none; }
 }
 </style>

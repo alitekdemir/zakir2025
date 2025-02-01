@@ -46,11 +46,10 @@ h4 { font-size: 1.0rem; font-weight: normal; color: var(--primary); border-botto
 
 
 body {
-    margin: 0 auto;
-    min-width: 200px;
-    min-height: 100vh;
+    margin: 0;
+    /* min-height: 100vh; */
     color: var(--text-primary);
-    overflow-x: hidden;
+    /* overflow-x: hidden; */
     /* yatay kaydırmayı engelle */
 }
 
@@ -60,18 +59,18 @@ button {
     cursor: pointer;
     font-size: var(--button-text-size);
     font-weight: 500;
+    height: 2.25rem;
 }
 
 .buton {
     /* flex: 1; */
     /* width: 100%; */
     text-decoration: none;
-    height: 2.25rem;
     color: var(--primary);
     background-color: var(--primary-lighter);
     border: 1px solid var(--primary-light);
-    border-radius: 8px;
-    padding: 6px 16px;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
     margin-bottom: 2px;
     display: flex;
     justify-content: center;
