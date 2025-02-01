@@ -1,29 +1,29 @@
 // src/data/duaList.js
 // Dualar
-import Entesselam from '../components/dualar/01-entesselam.vue';
-import Tuncina from '../components/dualar/02-tuncina.vue';
-import SabahAksam from '../components/dualar/03-sabah-aksam5.vue';
-import Ecirna from '../components/dualar/04-ecirna.vue';
-import Subhanallahi from '../components/dualar/05-subhanallahi.vue';
-import AyetTrKursi from '../components/dualar/06-kursi.vue';
-import Tesbih from '../components/dualar/07-tesbih.vue';
-import Tevhid from '../components/dualar/08-tevhid.vue';
-import Dua from '../components/dualar/09-dua.vue';
-import Falem from '../components/dualar/10-falem.vue';
-import Selam from '../components/dualar/11-salavat.vue';
-import Kesira from '../components/dualar/12-kesira.vue';
-import SalliveSellim from '../components/dualar/13-sallivesellim.vue';
-import Elfu from '../components/dualar/14-elfu.vue';
-import Biadedi from '../components/dualar/15-biadedievrakil.vue';
-import IsmiAzam from '../components/dualar/16-ismiazam.vue';
-import IsmiAzamDua from '../components/dualar/17-ismiazamdua.vue';
-import Sureler from '../components/dualar/18-sureler.vue';
+import Entesselam from './01-entesselam.vue';
+import Tuncina from './02-tuncina.vue';
+import SabahAksam from './03-sabah-aksam.vue';
+import Ecirna from './04-ecirna.vue';
+import Subhanallahi from './05-subhanallahi.vue';
+import AyetTrKursi from './06-kursi.vue';
+import Tesbih from './07-tesbih.vue';
+import Tevhid from './08-tevhid.vue';
+import Dua from './09-dua.vue';
+import Falem from './10-falem.vue';
+import Selam from './11-salavat.vue';
+import Kesira from './12-kesira.vue';
+import SalliveSellim from './13-sallivesellim.vue';
+import Elfu from './14-elfu.vue';
+import Biadedi from './15-biadedievrakil.vue';
+import IsmiAzam from './16-ismiazam.vue';
+import IsmiAzamDua from './17-ismiazamdua.vue';
+import Sureler from './18-sureler.vue';
 
 // Bilgiler
-import i01Entesselam from '../components/info/i01Entesselam.vue';
-import i02Tuncina from '../components/info/i02Tuncina.vue';
-import i03SabahAksam from '../components/info/i03SabahAksam.vue';
-import i09Dua from '../components/info/i09Dua.vue';
+import i01Entesselam from '../info/i01Entesselam.vue';
+import i02Tuncina from '../info/i02Tuncina.vue';
+import i03SabahAksam from '../info/i03SabahAksam.vue';
+import i09Dua from '../info/i09Dua.vue';
 
 export const duaList = [
   { number: 1, title: 'Farzdan Sonra / Entesselam', component: Entesselam, info: i01Entesselam },

@@ -1,7 +1,7 @@
 <!-- src/components/Tesbihat.vue -->
 <script setup>
 import DuaWidget from './DuaWidget.vue';
-import { duaList } from '../assets/duaList.js';
+import { duaList } from './dualar/duaList.js';
 import { ref, computed } from 'vue'
 import { useStatsTimeStore } from './stats/statsTimeStore.js';
 import { useStatsBadgesStore } from './badges/statsBadgesStore.js';

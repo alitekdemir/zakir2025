@@ -1,17 +1,17 @@
 <!-- src/components/Home.vue -->
 <script setup>
 import { onMounted, onUnmounted, watch, computed } from 'vue' // computed'ı ekleyin
-import { useStatsTimeStore } from './stats/statsTimeStore'
-import { useStatsBadgesStore } from './badges/statsBadgesStore'
-import { useProgress, widgetWeights } from '../assets/useProgress'
+import { useStatsTimeStore } from '../stats/statsTimeStore'
+import { useStatsBadgesStore } from '../badges/statsBadgesStore'
+import { useProgress, widgetWeights } from '../../assets/useProgress'
 
-import Header from './Header.vue'
-import ProgressBar from './stats/ProgressBar.vue'
-import DuaNavigator from './DuaNavigator.vue'
-import { duaList } from '../assets/duaList'
-import Tesbihat from './Tesbihat.vue'
-import ZakirGullu from './ZakirGullu.vue'
-import InstallPWAPrompt from './InstallPWAPrompt.vue'
+import Header from '../Header.vue';
+import ProgressBar from '../stats/ProgressBar.vue';
+import DuaNavigator from '../DuaNavigator.vue';
+import { duaList } from '../dualar/duaList.js';
+import Tesbihat from '../Tesbihat.vue';
+import ZakirGullu from '../ZakirGullu.vue';
+import InstallPWAPrompt from '../InstallPWAPrompt.vue';
 
 const statsStore = useStatsTimeStore()
 const { progress: score } = useProgress()
@@ -41,7 +41,7 @@ onMounted(() => {
   <div class="home-container">
     <Header />
     <ProgressBar class="pad"/>
-    <DuaNavigator :duaList="duaList" />
+    <!-- <DuaNavigator :duaList="duaList" /> -->
     <Tesbihat />
     <ZakirGullu />
     <InstallPWAPrompt />

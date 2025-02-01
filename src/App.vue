@@ -4,7 +4,7 @@ import { ref, onMounted, onUnmounted } from 'vue'
 import { useWakeLock } from './assets/wakeLock'
 import SplashScreen from './components/SplashScreen.vue'
 import Navbar from './components/Navbar.vue'
-import Home from './components/Home.vue'
+import Home from './components/views/Home.vue'
 // import InstallPWAPrompt from './components/InstallPWAPrompt.vue'
 
 // ProgressBar birden fazla yerde kullanımı için ana App içinde oluşturuldu
