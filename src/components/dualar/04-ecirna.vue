@@ -13,12 +13,13 @@ const isOpen = ref(false)
 <template>
     <div class="flex-container column">
         <button class="buton" @click="isOpen = !isOpen">
-            <span>Allahümme Ecirna Duası</span>
+            <span>Sabah / Akşam</span>
             <span class="material-symbols">{{ isOpen ? 'expand_less' : 'expand_more' }}</span>
         </button>
 
         <div v-if="isOpen" class="flex-container column">
             <q class="blockquote" :class="scriptStyle" :dir="scriptStyle === 'latin' ? 'ltr' : 'rtl'">
+                <span class="ae-box">AE</span>⇒
                 {{ scriptStyle === 'latin' ? 'Allahümme ecirna minen-nâr' : 'اللّٰهُمَّ أَجِرْنَا مِنَ النَّارِ' }}
             </q>
 
@@ -33,7 +34,7 @@ const isOpen = ref(false)
                 <template v-for="(dua, index) in ecirna[scriptStyle].part1"
                     :key="index">
                     <div class="dua-line" :class="scriptStyle">
-                        <span class="ae-box">AE </span>
+                        <span class="ae-box">AE</span>
                         <!-- <span class="ae" :class="scriptStyle">☔</span> -->
                         <!-- <span class="ae" :class="scriptStyle">{{ scriptStyle === 'latin' ? 'A.e. ' : 'اَللّٰهُمَّ اَجِرْنَا ' }}</span> -->
                         <span :class="[scriptStyle, `text ${dua.color}`]" v-html="dua.text"/>
