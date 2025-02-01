@@ -64,8 +64,8 @@ const testSplash = () => {
         <component 
           :is="badgeConfigs[badge.id]?.icon" 
           v-if="badgeConfigs[badge.id]?.icon"
-          :width="48"
-          :height="48"
+          :width="32"
+          :height="32"
           :fill="badge.isAchieved ? '#5EB132' : 'rgba(255, 255, 255, 0.5)'"
         />
       </Badge>
@@ -88,9 +88,7 @@ const testSplash = () => {
 </template>
 
 <style scoped>
-.badges-section {
-  padding: 1rem;
-}
+/* .badges-section {padding: 1rem;} */
 
 .badges-header {
   display: flex;
@@ -100,7 +98,7 @@ const testSplash = () => {
 }
 
 .badges-count {
-  background: var(--surface-variant);
+  background: var(--primary-light);
   padding: 0.25rem 1.0rem;
   border-radius: 1rem;
 }
@@ -108,13 +106,13 @@ const testSplash = () => {
 .badges-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  gap: 1rem;
-  padding: 1rem 0;
+  gap: 0.25rem;
+  padding: 0.5rem 0;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 600px) {
   .badges-grid {
-    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(6rem, 1fr));
   }
 }
 

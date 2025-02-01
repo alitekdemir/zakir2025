@@ -39,7 +39,7 @@ defineEmits(['click'])
 .badge {
   background: var(--surface);
   border-radius: 1rem;
-  padding: 1rem;
+  padding: 0.75rem;
   cursor: pointer;
   transition: all 0.2s ease;
   border: 2px solid transparent;
@@ -65,18 +65,18 @@ defineEmits(['click'])
 }
 
 .badge-icon {
-  width: 48px;
-  height: 48px;
+  width: 2.5rem;
+  height: 2.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: visible; /* Eklendi */
+  overflow: visible;
 }
 
 .badge-icon :deep(svg) {
-  width: 48px;
-  height: 48px;
-  object-fit: contain; /* Eklendi */
+  width: 2.5rem;
+  height: 2.5rem;
+  object-fit: contain;
 }
 
 .badge-info {
@@ -91,9 +91,9 @@ defineEmits(['click'])
 }
 
 .progress-bar {
-  height: 4px;
+  height: 0.25rem;
   background: var(--surface-variant);
-  border-radius: 2px;
+  border-radius: 0.25rem;
   overflow: hidden;
   margin-top: 0.5rem;
 }
