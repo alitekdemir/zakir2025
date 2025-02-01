@@ -1,12 +1,15 @@
 <!-- src/components/Header.vue -->
 <template>
   <header class="flex-container column header">
-    <span class="subtitle">Risale-i Nur talebeleri için kolay ezberlenen</span>
-    <h1 class="title">ÖZLÜ TESBİHAT</h1>
+    <span class="subtitle">Risale-i Nur talebeleri için, kolay ezberlenen</span>
+    <span class="title">ÖZLÜ TESBİHAT</span>
   </header>
 </template>
 
 <style scoped>
+.flex-container{
+  gap: 0.2rem;
+}
 .header {
   width: 100%;
   min-height: 10vh;
@@ -18,15 +21,12 @@
 
 .subtitle {
   font-size: clamp(1rem, 3vw, 1.5rem); /* Dinamik font boyutu */
-  line-height: 1.2;
-  margin: 0.2rem auto;
 }
 
 .title {
   font-size: clamp(2rem, 8vw, 4rem); /* Dinamik font boyutu */
-  line-height: 1.2;
   color: white;
-  margin: 0.5rem auto;
+  margin: 0;
 }
 
 @media (max-width: 230px) {
