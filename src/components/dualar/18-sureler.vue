@@ -57,7 +57,7 @@ const buttonData = {
         {{ buttonData.sabahAksam.title }}
       </button>
 
-      <Modal :show="modals.sabahAksam" :title="buttonData.sabahAksam.title" @close="modals.sabahAksam = false">
+      <Modal :show="modals.sabahAksam" :title="buttonData.sabahAksam.info" @close="modals.sabahAksam = false">
         <span class="besmele" :class="scriptStyle">
           {{ sureler.bismillah[scriptStyle] }}
         </span>
@@ -81,7 +81,7 @@ const buttonData = {
         </button>
         <span class="info-text">{{ data.hint }}</span>
 
-        <Modal :show="modals[key]" :title="data.title" @close="modals[key] = false">
+        <Modal :show="modals[key]" :title="data.info" @close="modals[key] = false">
           <span class="besmele" :class="scriptStyle">{{ sureler.bismillah[scriptStyle] }}</span>
           <div class="flex-container column" :class="scriptStyle">
             <span v-for="(line, index) in data.component[scriptStyle]" :key="index">

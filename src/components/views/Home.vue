@@ -14,8 +14,8 @@ import ZakirGullu from '../ZakirGullu.vue';
 import InstallPWAPrompt from '../InstallPWAPrompt.vue';
 
 const statsStore = useStatsTimeStore()
-const { progress: score } = useProgress()
 const badgesStore = useStatsBadgesStore()
+const { progress: score } = useProgress()
 
 // Progress yüzdesini hesapla
 const progressPercentage = computed(() => {
@@ -23,21 +23,32 @@ const progressPercentage = computed(() => {
   return (score.value / totalWeight) * 100
 })
 
-
 // Progress değişikliklerini izle
 watch(progressPercentage, (newPercentage) => {
   badgesStore.checkProgressBadges(newPercentage)
 })
 
+
 onMounted(() => {
+  statsStore.initializeStats()
   statsStore.startSession()
+  
+  // Sayfa görünürlük değişikliklerini dinle
+  document.addEventListener('visibilitychange', () => {
+    statsStore.handleVisibilityChange()
+  })
   
   // İlk yüklemede mevcut ilerlemeyi kontrol et
   badgesStore.checkProgressBadges(progressPercentage.value)
 })
 
-// Session'u sonlandırmak için onUnmounted hook'u ekliyoruz
 onUnmounted(() => {
+  statsStore.endSession()
+  document.removeEventListener('visibilitychange', statsStore.handleVisibilityChange)
+})
+
+// Uygulamadan çıkışta son bir güncelleme yap
+window.addEventListener('beforeunload', () => {
   statsStore.endSession()
 })
 </script>

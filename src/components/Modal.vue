@@ -52,6 +52,8 @@ const emit = defineEmits(['close'])
 
 .modal-body {
   padding: .75rem;
+  overflow-y: auto;
+  flex: 1;
 }
 
 .modal-header {
@@ -63,6 +65,9 @@ const emit = defineEmits(['close'])
   background-color: rgba(128, 128, 128, 0.1);
   /* filter: brightness(1.2); */
   /* filter: brightness(1.5); */
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
 .modal-header h3 {
@@ -83,6 +88,8 @@ const emit = defineEmits(['close'])
   /* max-width: min(100vw - 1rem, var(--max-width)); */
   max-height: 80vh;
   overflow-y: auto;
+  display: flex;
+  flex-direction: column;
 }
 .close-button {
   width: 32px;

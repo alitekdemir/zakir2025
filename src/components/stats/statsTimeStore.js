@@ -6,12 +6,13 @@ export const useStatsTimeStore = defineStore('statsTime', {
     firstUseDate: null,
     totalScreenTime: 0,
     sessionStartTime: null,
-    dailyUsage: {}, // Son 30 günlük kullanım
+    dailyUsage: {},
     streak: 0,
     dailyTesbihatCount: 0,
     lastTesbihatTime: null,
     weeklyTesbihatCount: 0,
-    dailyTesbihatCounts: {}
+    dailyTesbihatCounts: {},
+    lastUpdateTime: null
   }),
 
   actions: {
@@ -20,11 +21,15 @@ export const useStatsTimeStore = defineStore('statsTime', {
       if (stored) {
         try {
           const stats = JSON.parse(stored)
-          if (stats.dailyUsage) {
-            const totalMinutes = Object.values(stats.dailyUsage).reduce((sum, minutes) => sum + minutes, 0)
-            stats.totalScreenTime = totalMinutes * 60
-          }
           this.$state = stats
+          
+          // Eğer önceki oturum düzgün kapanmadıysa
+          if (stats.sessionStartTime && stats.lastUpdateTime) {
+            const lastSessionDuration = Math.floor(
+              (new Date(stats.lastUpdateTime) - new Date(stats.sessionStartTime)) / 1000
+            )
+            this.totalScreenTime += lastSessionDuration
+          }
         } catch (error) {
           console.error('Stats yüklenirken hata:', error)
           this.resetStats()
@@ -35,16 +40,48 @@ export const useStatsTimeStore = defineStore('statsTime', {
     },
 
     startSession() {
-      this.sessionStartTime = new Date()
+      this.sessionStartTime = new Date().toISOString()
+      this.lastUpdateTime = new Date().toISOString()
       this.updateDailyUsage()
+      
+      // Periyodik güncelleme başlat
+      this.startPeriodicUpdate()
+    },
+
+    startPeriodicUpdate() {
+      // Her 30 saniyede bir süreyi güncelle
+      this.updateInterval = setInterval(() => {
+        this.updateCurrentSession()
+      }, 30000)
+    },
+
+
+    updateCurrentSession() {
+      if (this.sessionStartTime && document.visibilityState === 'visible') {
+        const now = new Date()
+        const lastUpdate = new Date(this.lastUpdateTime)
+        const sessionDuration = Math.floor((now - lastUpdate) / 1000)
+        
+        this.totalScreenTime += sessionDuration
+        this.lastUpdateTime = now.toISOString()
+        this.saveStats()
+      }
     },
 
     endSession() {
       if (this.sessionStartTime) {
-        const sessionDuration = Math.floor((new Date() - new Date(this.sessionStartTime)) / 1000)
-        this.totalScreenTime += sessionDuration
+        this.updateCurrentSession()
+        clearInterval(this.updateInterval)
         this.sessionStartTime = null
         this.saveStats()
+      }
+    },
+
+    handleVisibilityChange() {
+      if (document.visibilityState === 'hidden') {
+        this.updateCurrentSession()
+      } else {
+        this.lastUpdateTime = new Date().toISOString()
       }
     },
 
