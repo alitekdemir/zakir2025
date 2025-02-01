@@ -138,7 +138,7 @@ export const useStatsBadgesStore = defineStore('badges', {
       this.badges.ezber66.progress = Math.min(Math.round(percentage), 100)
     
       // %33 rozeti kontrolü
-      if (percentage >= 33) {
+      if (percentage > 32) {
         this.earnBadge('ezber33')
       } else {
         this.badges.ezber33.isAchieved = false
@@ -146,7 +146,7 @@ export const useStatsBadgesStore = defineStore('badges', {
       }
     
       // %66 rozeti kontrolü
-      if (percentage >= 66) {
+      if (percentage > 65) {
         this.earnBadge('ezber66')
       } else {
         this.badges.ezber66.isAchieved = false
