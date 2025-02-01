@@ -83,9 +83,7 @@ const handleMemorizedToggle = () => {
           {{ number }}
         </div>
         <span v-if="title" class="title">{{ title }}</span>
-        <div class="collapse-indicator">
-          {{ isCollapsed ? '▼' : '▲' }}
-        </div>
+        <!-- <div class="collapse-indicator"> {{ isCollapsed ? '▼' : '▲' }} </div> -->
       </div>
       
       <div class="dropdown-container">
@@ -170,11 +168,11 @@ const handleMemorizedToggle = () => {
 .dua-widget {
   color: var(--text-primary);
   background: var(--card-background);
-  padding: 0.8rem;
-  box-shadow: var(--card-shadow);
-  border-radius: 1rem;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--primary-light);
   border: 1px solid var(--primary);
-  border: var(--card-border);
+  box-shadow: var(--card-shadow);
   transition: all 0.3s ease;
   scroll-margin-top: 80px; /* Navbar + Navigator yüksekliği */
 }
@@ -186,7 +184,7 @@ const handleMemorizedToggle = () => {
 
 /* Collapsed durumunda padding ve margin'leri azalt */
 .dua-widget.collapsed {
-  padding: 0.4rem 0.8rem;
+  padding: 0.2rem;
 }
 
 /* Header margin'i collapsed durumunda sıfırla */
@@ -199,8 +197,7 @@ const handleMemorizedToggle = () => {
   border: none;
   box-shadow: none;
   border: 1px solid var(--primary-light);
-  /* background-color: rgba(1, 121, 111, 0.1); */
-  background-color: var(--primary-light);
+  background-color: var(--primary-lighter);
 }
 
 
@@ -229,17 +226,15 @@ const handleMemorizedToggle = () => {
 
 
 .widget-header {
+  width: 100%;
   display: flex;
   align-items: center;
   gap: 0.1rem;
-  margin-bottom: 16px;
+  /* margin-bottom: 1rem; */
   cursor: pointer;
   user-select: none;
   justify-content: space-between;
   transition: margin-bottom 0.3s ease;
-}
-.widget-header {
-  width: 100%;
 }
 
 .collapse-indicator {

@@ -7,7 +7,7 @@
   --primary: hwb(175 0% 53%);
   --primary-dark: hwb(177 0% 60%);
   --primary-light: hwb(175 0% 53% / 0.25);
-  --primary-lighter: hwb(175 0% 53% / 0.1);
+  --primary-lighter: hwb(175 0% 53% / 0.05);
 
   /* Theme Colors */
   --background: #ffffff;

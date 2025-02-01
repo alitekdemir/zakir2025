@@ -5,7 +5,7 @@ import { useStatsTimeStore } from '../stats/statsTimeStore'
 import { useStatsBadgesStore } from '../badges/statsBadgesStore'
 import { useProgress, widgetWeights } from '../../assets/useProgress'
 
-import Header from '../Header.vue';
+import Header from './Header.vue';
 import ProgressBar from '../stats/ProgressBar.vue';
 import DuaNavigator from '../DuaNavigator.vue';
 import { duaList } from '../dualar/duaList.js';
@@ -40,7 +40,7 @@ onMounted(() => {
 <template>
   <div class="home-container">
     <Header />
-    <ProgressBar class="pad"/>
+    <ProgressBar/>
     <!-- <DuaNavigator :duaList="duaList" /> -->
     <Tesbihat />
     <ZakirGullu />
@@ -54,10 +54,5 @@ onMounted(() => {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.pad { 
-  padding: 1rem 1rem;
-  width: 100%; 
 }
 </style>

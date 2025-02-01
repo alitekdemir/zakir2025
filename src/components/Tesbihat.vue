@@ -64,12 +64,6 @@ const completeTesbihat = async () => {
 
 
 <style scoped>
-.wrapper {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
 
 .tesbihat-container {
   background-color: var(--background);
@@ -79,7 +73,7 @@ const completeTesbihat = async () => {
   align-items: center;
   padding: 0 0.25rem;
   /* margin: 1.5rem auto; */
-  gap: 1rem;
+  gap: 1.0rem;
   width: 100%;
   max-width: min(600px, 100%);
   max-width: clamp(16rem, 38rem, 42rem);

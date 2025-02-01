@@ -54,14 +54,15 @@
 
 
 /* Mobil için dokunmatik geri bildirimi kaldır */
-@media (hover: none) {
-    button {
-        -webkit-tap-highlight-color: transparent;
-    }
-}
+/* @media (hover: none) {button {-webkit-tap-highlight-color: transparent;}} */
 
 /* Masaüstü için modern scrollbar */
 @media (min-width: 768px) {
+    /* Firefox için */
+    * {
+        scrollbar-width: thin;
+        scrollbar-color: rgba(255, 82, 82, 0.2) rgba(255, 82, 82, 0.05);
+    }
 
     /* Webkit tarayıcılar için (Chrome, Safari, yeni Edge) */
     ::-webkit-scrollbar {
@@ -82,12 +83,6 @@
 
     ::-webkit-scrollbar-thumb:hover {
         background: rgba(255, 82, 82, 0.3);
-    }
-
-    /* Firefox için */
-    * {
-        scrollbar-width: thin;
-        scrollbar-color: rgba(255, 82, 82, 0.2) rgba(255, 82, 82, 0.05);
     }
 }
 

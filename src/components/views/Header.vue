@@ -1,6 +1,6 @@
 <!-- src/components/Header.vue -->
 <template>
-  <header class="header">
+  <header class="flex-container column header">
     <span class="subtitle">Risale-i Nur talebeleri için kolay ezberlenen</span>
     <h1 class="title">ÖZLÜ TESBİHAT</h1>
   </header>
@@ -8,12 +8,11 @@
 
 <style scoped>
 .header {
-  width: 100%; /* Genişlik %100 */
+  width: 100%;
   min-height: 10vh;
   background: var(--primary);
   color: white;
-  padding: 2rem 0.5rem; /* Düzeltildi */
-  text-align: center;
+  padding: 2rem 0.5rem;
   transition: background-color 0.6s ease-in-out, color 0.6s ease-in-out;
 }
 
