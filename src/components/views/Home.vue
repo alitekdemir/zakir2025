@@ -1,9 +1,9 @@
 <!-- src/components/Home.vue -->
 <script setup>
-import { onMounted, onUnmounted, watch, computed } from 'vue' // computed'ı ekleyin
-import { useStatsTimeStore } from '../stats/statsTimeStore'
-import { useStatsBadgesStore } from '../badges/statsBadgesStore'
-import { useProgress, widgetWeights } from '../../assets/useProgress'
+import { onMounted, onUnmounted, watch, computed } from 'vue'
+import { useStatsTimeStore } from '../stats/statsTimeStore.js';
+import { useStatsBadgesStore } from '../badges/statsBadgesStore.js';
+import { useProgress, widgetWeights } from '../../assets/useProgress.js';
 
 import Header from './Header.vue';
 import ProgressBar from '../stats/ProgressBar.vue';
@@ -34,6 +34,11 @@ onMounted(() => {
   
   // İlk yüklemede mevcut ilerlemeyi kontrol et
   badgesStore.checkProgressBadges(progressPercentage.value)
+})
+
+// Session'u sonlandırmak için onUnmounted hook'u ekliyoruz
+onUnmounted(() => {
+  statsStore.endSession()
 })
 </script>
 

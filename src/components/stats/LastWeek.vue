@@ -1,9 +1,9 @@
 <!-- src/components/stats/LastWeek.vue -->
 <script setup>
 import { computed } from 'vue'
-import { useStatsStore } from '../../assets/statsStore'
+import { useStatsTimeStore } from './statsTimeStore.js'
 
-const stats = useStatsStore()
+const stats = useStatsTimeStore()
 
 
 const weeklyData = computed(() => {

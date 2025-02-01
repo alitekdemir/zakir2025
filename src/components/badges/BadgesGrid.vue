@@ -1,14 +1,14 @@
 <!-- src/components/badges/BadgesGrid.vue -->
 <script setup>
 import { ref, onMounted } from 'vue'
-import { useStatsBadgesStore } from './statsBadgesStore'
-import { badgeConfigs } from './badgeConfigs' // badgeConfigs'i import edin
+import { useStatsBadgesStore } from './statsBadgesStore.js';
+import { badgeConfigs } from './badgeConfigs.js';
 
 const badgesStore = useStatsBadgesStore()
 
-import Badge from './Badge.vue'
-import BadgeModal from './BadgeModal.vue'
-import BadgeSplash from './BadgeSplash.vue'
+import Badge from './Badge.vue';
+import BadgeModal from './BadgeModal.vue';
+import BadgeSplash from './BadgeSplash.vue';
 
 const selectedBadge = ref(null)
 const showModal = ref(false)

@@ -2,7 +2,7 @@
 <script setup>
 import ProgressBar from '../stats/ProgressBar.vue';
 import StatsCards from '../stats/StatsCards.vue';
-import LastWeek from '../badges/LastWeek.vue';
+import LastWeek from '../stats/LastWeek.vue';
 import BadgesGrid from '../badges/BadgesGrid.vue';
 import ResetStats from '../stats/ResetStats.vue'
 </script>

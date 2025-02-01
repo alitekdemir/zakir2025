@@ -123,7 +123,8 @@ export const badgeConfigs = {
     icon: Zakir,
     title: 'Zâkir',
     description: 'Tüm rozetleri topla',
-    sound: cekirgeSound,
+    // sound: cekirgeSound,
+    sound: tetrisSound,
     requirements: ['Diğer tüm rozetleri kazan'],
     order: 12
   }
