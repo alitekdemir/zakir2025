@@ -64,8 +64,7 @@ export const dualar = {
     tevhid: {
         latin: [
             { text: "Lâ ilâhe illallâhü vahdehü lâ şerîke leh" },
-            { text: "lehül mülkü ve lehül hamdü" },
-            { text: "yuhyî ve yümît," },
+            { text: "lehül mülkü ve lehül hamdü yuhyî ve yümît," },
             { text: "ve hüve hayyün lâ yemût", emphasis: true },
             { text: "biyedihil hayr" },
             { text: "ve hüve alâ külli şey'in kadîr" },
@@ -73,8 +72,7 @@ export const dualar = {
         ],
         arabic: [
             { text: "لَٓا اِلٰهَ اِلَّا اللّٰهُ وَحْدَهُ لَٓا شَرِيكَ لَهُ،" },
-            { text: "لَهُ الْمُلْكُ وَ لَهُ الْحَمْدُ،" },
-            { text: "يُحْيِي وَ يُمِيتُ،" },
+            { text: "لَهُ الْمُلْكُ وَ لَهُ الْحَمْدُ، يُحْيِي وَ يُمِيتُ،" },
             { text: "وَ هُوَ حَيٌّ لَٓا يَمُوتُ،", emphasis: true },
             { text: "بِيَدِهِ الْخَيْرُ،" },
             { text: "وَ هُوَ عَلٰى كُلِّ شَيْءٍ قَدِيرٌ" },

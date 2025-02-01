@@ -1,3 +1,4 @@
+<!-- src/components/dualar/03-sabah-aksam.vue -->
 <script setup>
 import { ref } from 'vue'
 import { dualar } from '../../assets/dualar.js'
@@ -84,11 +85,15 @@ const increment = () => {
               </p>
             </div>
 
-            <p class="divider"><strong>9 defa okunur</strong></p>
+            <p class="divider"><strong>9 defa böyle okunur</strong></p>
             <p class="flex-container wrap" :class="[scriptStyle]">
               <template v-for="line in tevhid[scriptStyle]" :key="line.text">
-                <span v-if="!line.last && !line.emphasis" 
-                  :class="{ [scriptStyle]: true, 'special-line': line.emphasis, 'empty': line.emphasis }">
+                <span v-if="!line.last" 
+                  :class="{ 
+                    [scriptStyle]: true, 
+                    'special-line': line.emphasis,
+                    'empty': line.emphasis 
+                  }">
                   {{ line.text }}
                 </span>
               </template>
@@ -111,13 +116,12 @@ const increment = () => {
   
 
 <style scoped>
-
 .divider{text-align:left;}
+
 .special-line { 
   color: var(--primary); 
   width: 100%; 
 }
-.special-line.empty { opacity: 0; }
 
 .counter-button {
   min-width: 4rem;
@@ -133,6 +137,22 @@ const increment = () => {
 
 .fade-enter-active, .fade-leave-active { transition: opacity 0.2s ease; }
 .fade-enter-from, .fade-leave-to { opacity: 0; }
+
+.blue { 
+  width: 100%; 
+}
+
+.empty {
+  visibility: hidden;  /* veya opacity: 0; */
+  display: block;
+  width: 100%;
+}
+
+.section{min-height: 7rem;}
+
+@media (max-width: 24rem) {
+  .section { min-height: 11rem; }
+}
 
 </style>
 
