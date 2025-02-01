@@ -103,19 +103,19 @@ export const badgeConfigs = {
   ezber33: {
     id: 'ezber33',
     icon: Ezber33,
-    title: '33% Ezber',
-    description: 'Tesbihatların 33%\'ini ezberle',
+    title: '3 te 1 Ezber',
+    description: "Tesbihatın 1/3 kadarını ezberle",
     sound: defaultSound,
-    requirements: ['Tesbihatların %33\'ünü ezberle'],
+    requirements: ["Tesbihatın %33'ünü ezberle"],
     order: 10
   },
   ezber66: {
     id: 'ezber66',
     icon: Ezber66,
-    title: '66% Ezber',
-    description: 'Tesbihatların 66%\'sını ezberle',
+    title: '2/3 Ezber',
+    description: "Tesbihatın 2/3'ünü ezberle",
     sound: tetrisSound,
-    requirements: ['Tesbihatların %66\'sını ezberle'],
+    requirements: ["Tesbihatın %66'sını ezberle"],
     order: 11
   },
   zakir: {
