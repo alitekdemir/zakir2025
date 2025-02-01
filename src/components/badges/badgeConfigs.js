@@ -31,8 +31,8 @@ export const badgeConfigs = {
   streak3: {
     id: 'streak3',
     icon: ArdArda3Gun,
-    title: 'Art arda 3 gün',
-    description: '3 gün kesintisiz kullanım',
+    title: '3 gün',
+    description: 'Art arda 3 gün kesintisiz kullanım',
     sound: defaultSound,
     requirements: ['3 gün kesintisiz uygulama kullanımı'],
     order: 2
@@ -40,8 +40,8 @@ export const badgeConfigs = {
   streak5: {
     id: 'streak5',
     icon: ArdArda5Gun,
-    title: 'Art arda 5 gün',
-    description: '5 gün kesintisiz kullanım',
+    title: '5 gün',
+    description: 'Art arda 5 gün kesintisiz kullanım',
     sound: defaultSound,
     requirements: ['5 gün kesintisiz uygulama kullanımı'],
     order: 3
@@ -49,8 +49,8 @@ export const badgeConfigs = {
   streak7: {
     id: 'streak7',
     icon: ArdArda7Gun,
-    title: 'Art arda 7 gün',
-    description: '7 gün kesintisiz kullanım',
+    title: '7 gün',
+    description: 'Art arda 7 gün kesintisiz kullanım',
     sound: defaultSound,
     requirements: ['7 gün kesintisiz uygulama kullanımı'],
     order: 4
@@ -58,8 +58,8 @@ export const badgeConfigs = {
   streak10: {
     id: 'streak10',
     icon: ArdArda10Gun,
-    title: 'Art arda 10 gün',
-    description: '10 gün kesintisiz kullanım',
+    title: '10 gün',
+    description: 'Art arda 10 gün kesintisiz kullanım',
     sound: defaultSound,
     requirements: ['10 gün kesintisiz uygulama kullanımı'],
     order: 5
@@ -67,8 +67,8 @@ export const badgeConfigs = {
   streak15: {
     id: 'streak15',
     icon: ArdArda15Gun,
-    title: 'Art arda 15 gün',
-    description: '15 gün kesintisiz kullanım',
+    title: '15 gün',
+    description: 'Art arda 15 gün kesintisiz kullanım',
     sound: './sounds/tetris-v.mp3',
     requirements: ['15 gün kesintisiz uygulama kullanımı'],
     order: 6
