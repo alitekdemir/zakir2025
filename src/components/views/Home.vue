@@ -57,7 +57,7 @@ window.addEventListener('beforeunload', () => {
   <div class="home-container">
     <Header />
     <ProgressBar/>
-    <!-- <DuaNavigator :duaList="duaList" /> -->
+    <DuaNavigator :duaList="duaList" />
     <Tesbihat />
     <ZakirGullu />
     <InstallPWAPrompt />

@@ -100,7 +100,7 @@ const scrollToSection = (number) => {
   background: var(--background);
   margin: 0px 0 1rem 0;
   z-index: 100;
-  border-bottom: 3px solid var(--primary);
+  border-bottom: 4px solid var(--primary);
   box-shadow: rgba(38, 57, 77, 0.20) 0px 10px 15px -5px;
 }
 
