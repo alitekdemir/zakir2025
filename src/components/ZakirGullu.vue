@@ -1,10 +1,15 @@
 <!-- src/components/ZakirGullu.vue -->
+<script setup>
+import Rose from '../assets/icon_rose.vue'
+import Zakir from '../assets/icon_zakir-crop.vue'
+</script>
+
 <template>
   <div class="gullu">
     <div class="flex-container wrap">
-      <img src="../assets/rose.svg" class="rose" alt="Gül süslemesi" loading="lazy" />
-      <img src="../assets/zakir.png" class="zakir" alt="Zakir ikonu" loading="lazy" />
-      <img src="../assets/rose.svg" class="rose" alt="Gül süslemesi" loading="lazy" />
+      <Rose class="rose" alt="Gül" loading="lazy"/>
+      <Zakir class="zakir" alt="Gül" loading="lazy"/>
+      <Rose class="rose" alt="Gül" loading="lazy"/>
     </div>
     <span class="info-text">Allah kabul etsin kardeşim.</span>
   </div>
@@ -21,11 +26,13 @@
 }
 
 .rose {
-  height: 2rem;
+  width: 2.5rem;
+  height: auto;
 }
 
 .zakir {
-  height: 7rem;
+  width: 5rem;
+  height: auto;
   transition: filter 300ms;
 }
 
