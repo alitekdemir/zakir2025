@@ -55,9 +55,8 @@ watch(() => props.isOpen, (newValue) => {
           <span class="main">Ana Sayfa</span>
       </router-link>
 
-      <hr class="divider">
+      <!-- <hr class="divider"> -->
 
-      
       <router-link to="/ayarlar" @click="emit('toggle')">
         <i class="material-symbols">text_format</i>
         Ayarlar
@@ -67,17 +66,23 @@ watch(() => props.isOpen, (newValue) => {
         İstatistikler
       </router-link>
       
+
+
       <hr class="divider">
       
+
+
+      <router-link to="/hakkinda" @click="emit('toggle')">
+        <i class="material-symbols">help</i>
+        Hakkında
+      </router-link>
+
       <!-- Rehberi Göster butonu eklendi -->
       <a href="#" @click="startTour">
         <i class="material-symbols">tour</i>
         Kullanım Kılavuzu
       </a>
-      <router-link to="/hakkinda" @click="emit('toggle')">
-        <i class="material-symbols">help</i>
-        Hakkında
-      </router-link>
+
       <router-link to="/tesbihatin-faziletleri" @click="emit('toggle')">
         <i class="material-symbols">auto_awesome</i>
         Tesbihatın Faziletleri
