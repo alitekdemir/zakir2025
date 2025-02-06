@@ -74,9 +74,9 @@ watch(() => props.isOpen, (newValue) => {
 
       <hr class="divider">
 
-      <router-link to="/nasil-kullanilir" @click="emit('toggle')">
+      <router-link to="/hakkinda" @click="emit('toggle')">
         <i class="material-symbols">help</i>
-        Nasıl Kullanılır
+        Hakkında
       </router-link>
       <router-link to="/tesbihatin-faziletleri" @click="emit('toggle')">
         <i class="material-symbols">auto_awesome</i>

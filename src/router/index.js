@@ -1,7 +1,7 @@
 // src/router/index.js
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from './Home.vue'
-import Nasil from './NasilKullanilir.vue'
+import Hakkinda from './Hakkinda.vue'
 import Fazilet from './TesbihatinFaziletleri.vue'
 import Ayarlar from './Ayarlar.vue'
 import Istatistikler from './Istatistikler.vue'
@@ -16,9 +16,9 @@ const router = createRouter({
       component: HomeView
     },
     {
-      path: '/nasil-kullanilir',
-      name: 'nasil-kullanilir',
-      component: Nasil
+      path: '/hakkinda',
+      name: 'hakkinda',
+      component: Hakkinda
     },
     {
       path: '/tesbihatin-faziletleri',
