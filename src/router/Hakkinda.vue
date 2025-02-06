@@ -26,7 +26,7 @@ export default {
       <li><strong>Kişiselleştirilebilir:</strong> Farklı temalar ve yazı tipleri.</li>
     </ul>
 
-     <img src="/tesbihat-organize.png" alt="Tesbihat Ekranı" class="screenshot" />
+    <img src="/tesbihat-organize.png" alt="Tesbihat Ekranı" class="screenshot" />
 
     <h2>Uygulamanın Özellikleri</h2>
     <p>
@@ -95,26 +95,14 @@ export default {
 /* Buraya, about-page sınıfına ve diğer elementlere özel stillerinizi ekleyin. */
 .about-page {
   padding: 20px;
-  max-width: 800px; /* İsteğe bağlı, içeriği ortalamak için */
+  max-width: var(--content-width); /* İsteğe bağlı, içeriği ortalamak için */
   margin: 0 auto;    /* İsteğe bağlı, içeriği ortalamak için */
 }
 
 .screenshot {
   max-width: 100%; /* Resimlerin sayfa genişliğini aşmamasını sağlar */
+  /* width: calc(var(--content-width) / 2); */
   height: auto;    /* Oranların korunması için */
-  margin-bottom: 1rem; /* Resimlerin altında boşluk */
   display: block;
 }
-
-h1, h2, h3 {
-    margin-bottom: 0.5rem;
-}
-ul {
-  margin-bottom: 1rem;
-  padding-left: 20px; /* Madde işaretlerinin düzgün görünmesi için */
-}
-li{
-    margin-bottom: 0.4rem;
-}
-
 </style>
