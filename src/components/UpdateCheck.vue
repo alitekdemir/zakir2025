@@ -120,7 +120,7 @@ onMounted(async () => {
     }
 
     if (currentVersion.value !== appVersion || currentAssetsVersion.value !== assetsVersion) {
-      updateStatus.value = `Yeni sürüm mevcut: ${appVersion} (Assets: ${assetsVersion})`
+      updateStatus.value = `Yeni sürüm mevcut: ${appVersion} - A${assetsVersion}`
     }
   } catch (error) {
     console.error('Otomatik versiyon kontrolü hatası:', error)
@@ -139,8 +139,8 @@ onMounted(async () => {
       <i class="material-symbols" :class="{ 'spinning': isUpdating }">
         {{ isUpdating ? 'sync' : 'system_update' }}
       </i>
-      <span>Güncelleme Kontrolü</span>
-      <small class="version">v{{ currentVersion }} ({{ currentAssetsVersion }})</small>
+      <span>Güncelle</span>
+      <small class="version">v{{ currentVersion }}&ensp;A{{ currentAssetsVersion }}</small>
     </button>
     
     <div 

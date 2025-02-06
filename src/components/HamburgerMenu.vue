@@ -57,12 +57,7 @@ watch(() => props.isOpen, (newValue) => {
 
       <hr class="divider">
 
-      <!-- Rehberi Göster butonu eklendi -->
-      <a href="#" @click="startTour">
-        <i class="material-symbols">tour</i>
-        Rehberi Göster
-      </a>
-
+      
       <router-link to="/ayarlar" @click="emit('toggle')">
         <i class="material-symbols">text_format</i>
         Ayarlar
@@ -71,9 +66,14 @@ watch(() => props.isOpen, (newValue) => {
         <i class="material-symbols">analytics</i>
         İstatistikler
       </router-link>
-
+      
       <hr class="divider">
-
+      
+      <!-- Rehberi Göster butonu eklendi -->
+      <a href="#" @click="startTour">
+        <i class="material-symbols">tour</i>
+        Kullanım Kılavuzu
+      </a>
       <router-link to="/hakkinda" @click="emit('toggle')">
         <i class="material-symbols">help</i>
         Hakkında
@@ -82,13 +82,13 @@ watch(() => props.isOpen, (newValue) => {
         <i class="material-symbols">auto_awesome</i>
         Tesbihatın Faziletleri
       </router-link>
+      
+      <hr class="divider">
+      
       <router-link to="/geri-bildirim" @click="emit('toggle')">
         <i class="material-symbols">feedback</i>
         Geri Bildirim
       </router-link>
-
-      <hr class="divider">
-      
       <UpdateCheck :closeMenu="() => emit('toggle')" />
     </div>
 
