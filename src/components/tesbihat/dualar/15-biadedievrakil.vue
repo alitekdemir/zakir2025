@@ -1,7 +1,7 @@
 <!-- src/components/dualar/15-biadedievrakil.vue -->
 <script setup>
-import { dualar } from '../../assets/dualar.js'
-import { useScriptStyle } from '../../assets/useScriptStyle.js'
+import { dualar } from '../dualar.js'
+import { useScriptStyle } from '../../../assets/useScriptStyle.js'
 
 const { biadedievrakil } = dualar
 const { scriptStyle } = useScriptStyle()

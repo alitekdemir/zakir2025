@@ -1,9 +1,9 @@
 <!-- src/components/dualar/02-tuncina.vue -->
 <script setup>
 import { ref } from 'vue'
-import Modal from '../Modal.vue'
-import { dualar } from '../../assets/dualar.js'
-import { useScriptStyle } from '../../assets/useScriptStyle.js'
+import Modal from '../../Modal.vue'
+import { dualar } from '../dualar.js'
+import { useScriptStyle } from '../../../assets/useScriptStyle.js'
 
 const showModal = ref(false)
 const { tuncina } = dualar

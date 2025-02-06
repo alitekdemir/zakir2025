@@ -1,7 +1,7 @@
 <!-- src/components/dualar/09-dua.vue -->
 <script setup>
-import { dualar } from '../../assets/dualar.js'
-import { useScriptStyle } from '../../assets/useScriptStyle.js'
+import { dualar } from '../dualar.js'
+import { useScriptStyle } from '../../../assets/useScriptStyle.js'
 
 const { dua } = dualar
 const { scriptStyle } = useScriptStyle()

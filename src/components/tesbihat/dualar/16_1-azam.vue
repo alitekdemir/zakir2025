@@ -1,8 +1,8 @@
 <!-- src/components/dualar/16-ismi-azam.vue -->
 <script setup>
-import { dualar } from '../../assets/dualar.js'
-import { useScriptStyle } from '../../assets/useScriptStyle.js'
-import { sureler } from '../../assets/sureler.js'
+import { dualar } from '../dualar.js'
+import { useScriptStyle } from '../../../assets/useScriptStyle.js'
+import { sureler } from '../sureler.js'
 
 const { ismiazam } = dualar
 const { scriptStyle } = useScriptStyle()

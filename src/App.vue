@@ -7,7 +7,7 @@ const wakeLockControls = useWakeLock()
 import SplashScreen from './components/SplashScreen.vue'
 const showSplash = ref(true)
 import Navbar from './components/Navbar.vue'
-import Home from './components/views/Home.vue'
+import Home from './router/Home.vue'
 
 // ProgressBar birden fazla yerde kullanımı için ana App içinde oluşturuldu
 import { createProgress } from './assets/useProgress';

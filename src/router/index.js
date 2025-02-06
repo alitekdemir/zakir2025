@@ -1,6 +1,11 @@
 // src/router/index.js
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../components/views/Home.vue'
+import HomeView from './Home.vue'
+import Nasil from './NasilKullanilir.vue'
+import Fazilet from './TesbihatinFaziletleri.vue'
+import Ayarlar from './Ayarlar.vue'
+import Istatistikler from './Istatistikler.vue'
+import GeriBildirim from './GeriBildirim.vue'
 
 const router = createRouter({
   history: createWebHistory(),
@@ -13,23 +18,23 @@ const router = createRouter({
     {
       path: '/nasil-kullanilir',
       name: 'nasil-kullanilir',
-      component: () => import('../components/views/NasilKullanilir.vue')
+      component: Nasil
     },
     {
       path: '/tesbihatin-faziletleri',
-      component: () => import('../components/views/TesbihatinFaziletleri.vue')
+      component: Fazilet
     },
     {
       path: '/ayarlar',
-      component: () => import('../components/views/Ayarlar.vue')
+      component: Ayarlar
     },
     {
       path: '/istatistikler',
-      component: () => import('../components/views/Istatistikler.vue')
+      component: Istatistikler
     },
     {
       path: '/geri-bildirim',
-      component: () => import('../components/views/GeriBildirim.vue')
+      component: GeriBildirim
     },
     // {
     //   path: '/privacy',
@@ -39,3 +44,6 @@ const router = createRouter({
 })
 
 export default router
+
+
+// component: () => import('../components/views/Ayarlar.vue') şeklinde import edilmeden yazılabilir

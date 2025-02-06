@@ -1,7 +1,7 @@
 <!-- src/components/dualar/16-ismiazam.vue -->
 <script setup>
 import { ref } from 'vue'
-import Modal from '../Modal.vue'
+import Modal from '../../Modal.vue'
 import Azam from './16_1-azam.vue'
 import Tercuman from './16_2-tercuman.vue'
 

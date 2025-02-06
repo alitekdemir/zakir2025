@@ -44,5 +44,5 @@ export const widgetWeights = {
     15: 3,  // Biadedi
     16: 20, // IsmiAzam
     17: 6,  // IsmiAzamDua
-    18: 12, // Sureler
+    18: 12, // Aşirler
   }

@@ -1,23 +1,23 @@
-<!-- src/components/dualar/08-tevhid.vue -->
+<!-- src/components/dualar/05-subhanallahi.vue -->
 <script setup>
-import { dualar } from '../../assets/dualar.js'
-import { useScriptStyle } from '../../assets/useScriptStyle.js'
+import { dualar } from '../dualar.js'
+import { useScriptStyle } from '../../../assets/useScriptStyle.js'
 
-const { tevhid } = dualar
+const { subhanallahi } = dualar
 const { scriptStyle } = useScriptStyle()
 
 </script>
 
 <template>
-    <div class="flex-container wrap" :class="scriptStyle">
+    <p class="flex-container wrap" :class="scriptStyle">
         <span 
-            v-for="line in tevhid[scriptStyle]"
+            v-for="line in subhanallahi[scriptStyle]"
             :key="line.text || line"
             :class="{'special-line': line.emphasis || line.last}"
         >
         {{ line.text || line }}
         </span>
-    </div>
+    </p>
     
 </template>
 

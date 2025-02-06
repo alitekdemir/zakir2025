@@ -1,9 +1,9 @@
 <!-- src/components/dualar/03-sabah-aksam.vue -->
 <script setup>
 import { ref } from 'vue'
-import { dualar } from '../../assets/dualar.js'
-import { useScriptStyle } from '../../assets/useScriptStyle.js'
-import { useTevhidVibration } from '../../assets/vibrate'
+import { dualar } from '../dualar.js'
+import { useScriptStyle } from '../../../assets/useScriptStyle.js'
+import { useTevhidVibration } from '../../../assets/vibrate.js'
 
 const { nukaddimu, amenna, tevhid } = dualar
 const { scriptStyle } = useScriptStyle()

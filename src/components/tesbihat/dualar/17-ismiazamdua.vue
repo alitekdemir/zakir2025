@@ -1,9 +1,9 @@
 <!-- src/components/dualar/17-ismiazamdua.vue -->
 <script setup>
 import { ref } from 'vue'
-import Modal from '../Modal.vue'
-import { dualar } from '../../assets/dualar.js'
-import { useScriptStyle } from '../../assets/useScriptStyle.js'
+import Modal from '../../Modal.vue'
+import { dualar } from '../dualar.js'
+import { useScriptStyle } from '../../../assets/useScriptStyle.js'
 
 // const { ismiazamDua, tercumanDua } = dualar
 const { scriptStyle } = useScriptStyle()

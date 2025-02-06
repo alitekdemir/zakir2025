@@ -1,9 +1,9 @@
 <!-- src/components/views/Ayarlar.vue -->
 <script setup>
 import { ref, onMounted } from 'vue'
-import { useThemeStore } from '../../assets/themeStore'
-import { fontConfigs } from '../../assets/font-loader'
-import { themes, resetThemeToDefault } from '../../assets/themes'
+import { useThemeStore } from '../assets/themeStore'
+import { fontConfigs } from '../assets/font-loader'
+import { themes, resetThemeToDefault } from '../assets/themes'
 
 const themeStore = useThemeStore()
 
@@ -101,7 +101,7 @@ onMounted(async () => {
         <h3>Görünüm</h3>
         <button class="buton reset-button" @click="resetTheme">
           <i class="material-symbols">restart_alt</i>
-          <small>Varsayılan</small>
+          <small>Görünümü Sıfırla</small>
         </button>
       </div>
 
@@ -138,6 +138,8 @@ onMounted(async () => {
       </div>
     </div>
 
+    <span class="divider-line"></span>
+
     <!-- Font Ayarları -->
     <div class="settings-section">
       <div class="setting-header">
@@ -156,31 +158,7 @@ onMounted(async () => {
 
       <!-- Font Ayarları -->
       <div class="font-settings">
-        <!-- Latin Font Seçimi -->
-        <div class="setting-group">
-          <label>Latin Font</label>
-          <select 
-            :value="selectedLatinFont"
-            @change="e => updateLatinFont(e.target.value)"
-          >
-            <option v-for="font in latinFonts" :key="font.value" :value="font.value">
-              {{ font.label }}
-            </option>
-          </select>
-        </div>
 
-        <!-- Arapça Font Seçimi -->
-        <div class="setting-group">
-          <label>Arapça Font</label>
-          <select 
-            :value="selectedArabicFont"
-            @change="e => updateArabicFont(e.target.value)"
-          >
-            <option v-for="font in arabicFonts" :key="font.value" :value="font.value">
-              {{ font.label }}
-            </option>
-          </select>
-        </div>
 
         <!-- Latin Boyut Ayarı -->
         <div class="setting-group">
@@ -209,6 +187,38 @@ onMounted(async () => {
             min="1.0" max="2.0" step="0.1"
           >
         </div>
+
+
+        <!-- Latin Font Seçimi -->
+        <div class="setting-group">
+          <label>Latin Font</label>
+          <select 
+            :value="selectedLatinFont"
+            @change="e => updateLatinFont(e.target.value)"
+          >
+            <option v-for="font in latinFonts" :key="font.value" :value="font.value">
+              {{ font.label }}
+            </option>
+          </select>
+        </div>
+
+        <!-- Arapça Font Seçimi -->
+        <div class="setting-group">
+          <label>Arapça Font</label>
+          <select 
+            :value="selectedArabicFont"
+            @change="e => updateArabicFont(e.target.value)"
+          >
+            <option v-for="font in arabicFonts" :key="font.value" :value="font.value">
+              {{ font.label }}
+            </option>
+          </select>
+        </div>
+        <!-- <button class="buton reset-button" @click="resetFonts">
+          <i class="material-symbols">restart_alt</i>
+          <small>Sıfırla</small>
+        </button> -->
+
       </div>
     </div>
   </div>
@@ -217,12 +227,13 @@ onMounted(async () => {
 
 <style scoped>
 .settings-container {
-  max-width: 600px;
+  max-width: var(--content-width);
   margin: 0 auto;
   padding: 1rem 0.25rem;
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  gap: 1rem;
+  margin-bottom: 5rem;
 }
 
 .settings-section {
@@ -368,7 +379,7 @@ select, input[type="range"] {
   width: 100%;
   padding: 0.75rem;
   border: 1px solid var(--divider);
-  border-radius: 8px;
+  border-radius: 0.5rem;
   background: var(--surface);
   color: var(--text-primary);
   font-size: 1rem;
@@ -393,8 +404,8 @@ input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  width: 18px;
-  height: 18px;
+  width: 1rem;
+  height: 1rem;
   background: var(--primary);
   border-radius: 50%;
   cursor: pointer;
@@ -425,7 +436,7 @@ input[type="range"]::-webkit-slider-thumb {
 .mode-button {
     padding: 0.5rem 1rem;
     border: 1px solid var(--divider);
-    border-radius: 6px;
+    border-radius: 0.5rem;
     background: var(--surface);
     color: var(--text-primary);
     cursor: pointer;

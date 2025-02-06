@@ -1,11 +1,12 @@
 <!-- src/components/Tesbihat.vue -->
+<!-- src/components/tesbihat/Tesbihat.vue -->
 <script setup>
-import DuaWidget from './DuaWidget.vue';
-import { duaList } from './dualar/duaList.js';
 import { ref, computed } from 'vue'
-import { useStatsTimeStore } from './stats/statsTimeStore.js';
-import { useStatsBadgesStore } from './badges/statsBadgesStore.js';
-import BadgeSplash from './badges/BadgeSplash.vue';
+import DuaWidget from '../DuaWidget.vue';
+import { duaList } from './duaList.js';
+import { useStatsTimeStore } from '../stats/statsTimeStore.js';
+import { useStatsBadgesStore } from '../badges/statsBadgesStore.js';
+import BadgeSplash from '../badges/BadgeSplash.vue';
 
 const timeStore = useStatsTimeStore();
 const badgesStore = useStatsBadgesStore();

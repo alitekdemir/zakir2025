@@ -1,7 +1,7 @@
 <!-- src/components/dualar/15-sallivesellim.vue -->
 <script setup>
-import { dualar } from '../../assets/dualar.js'
-import { useScriptStyle } from '../../assets/useScriptStyle.js'
+import { dualar } from '../dualar.js'
+import { useScriptStyle } from '../../../assets/useScriptStyle.js'
 
 const { sallisellim } = dualar
 const { scriptStyle } = useScriptStyle()

@@ -1,10 +1,10 @@
 <!-- src/components/Istatistikler.vue -->
 <script setup>
-import ProgressBar from '../stats/ProgressBar.vue';
-import StatsCards from '../stats/StatsCards.vue';
-import LastWeek from '../stats/LastWeek.vue';
-import BadgesGrid from '../badges/BadgesGrid.vue';
-import ResetStats from '../stats/ResetStats.vue'
+import ProgressBar from '../components/stats/ProgressBar.vue';
+import StatsCards from '../components/stats/StatsCards.vue';
+import LastWeek from '../components/stats/LastWeek.vue';
+import BadgesGrid from '../components/badges/BadgesGrid.vue';
+import ResetStats from '../components/stats/ResetStats.vue'
 </script>
 
 <template>

@@ -1,9 +1,9 @@
 <!-- src/components/dualar/07-tesbih.vue -->
 <script setup>
 import { ref, computed } from 'vue'
-import { dualar } from '../../assets/dualar.js'
-import { useScriptStyle } from '../../assets/useScriptStyle'
-import { useTesbihVibration } from '../../assets/vibrate'
+import { dualar } from '../dualar.js'
+import { useScriptStyle } from '../../../assets/useScriptStyle.js'
+import { useTesbihVibration } from '../../../assets/vibrate.js'
 
 const { tesbih } = dualar
 const { scriptStyle } = useScriptStyle()

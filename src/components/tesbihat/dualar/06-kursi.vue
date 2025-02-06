@@ -1,8 +1,8 @@
 <script setup>
 import { ref } from 'vue'
-import Modal from '../Modal.vue'
-import { sureler } from '../../assets/sureler.js'
-import { useScriptStyle } from '../../assets/useScriptStyle'
+import Modal from '../../Modal.vue'
+import { sureler } from '../sureler.js'
+import { useScriptStyle } from '../../../assets/useScriptStyle.js'
 
 const showModal = ref(false)
 const { bismillah, kursi, sadakallah } = sureler

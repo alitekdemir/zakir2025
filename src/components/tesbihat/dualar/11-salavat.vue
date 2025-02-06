@@ -1,7 +1,8 @@
 <script setup>
 import { ref } from 'vue'
-import { dualar } from '../../assets/dualar.js'
-import { useScriptStyle } from '../../assets/useScriptStyle'
+import { dualar } from '../dualar.js'
+import { useScriptStyle } from '../../../assets/useScriptStyle.js'
+import rose from '../../../assets/icon_rose.vue'
 
 const { salavatlar } = dualar
 const { scriptStyle } = useScriptStyle()
@@ -16,7 +17,7 @@ const toggleSabah = () => {
   <div class="flex-container column" :class="scriptStyle">
     <p>
       <span class="text-segment">{{ salavatlar[scriptStyle].ana[0] }}</span>
-      <img src="../../assets/rose.svg" class="rose"/>
+      <rose class="rose" alt="Gül"/>
       <span class="text-segment">{{ salavatlar[scriptStyle].ana[1] }}</span>
     </p>
 
@@ -63,7 +64,7 @@ const toggleSabah = () => {
 }
 .rose {
   height: 1.5rem;
-  line-height: 1rem;
+  width: 1.5rem;
 }
 .sabah-btn {
   display: inline-flex;

@@ -1,9 +1,9 @@
 <!-- src/components/dualar/10-falem.vue -->
 <script setup>
 import { ref, computed } from 'vue'
-import { dualar } from '../../assets/dualar.js'
-import { useScriptStyle } from '../../assets/useScriptStyle'
-import { useFalemVibration } from '../../assets/vibrate'
+import { dualar } from '../dualar.js'
+import { useScriptStyle } from '../../../assets/useScriptStyle.js'
+import { useFalemVibration } from '../../../assets/vibrate.js'
 
 const { falemennehu } = dualar
 const { scriptStyle } = useScriptStyle()

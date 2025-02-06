@@ -1,8 +1,8 @@
 <!-- src/components/dualar/04-ecirna.vue -->
 <script setup>
 import { ref } from 'vue'
-import { dualar } from '../../assets/dualar.js'
-import { useScriptStyle } from '../../assets/useScriptStyle.js'
+import { dualar } from '../dualar.js'
+import { useScriptStyle } from '../../../assets/useScriptStyle.js'
 
 const { ecirna } = dualar
 const { scriptStyle } = useScriptStyle()

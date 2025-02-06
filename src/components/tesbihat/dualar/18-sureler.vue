@@ -1,9 +1,9 @@
 <!-- src/components/dualar/17-sure.vue -->
 <script setup>
 import { ref } from 'vue'
-import Modal from '../Modal.vue'
-import { useScriptStyle } from '../../assets/useScriptStyle.js'
-import { sureler } from '../../assets/sureler.js'
+import Modal from '../../Modal.vue'
+import { useScriptStyle } from '../../../assets/useScriptStyle.js'
+import { sureler } from '../sureler.js'
 
 const { scriptStyle } = useScriptStyle()
 const modals = ref({

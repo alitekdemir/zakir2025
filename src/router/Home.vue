@@ -1,17 +1,17 @@
 <!-- src/components/Home.vue -->
 <script setup>
 import { onMounted, onUnmounted, watch, computed } from 'vue'
-import { useStatsTimeStore } from '../stats/statsTimeStore.js';
-import { useStatsBadgesStore } from '../badges/statsBadgesStore.js';
-import { useProgress, widgetWeights } from '../../assets/useProgress.js';
+import { useStatsTimeStore } from '../components/stats/statsTimeStore.js';
+import { useStatsBadgesStore } from '../components/badges/statsBadgesStore.js';
+import { useProgress, widgetWeights } from '../assets/useProgress.js';
 
-import Header from './Header.vue';
-import ProgressBar from '../stats/ProgressBar.vue';
-import DuaNavigator from '../DuaNavigator.vue';
-import { duaList } from '../dualar/duaList.js';
-import Tesbihat from '../Tesbihat.vue';
-import ZakirGullu from '../ZakirGullu.vue';
-import InstallPWAPrompt from '../InstallPWAPrompt.vue';
+import Header from '../components/Header.vue';
+import ProgressBar from '../components/stats/ProgressBar.vue';
+import { duaList } from '../components/tesbihat/duaList.js';
+import Tesbihat from '../components/tesbihat/Tesbihat.vue';
+import DuaNavigator from '../components/DuaNavigator.vue';
+import InstallPWAPrompt from '../components/InstallPWAPrompt.vue';
+import ZakirGullu from '../components/ZakirGullu.vue';
 
 const statsStore = useStatsTimeStore()
 const badgesStore = useStatsBadgesStore()

@@ -1,7 +1,7 @@
 <!-- src/components/dualar/01-entesselam.vue -->
 <script setup>
-import { dualar } from '../../assets/dualar.js'
-import { useScriptStyle } from '../../assets/useScriptStyle.js'
+import { dualar } from '../dualar.js'
+import { useScriptStyle } from '../../../assets/useScriptStyle.js'
 
 const { selam } = dualar
 const { scriptStyle } = useScriptStyle()
