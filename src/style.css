@@ -216,52 +216,9 @@ button {
 .gold { color: var(--gold); }
 
 
-/* Tour animasyonları */
-.driver-popover {
-    background-color: var(--background) !important;
-    color: var(--text-primary) !important;
-    animation: fadeIn 0.3s ease-out;
-  }
-  
-  .driver-popover-title {
-    color: var(--primary) !important;
-    font-size: 1.2em !important;
-  }
-  
-  .driver-popover-description {
-    color: var(--text-secondary) !important;
-  }
-  
-  
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(-10px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  /* Tour buton stilleri */
-  .driver-popover-footer button {
-    background-color: var(--primary) !important;
-    color: white !important;
-    border-radius: 20px !important;
-    padding: 8px 16px !important;
-    transition: all 0.3s ease !important;
-  }
-  
-  .driver-popover-footer button:hover {
-    transform: translateY(-2px) !important;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important;
-  }
-  
-  .driver-popover-footer button:active {
-    transform: translateY(0) !important;
-  }
-  
+
+
+
   /* Smooth scrolling için */
   html {
     scroll-behavior: smooth;

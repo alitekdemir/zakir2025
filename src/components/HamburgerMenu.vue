@@ -1,7 +1,9 @@
 <!-- src/components/HamburgerMenu.vue -->
 <script setup>
-import { watch } from 'vue'
+import { watch, inject } from 'vue'
 import UpdateCheck from './UpdateCheck.vue'
+import { useRouter } from 'vue-router'
+const router = useRouter()
 
 const props = defineProps({
   isOpen: {
@@ -11,6 +13,22 @@ const props = defineProps({
 })
 
 const emit = defineEmits(['toggle'])
+
+// TourGuide bileşeninden startTour methodunu inject et
+const tourGuide = inject('tourGuide')
+
+const startTour = async () => {
+  emit('toggle') // Menüyü kapat
+  if (router.currentRoute.value.path !== '/') {
+    await router.push('/') // Ana sayfaya yönlendir
+    // Yönlendirme sonrası küçük bir gecikme ekleyelim
+    setTimeout(() => {
+      tourGuide.startTour()
+    }, 100)
+  } else {
+    tourGuide.startTour()
+  }
+}
 
 watch(() => props.isOpen, (newValue) => {
   document.body.style.overflow = newValue ? 'hidden' : 'auto'
@@ -38,7 +56,13 @@ watch(() => props.isOpen, (newValue) => {
       </router-link>
 
       <hr class="divider">
-      
+
+      <!-- Rehberi Göster butonu eklendi -->
+      <a href="#" @click="startTour">
+        <i class="material-symbols">tour</i>
+        Rehberi Göster
+      </a>
+
       <router-link to="/ayarlar" @click="emit('toggle')">
         <i class="material-symbols">text_format</i>
         Ayarlar

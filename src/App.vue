@@ -1,18 +1,21 @@
 <!-- src/App.vue -->
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
+// import InstallPWAPrompt from './components/InstallPWAPrompt.vue'
+import { ref, onMounted, onUnmounted, provide } from 'vue'
 import { useWakeLock } from './assets/wakeLock'
+const wakeLockControls = useWakeLock()
 import SplashScreen from './components/SplashScreen.vue'
+const showSplash = ref(true)
 import Navbar from './components/Navbar.vue'
 import Home from './components/views/Home.vue'
-// import InstallPWAPrompt from './components/InstallPWAPrompt.vue'
 
 // ProgressBar birden fazla yerde kullanımı için ana App içinde oluşturuldu
 import { createProgress } from './assets/useProgress';
 createProgress() // Progress provider'ı oluştur
 
-const showSplash = ref(true)
-const wakeLockControls = useWakeLock()
+import TourGuide from './components/TourGuide.vue'
+const tourGuideRef = ref(null)
+provide('tourGuide', { startTour: () => tourGuideRef.value?.startTour() })
 
 
 onMounted(async () => {
@@ -34,6 +37,7 @@ onUnmounted(() => {
     <Navbar />
     <router-view v-if="$route.name !== 'home'" />
     <Home v-else />
+    <TourGuide ref="tourGuideRef" />
   </div>
 </template>
 
