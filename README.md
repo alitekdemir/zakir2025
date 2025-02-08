@@ -1,6 +1,6 @@
 # Zakir Tesbihat 🌹
 [![Deployed Site](https://img.shields.io/badge/Live%20Site-zakir--tesbihat.web.app-brightgreen)](http://zakir-tesbihat.web.app/)
-Bir kullanışlı ve etkileşimli **Namaz Tesbihatı Ezber Uygulaması**'dır. Bu proje, Risale-i Nur talebelerinin günlük ezber ve tesbihat süreçlerini kolaylaştırmak ve ilerlemelerini düzenli bir şekilde takip etmelerine yardımcı olmak için tasarlanmıştır.
+Kullanışlı ve etkileşimli **Namaz Tesbihatı Ezber Uygulaması**'dır. Bu proje, Risale-i Nur talebelerinin günlük ezber ve tesbihat süreçlerini kolaylaştırmak ve ilerlemelerini düzenli bir şekilde takip etmelerine yardımcı olmak için tasarlanmıştır.
 
 ---
 
