@@ -18,10 +18,13 @@ const isOpen = ref(false)
         </button>
 
         <div v-if="isOpen" class="flex-container column">
-            <q class="blockquote" :class="scriptStyle" :dir="scriptStyle === 'latin' ? 'ltr' : 'rtl'">
-                <span class="ae-box">AE</span>⇒
-                {{ scriptStyle === 'latin' ? 'Allahümme ecirna minen-nâr' : 'اللّٰهُمَّ أَجِرْنَا مِنَ النَّارِ' }}
-            </q>
+            <div :class="scriptStyle">
+                <span class="ae-box">AE</span> ⇒
+                <span v-html="scriptStyle === 'latin' 
+                    ? '<strong>A</strong>llahümme <strong>E</strong>cirna'
+                    : 'اللّٰهُمَّ أَجِرْنَا'">
+                </span>
+            </div>
 
             <div>
                 <span class="material-symbols icon mirror">back_hand</span>
