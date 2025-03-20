@@ -19,10 +19,14 @@
     --red: crimson;
     --green: #1AB800;
     --green-wonderfull: hwb(175 0% 53%);
+    --success: hwb(175 0% 53% / 0.25);
     --magenta: #D1008A;
     --orange: #ff7322;
     --yellow-dark: #FFA552;
     --blue: MediumSlateBlue;
+
+    --border-radius: 0.5rem;
+
   }
 
 *,

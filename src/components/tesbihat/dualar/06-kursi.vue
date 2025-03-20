@@ -1,3 +1,4 @@
+<!-- src/components/tesbihat/dualar/06-kursi.vue -->
 <script setup>
 import { ref } from 'vue'
 import Modal from '../../Modal.vue'

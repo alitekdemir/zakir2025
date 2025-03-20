@@ -1,4 +1,4 @@
-<!-- src/components/views/GeriBildirim.vue -->
+<!-- src/router/GeriBildirim.vue -->
 <template>
   <div class="flex-container column">
     <h2>Bize Ulaşın</h2>

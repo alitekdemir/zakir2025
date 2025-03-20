@@ -1,3 +1,4 @@
+<!-- src/router/Hakkinda.vue -->
 <script>
 export default {
   name: 'AboutPage',

@@ -1,4 +1,4 @@
-<!-- src/components/dualar/14-elfu.vue -->
+<!-- src/components/tesbihat/dualar/14-elfu.vue -->
 <script setup>
 import { dualar } from '../dualar.js'
 import { useScriptStyle } from '../../../assets/useScriptStyle.js'

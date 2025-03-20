@@ -1,4 +1,4 @@
-<!-- src/components/views/TesbihatinFaziletleri.vue -->
+<!-- src/router/TesbihatinFaziletleri.vue -->
 <template>
   <div class="container">
     <h1>Faziletleri</h1>

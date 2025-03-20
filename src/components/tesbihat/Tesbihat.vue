@@ -1,4 +1,3 @@
-<!-- src/components/Tesbihat.vue -->
 <!-- src/components/tesbihat/Tesbihat.vue -->
 <script setup>
 import { ref, computed } from 'vue'
@@ -40,11 +39,16 @@ const completeTesbihat = async () => {
       :number="dua.number"
       :title="dua.title"
       :id="`dua-${dua.number}`"
+      class="dua"
     >
       <component :is="dua.component" />
+
+      
       <template v-if="dua.info" #info-content>
         <component :is="dua.info" />
       </template>
+      <!-- <hr class="divider"> -->
+      <!-- <div class="divider-line2"></div> -->
     </DuaWidget>
     
     <div class="complete-button" v-if="canComplete">
@@ -52,19 +56,27 @@ const completeTesbihat = async () => {
         Tesbihatı Tamamladım
       </button>
     </div>
-
+    
     <BadgeSplash
-      v-if="badgesStore.latestBadge"
-      :badge="badgesStore.latestBadge"
-      :show="true"
-      @close="badgesStore.clearLatestBadge()"
+    v-if="badgesStore.latestBadge"
+    :badge="badgesStore.latestBadge"
+    :show="true"
+    @close="badgesStore.clearLatestBadge()"
     />
-
+    
   </div>
 </template>
 
 
 <style scoped>
+
+.dua {
+  /* border-top: 1px solid var(--primary-light); */
+  /* border: 1px solid var(--text-tertiary); */
+  border: 1px solid var(--primary-light);
+  border: 1px solid var(--primary);
+  box-shadow: var(--card-shadow);
+}
 
 .tesbihat-container {
   background-color: var(--background);
@@ -72,12 +84,11 @@ const completeTesbihat = async () => {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 0 0.25rem;
+  padding: 0 0.2rem;
   /* margin: 1.5rem auto; */
   gap: 1.0rem;
-  width: 100%;
-  max-width: min(600px, 100%);
-  max-width: clamp(16rem, 38rem, 42rem);
+  max-width: var(--content-width);
+  /* max-width: clamp(16rem, 38rem, 42rem); */
 }
 
 .complete-button {
@@ -93,6 +104,11 @@ const completeTesbihat = async () => {
 .buton:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+}
+
+.divider-line2 {
+  border-top: 1px solid var(--primary-light);
+  margin: 2rem 0rem 1.5rem;
 }
 
 </style>

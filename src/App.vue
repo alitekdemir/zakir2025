@@ -5,7 +5,7 @@ import { ref, onMounted, onUnmounted, provide } from 'vue'
 import { useWakeLock } from './assets/wakeLock'
 const wakeLockControls = useWakeLock()
 import SplashScreen from './components/SplashScreen.vue'
-const showSplash = ref(true)
+const showSplash = ref(localStorage.getItem('show-splash-screen') !== 'false')
 import Navbar from './components/Navbar.vue'
 import Home from './router/Home.vue'
 
@@ -19,7 +19,11 @@ provide('tourGuide', { startTour: () => tourGuideRef.value?.startTour() })
 
 
 onMounted(async () => {
-  setTimeout(() => { showSplash.value = false }, 2000);
+  // Eğer splash screen aktifse, belirli bir süre sonra gizle
+  if (showSplash.value) {
+    setTimeout(() => { showSplash.value = false }, 2000);
+  }
+  
   document.fonts.ready.then(() => { console.log('Tüm fontlar yüklendi.') });
   
   // Wake Lock'u başlat
@@ -32,7 +36,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <SplashScreen :show="showSplash" />
+  <SplashScreen v-if="showSplash" :show="showSplash" />
   <div class="app" v-show="!showSplash">
     <Navbar />
     <router-view v-if="$route.name !== 'home'" />

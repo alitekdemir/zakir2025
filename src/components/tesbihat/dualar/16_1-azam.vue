@@ -1,4 +1,4 @@
-<!-- src/components/dualar/16-ismi-azam.vue -->
+<!-- src/components/tesbihat/dualar/16-ismi-azam.vue -->
 <script setup>
 import { dualar } from '../dualar.js'
 import { useScriptStyle } from '../../../assets/useScriptStyle.js'

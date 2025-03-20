@@ -1,4 +1,4 @@
-<!-- src/components/dualar/16_2-tercuman.vue -->
+<!-- src/components/tesbihat/dualar/16_2-tercuman.vue -->
 <script setup>
 import { dualar } from '../dualar.js'
 import { useScriptStyle } from '../../../assets/useScriptStyle.js'

@@ -1,4 +1,4 @@
-<!-- src/components/dualar/04-ecirna.vue -->
+<!-- src/components/tesbihat/dualar/04-ecirna.vue -->
 <script setup>
 import { ref } from 'vue'
 import { dualar } from '../dualar.js'

@@ -1,4 +1,4 @@
-<!-- src/components/dualar/03-sabah-aksam.vue -->
+<!-- src/components/tesbihat/dualar/03-sabah-aksam.vue -->
 <script setup>
 import { ref } from 'vue'
 import { dualar } from '../dualar.js'
@@ -9,6 +9,7 @@ const { nukaddimu, amenna, tevhid } = dualar
 const { scriptStyle } = useScriptStyle()
 const activeTab = ref(null)
 
+// Sayaç
 const count = ref(0)
 // const increment = () => { count.value = count.value >= 10 ? 1 : count.value + 1 }
 const increment = () => {
@@ -85,7 +86,7 @@ const increment = () => {
               </p>
             </div>
 
-            <p class="divider"><strong>9 defa böyle okunur</strong></p>
+            <p class="divider"><strong>9 defa</strong></p>
             <p class="flex-container wrap" :class="[scriptStyle]">
               <template v-for="line in tevhid[scriptStyle]" :key="line.text">
                 <span v-if="!line.last" 

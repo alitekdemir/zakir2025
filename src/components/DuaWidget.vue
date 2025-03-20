@@ -79,11 +79,9 @@ const handleMemorizedToggle = () => {
   <div class="dua-widget" :class="{ 'memorized': isMemorized, 'collapsed': isCollapsed }">
     <div class="widget-header">
       <div class="header-main" @click="isCollapsed = !isCollapsed">
-        <div class="number">
-          {{ number }}
-        </div>
+        <div class="number">{{ number }}</div>
         <span v-if="title" class="title">{{ title }}</span>
-        <!-- <div class="collapse-indicator"> {{ isCollapsed ? '▼' : '▲' }} </div> -->
+        <div class="collapse-indicator material-symbols"> {{ isCollapsed ? 'keyboard_arrow_down' : 'keyboard_arrow_up' }} </div>
       </div>
       
       <div class="dropdown-container">
@@ -167,66 +165,19 @@ const handleMemorizedToggle = () => {
 <style scoped>
 .dua-widget {
   color: var(--text-primary);
+  background: var(--surface);
   background: var(--card-background);
-  padding: 0.5rem;
-  border-radius: 0.5rem;
-  border: 1px solid var(--primary-light);
-  border: 1px solid var(--primary);
-  box-shadow: var(--card-shadow);
-  transition: all 0.3s ease;
+  border-radius: var(--border-radius);
+  transition: all 0.3s ease-out;
   scroll-margin-top: 80px; /* Navbar + Navigator yüksekliği */
-}
-
-.dua-widget {
   width: 100%;
   box-sizing: border-box;
 }
 
-/* Collapsed durumunda padding ve margin'leri azalt */
-.dua-widget.collapsed {
-  padding: 0.2rem;
-}
-
-/* Header margin'i collapsed durumunda sıfırla */
-.dua-widget.collapsed .widget-header {
-  margin-bottom: 0;
-}
-
-
-.dua-widget.memorized {
-  border: none;
-  box-shadow: none;
-  border: 1px solid var(--primary-light);
-  background-color: var(--primary-lighter);
-}
-
-
-.dua-widget.memorized .widget-content {
-  opacity: 0.935;
-  /* color: var(--text-primary); */
-}
-
-.dua-widget.memorized .number {
-  background: rgba(1, 121, 111, 0.1);
-  background: none;
-  color: var(--primary-light);
-}
-.dua-widget.memorized .title {
-  opacity: 0.935;
-}
-
-.dua-widget.memorized .title {
-  opacity: 0.5;
-  color: indianred;
-  color: var(--text-primary);
-  color: var(--primary-light);
-  color: var(--primary-dark);
-  color: var(--primary);
-}
-
-
 .widget-header {
   width: 100%;
+  border-radius: var(--border-radius);
+  padding: 0.5rem;
   display: flex;
   align-items: center;
   gap: 0.1rem;
@@ -234,39 +185,25 @@ const handleMemorizedToggle = () => {
   cursor: pointer;
   user-select: none;
   justify-content: space-between;
-  transition: margin-bottom 0.3s ease;
+  transition: all 0.3s ease-out;
+  background: var(--surface);
 }
 
-.collapse-indicator {
-  color: var(--primary-light);
-  margin-left: auto;
-  margin-right: 0.25rem;
-  font-size: 0.8rem;
-}
 
 .widget-content {
-  display: grid;
-  grid-template-rows: 1fr;
-  transition: grid-template-rows 0.3s ease;
+  transition: all 0.3s ease-out;
   overflow: hidden;
-  padding-top: 0.5rem;
-  transition: padding 0.3s ease;
+  padding: 0.9rem;
+  max-height: 1000px;
 }
 
-.dua-widget.collapsed .widget-content {
-  padding-top: 0;
-}
-
-.widget-content.collapsed {
-  grid-template-rows: 0fr;
-}
 
 .number {
-  min-width: 32px;
-  height: 32px;
+  width: 2rem;
+  height: 2rem;
   background: var(--primary-lighter);
   color: var(--primary);
-  border-radius: 20%;
+  border-radius: var(--border-radius);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -280,7 +217,7 @@ const handleMemorizedToggle = () => {
   margin: 0;
   font-size: 0.9rem;
   /* color: var(--primary); */
-  color: var(--text-tertiary);
+  color: var(--text-primary);
   text-align: left;
 }
 
@@ -295,6 +232,12 @@ const handleMemorizedToggle = () => {
   min-width: 0;
 }
 
+.collapse-indicator {
+  color: var(--primary);
+  /* margin-left: auto; */
+  /* margin-right: 0.25rem; */
+  /* font-size: 0.8rem; */
+}
 
 .more-btn {
   width: 30px;
@@ -305,8 +248,8 @@ const handleMemorizedToggle = () => {
   color: var(--primary);
   /* background-color: var(--background); */
   background-color: none;
-  border-radius: 20%;
-  transition: background-color 0.2s;
+  border-radius: var(--border-radius);
+  transition: all 0.3s;
 }
 
 .more-btn:hover {
@@ -321,11 +264,10 @@ const handleMemorizedToggle = () => {
   background: var(--primary);
   color: white;
   padding: 8px 16px;
-  border-radius: 6px;
+  border-radius: var(--border-radius);
   margin-top: 1rem;
   cursor: pointer;
-  transition: background-color 0.2s;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease-out;
 }
 
 .confirm-btn:hover {
@@ -344,9 +286,7 @@ const handleMemorizedToggle = () => {
 /* Collapse Animation */
 .collapse-enter-active,
 .collapse-leave-active {
-  transition: all 0.3s ease;
-  max-height: 500px; /* max-height değerini düşür */
-  opacity: 1;
+  transition: all 0.3s ease-out;
   overflow: hidden;
 }
 
@@ -354,12 +294,10 @@ const handleMemorizedToggle = () => {
 .collapse-leave-to {
   max-height: 0;
   opacity: 0;
+  padding: 0;
   margin-top: 0;
   margin-bottom: 0;
 }
-
-
-
 
 
 
@@ -374,5 +312,34 @@ const handleMemorizedToggle = () => {
   margin: 0.5rem 0;
   font-size: 0.9rem;
 }
+
+
+
+
+.dua-widget.memorized {
+  /* box-shadow: none; */
+  /* border: none; */
+  /* border: 1px solid var(--primary-light); */
+  background-color: var(--primary-lighter);
+}
+/* Header margin'i collapsed durumunda sıfırla */
+.dua-widget.memorized .widget-header {
+  opacity: 0.5;
+  opacity: 1;
+  background: hwb(175 0% 53% / 1);
+  background: hwb(175 0% 53% / 0.2);
+  background: var(--primary);
+}
+
+/* .dua-widget.memorized .widget-content, */
+.dua-widget.memorized .number,
+.dua-widget.memorized .title,
+.dua-widget.memorized .collapse-indicator,
+.dua-widget.memorized .more-btn {
+  background: none;
+  color: var(--text-primary);
+  color: var(--background);
+}
+
 
 </style>

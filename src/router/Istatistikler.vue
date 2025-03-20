@@ -1,4 +1,4 @@
-<!-- src/components/Istatistikler.vue -->
+<!-- src/router/Istatistikler.vue -->
 <script setup>
 import ProgressBar from '../components/stats/ProgressBar.vue';
 import StatsCards from '../components/stats/StatsCards.vue';

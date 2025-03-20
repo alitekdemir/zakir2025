@@ -1,4 +1,4 @@
-// src/utils/font-loader.js
+// src/assets/font-loader.js
 const loadFont = async (fontFamily, url) => {
     try {
       const font = new FontFace(fontFamily, `url(${url})`)

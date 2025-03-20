@@ -1,3 +1,4 @@
+<!-- src/components/Header.vue -->
 <template>
   <header class="flex-container column header">
     <span class="subtitle subtitle-large">Risale-i Nur talebeleri için, kolay ezberlenen</span>

@@ -1,21 +1,24 @@
-<!-- src/components/Home.vue -->
+<!-- src/router/Home.vue -->
 <script setup>
 import { onMounted, onUnmounted, watch, computed } from 'vue'
 import { useStatsTimeStore } from '../components/stats/statsTimeStore.js';
 import { useStatsBadgesStore } from '../components/badges/statsBadgesStore.js';
 import { useProgress, widgetWeights } from '../assets/useProgress.js';
 
-import Header from '../components/Header.vue';
 import ProgressBar from '../components/stats/ProgressBar.vue';
+import DuaNavigator from '../components/stats/DuaNavigator.vue';
 import { duaList } from '../components/tesbihat/duaList.js';
 import Tesbihat from '../components/tesbihat/Tesbihat.vue';
-import DuaNavigator from '../components/DuaNavigator.vue';
+import Header from '../components/Header.vue';
 import InstallPWAPrompt from '../components/InstallPWAPrompt.vue';
 import ZakirGullu from '../components/ZakirGullu.vue';
 
 const statsStore = useStatsTimeStore()
 const badgesStore = useStatsBadgesStore()
 const { progress: score } = useProgress()
+
+// Navigator görünürlüğü
+const isNavigatorVisible = computed(() => localStorage.getItem('show-navigator') !== 'false')
 
 // Progress yüzdesini hesapla
 const progressPercentage = computed(() => {
@@ -27,7 +30,6 @@ const progressPercentage = computed(() => {
 watch(progressPercentage, (newPercentage) => {
   badgesStore.checkProgressBadges(newPercentage)
 })
-
 
 onMounted(() => {
   statsStore.initializeStats()
@@ -56,9 +58,11 @@ window.addEventListener('beforeunload', () => {
 <template>
   <div class="home-container">
     <Header />
-    <ProgressBar/>
+    <ProgressBar />
     <DuaNavigator :duaList="duaList" />
-    <Tesbihat />
+    <!-- <main class="tesbihat-wrapper"> -->
+      <Tesbihat />
+    <!-- </main> -->
     <ZakirGullu />
     <InstallPWAPrompt />
   </div>
@@ -67,6 +71,14 @@ window.addEventListener('beforeunload', () => {
 <style scoped>
 .home-container {
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tesbihat-wrapper {
+  width: 100%;
+  /* padding: 0 0.5rem; */
   display: flex;
   flex-direction: column;
   align-items: center;

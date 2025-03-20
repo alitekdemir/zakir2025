@@ -1,4 +1,4 @@
-<!-- src/components/dualar/02-tuncina.vue -->
+<!-- src/components/tesbihat/dualar/02-tuncina.vue -->
 <script setup>
 import { ref } from 'vue'
 import Modal from '../../Modal.vue'
@@ -32,9 +32,10 @@ const { scriptStyle } = useScriptStyle()
         </Modal>
         
         <p class="info-text">
-            Bundan sonra varsa sünnet namaz kılınır.<br>
-            <i>(Öğle, Akşam, Yatsı)</i><br>
+            Bundan sonra varsa son sünnet namaz kılınır.
+            <i>Öğle, Akşam, Yatsı</i>
             Sonra tesbihata devam edilir.
+            <!-- <br> -->
         </p>
     </div>
 </template>

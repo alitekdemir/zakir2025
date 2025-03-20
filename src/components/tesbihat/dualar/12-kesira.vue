@@ -1,4 +1,4 @@
-<!-- src/components/dualar/12-kesira.vue -->
+<!-- src/components/tesbihat/dualar/12-kesira.vue -->
 <script setup>
 import { dualar } from '../dualar.js'
 import { useScriptStyle } from '../../../assets/useScriptStyle.js'

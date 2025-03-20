@@ -1,4 +1,4 @@
-<!-- src/components/dualar/07-tesbih.vue -->
+<!-- src/components/tesbihat/dualar/07-tesbih.vue -->
 <script setup>
 import { ref, computed } from 'vue'
 import { dualar } from '../dualar.js'

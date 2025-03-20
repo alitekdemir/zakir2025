@@ -1,4 +1,4 @@
-<!-- src/components/dualar/10-falem.vue -->
+<!-- src/components/tesbihat/dualar/10-falem.vue -->
 <script setup>
 import { ref, computed } from 'vue'
 import { dualar } from '../dualar.js'
@@ -7,6 +7,8 @@ import { useFalemVibration } from '../../../assets/vibrate.js'
 
 const { falemennehu } = dualar
 const { scriptStyle } = useScriptStyle()
+
+// Sayaç
 const count = ref(0)
 const isGreen = computed(() => count.value >= 33)
 

@@ -1,4 +1,4 @@
-<!-- src/components/dualar/08-tevhid.vue -->
+<!-- src/components/tesbihat/dualar/08-tevhid.vue -->
 <script setup>
 import { dualar } from '../dualar.js'
 import { useScriptStyle } from '../../../assets/useScriptStyle.js'

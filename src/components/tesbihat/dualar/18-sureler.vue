@@ -1,4 +1,4 @@
-<!-- src/components/dualar/17-sure.vue -->
+<!-- src/components/tesbihat/dualar/17-sure.vue -->
 <script setup>
 import { ref } from 'vue'
 import Modal from '../../Modal.vue'

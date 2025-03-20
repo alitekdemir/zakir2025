@@ -1,4 +1,4 @@
-<!-- src/components/dualar/05-subhanallahi.vue -->
+<!-- src/components/tesbihat/dualar/05-subhanallahi.vue -->
 <script setup>
 import { dualar } from '../dualar.js'
 import { useScriptStyle } from '../../../assets/useScriptStyle.js'
