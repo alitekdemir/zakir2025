@@ -193,8 +193,7 @@ const handleMemorizedToggle = () => {
 .widget-content {
   transition: all 0.3s ease-out;
   overflow: hidden;
-  padding: 0.9rem;
-  max-height: 1000px;
+  padding: 0.5rem;
 }
 
 
