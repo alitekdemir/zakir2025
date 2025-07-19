@@ -19,7 +19,8 @@ export default defineConfig({
         background_color: '#ff6666',
         display: 'standalone',
         orientation: 'portrait',
-        start_url: '/',
+        start_url: 'https://zakir-tesbihat.web.app/',
+        iconUrl: "https://zakir-tesbihat.web.app/android-chrome-512x512.png",
         scope: '/',
         lang: 'tr',
         prefer_related_applications: false,
@@ -36,13 +37,6 @@ export default defineConfig({
         ],
         categories: ['lifestyle', 'religious'],
         // screenshots: [ { src: 'screenshot1.png', sizes: '1280x720', type: 'image/png', platform: 'wide' } ],
-        shortcuts: [
-          {
-            name: "Zakir",
-            url: "/",
-            icons: [{ src: "android-chrome-192x192.png", sizes: "192x192" }]
-          }
-        ],
         icons: [
           {
             src: 'android-chrome-192x192.png',
