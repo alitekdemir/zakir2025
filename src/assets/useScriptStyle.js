@@ -1,4 +1,3 @@
-// src/assets/useScriptStyle.js
 import { ref } from 'vue'
 
 const scriptStyle = ref(localStorage.getItem('scriptStyle') || 'latin')

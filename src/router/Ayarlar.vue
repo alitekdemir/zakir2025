@@ -2,7 +2,7 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { useThemeStore } from '../assets/themeStore'
-import { themes, resetThemeToDefault } from '../assets/themes'
+import { themes } from '../assets/themes'
 import { useFontSettings } from '../assets/composables/useFontSettings'
 import { useAppSettings } from '../assets/composables/useAppSettings'
 
@@ -39,7 +39,7 @@ const {
 
 // Tema sıfırlama
 const resetTheme = () => {
-  resetThemeToDefault(themeStore)
+  themeStore.resetToDefaults()
 }
 
 // Tüm ayarları sıfırlama
@@ -47,7 +47,7 @@ const resetAllSettings = async () => {
   if (confirm('Tüm ayarları sıfırlamak istediğinizden emin misiniz?')) {
     await resetFonts()
     resetAppSettings()
-    resetThemeToDefault(themeStore)
+    themeStore.resetToDefaults()
   }
 }
 

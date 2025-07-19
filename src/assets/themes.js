@@ -2,11 +2,6 @@
 export const DEFAULT_THEME = 'nur'
 export const DEFAULT_MODE = 'light'
 
-export const resetThemeToDefault = (themeStore) => {
-    themeStore.setTheme(DEFAULT_THEME)
-    themeStore.setMode(DEFAULT_MODE)
-}
-
 export const themes = {
     ziya: {
         name: 'Ziya',
@@ -37,4 +32,3 @@ export const themes = {
     },
     
 }
-

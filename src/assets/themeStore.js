@@ -1,102 +1,65 @@
 // src/assets/themeStore.js
-import { defineStore } from 'pinia'
-import { themes, DEFAULT_THEME, DEFAULT_MODE } from './themes'
+import { defineStore } from 'pinia';
+import { themes, DEFAULT_THEME, DEFAULT_MODE } from './themes';
+import { loadStylesheet } from './composables/useStylesheetLoader';
 
 export const useThemeStore = defineStore('theme', {
   state: () => ({
     currentTheme: localStorage.getItem('selected-theme') || DEFAULT_THEME,
-    currentMode: localStorage.getItem('theme-mode') || DEFAULT_MODE
+    currentMode: localStorage.getItem('theme-mode') || DEFAULT_MODE,
   }),
 
   getters: {
     themeConfig: (state) => themes[state.currentTheme],
-    isDark: (state) => state.currentMode === 'dark'
+    isDark: (state) => state.currentMode === 'dark',
   },
 
   actions: {
     async setTheme(themeName) {
-      if (!themes[themeName]) return false
-      
-      this.currentTheme = themeName
-      return this.applyTheme()
+      if (!themes[themeName]) return;
+      this.currentTheme = themeName;
+      await this.applyTheme();
     },
 
-    setMode(mode) {
-      if (mode !== 'light' && mode !== 'dark') return false
-      
-      this.currentMode = mode
-      localStorage.setItem('theme-mode', mode)
-      document.documentElement.setAttribute('data-theme', mode)
-      return this.applyTheme()
+    async setMode(mode) {
+      if (mode !== 'light' && mode !== 'dark') return;
+      this.currentMode = mode;
+      document.documentElement.setAttribute('data-theme', mode);
+      localStorage.setItem('theme-mode', mode);
+      await this.applyTheme();
     },
 
     toggleMode() {
-      const newMode = this.currentMode === 'light' ? 'dark' : 'light'
-      return this.setMode(newMode)
+      const newMode = this.isDark ? 'light' : 'dark';
+      return this.setMode(newMode);
     },
 
     async applyTheme() {
+      const theme = this.themeConfig;
+      if (!theme) return;
+
       try {
-        const theme = themes[this.currentTheme]
-        if (!theme) return false
-
-        // CSS dosyasını yükle
-        const linkId = 'theme-stylesheet'
-        let link = document.getElementById(linkId)
-        
-        if (!link) {
-          link = document.createElement('link')
-          link.id = linkId
-          link.rel = 'stylesheet'
-          document.head.appendChild(link)
-        }
-
-        link.href = theme.path
-
-        // Mode'u uygula
-        document.documentElement.setAttribute('data-theme', this.currentMode)
-        
-        // Meta renkleri güncelle
-        this.updateMetaColors()
-
-        // LocalStorage'a kaydet
-        localStorage.setItem('selected-theme', this.currentTheme)
-        localStorage.setItem('theme-mode', this.currentMode)
-
-        return true
+        await loadStylesheet(theme.path, 'theme-stylesheet');
+        this.updateMetaColors();
+        localStorage.setItem('selected-theme', this.currentTheme);
       } catch (error) {
-        console.error('Tema uygulama hatası:', error)
-        return false
+        console.error('Tema uygulama hatası:', error);
       }
     },
 
     updateMetaColors() {
-      // Biraz gecikme ekleyelim ki CSS yüklensin
-      setTimeout(() => {
-        const primaryColor = getComputedStyle(document.documentElement)
-          .getPropertyValue('--primary').trim()
-        
-        const metaTags = [
-          document.querySelector('meta[name="theme-color"]'),
-          document.querySelector('meta[name="theme_color"]'),
-          document.querySelector('meta[name="theme-color"][media="(prefers-color-scheme: light)"]'),
-          document.querySelector('meta[name="theme-color"][media="(prefers-color-scheme: dark)"]')
-        ]
+      const primaryColor = getComputedStyle(document.documentElement).getPropertyValue('--primary').trim();
+      const metaThemeColor = document.querySelector("meta[name=theme-color]");
+      if (metaThemeColor) {
+        metaThemeColor.setAttribute("content", primaryColor);
+      }
+    },
 
-        metaTags.forEach(meta => {
-          if (meta) meta.setAttribute('content', primaryColor)
-        })
-
-        if (!metaTags.some(tag => tag)) {
-          const newMeta = document.createElement('meta')
-          newMeta.name = 'theme-color'
-          newMeta.content = primaryColor
-          document.head.appendChild(newMeta)
-        }
-      }, 100)
-    }
+    resetToDefaults() {
+      this.setTheme(DEFAULT_THEME);
+      this.setMode(DEFAULT_MODE);
+    },
   },
 
-  // Persist özelliği ekleyelim
-  persist: true
-})
+  persist: true,
+});
