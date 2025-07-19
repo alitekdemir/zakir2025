@@ -114,10 +114,10 @@ const scrollToSection = (number) => {
   max-width: var(--max-width);
   position: sticky;
   top: 4rem;
-  background: var(--background);
+  background: var(--primary);
   margin: 0 0 1rem 0;
   z-index: 100;
-  border-bottom: 4px solid var(--primary);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.3);
   box-shadow: rgba(38, 57, 77, 0.20) 0px 10px 15px -5px;
 }
 
@@ -134,29 +134,29 @@ const scrollToSection = (number) => {
 .number-btn {
   min-width: 2rem;
   height: 2rem;
-  background: var(--primary-lighter);
-  color: var(--primary);
+  background: transparent;
+  color: white;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   transition: all 0.2s ease;
+  border: none;
+  border-radius: 0;
 }
 
 .number-btn:hover {
-  background: var(--primary-light);
+  background: rgba(255, 255, 255, 0.2);
 }
 
 .number-btn.memorized {
-  opacity: 0.4;
-  background: none;
-  border-color: var(--primary-light);
+  opacity: 0.5;
 }
 
 .number-btn.active {
-  box-shadow: inset 0 -3px 0 0 var(--primary);
-  /* background: var(--primary-light); */
-  /* color: white; */
+  box-shadow: inset 0 -3px 0 0 white;
+  background: rgba(255, 255, 255, 0.1);
+  font-weight: bold;
 }
 
 </style>

@@ -37,11 +37,11 @@ onMounted(() => {
 
 <style scoped>
 .progress-container {
-  /* background-color: var(--primary-lighter); */
-  background-color: var(--background);
+  background-color: var(--primary);
   width: 100%;
   max-width: var(--max-width);
   padding: 0.7rem 0.5rem 1.1rem;
+  color: white;
 }
 
 .progress-stats {
@@ -53,28 +53,24 @@ onMounted(() => {
 
 .progress-text {
   font-size: 0.9rem;
-  color: var(--text-primary);
 }
 
 .progress-percentage {
   font-size: 0.9rem;
   font-weight: 500;
-  color: var(--text-primary);
-  /* color: rgb(76, 0, 130); */
 }
 
 .progress-bar {
   width: 100%;
   height: 0.5rem;
-  background: var(--primary-light);
+  background: rgba(255, 255, 255, 0.3);
   border-radius: 0.25rem;
   overflow: hidden;
 }
 
 .progress-fill {
   height: 100%;
-  background: var(--primary);
-  /* border-radius: 0.25rem; */
+  background: white;
   transition: width 0.3s ease;
 }
 

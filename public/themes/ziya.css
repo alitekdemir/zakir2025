@@ -5,7 +5,7 @@
 :root[data-theme="light"] {
   /* Brand Colors */
   --primary: hwb(29 30% 4%);
-  --primary-dark: hwb(29 30% 11%);
+  --primary-dark: hwb(29 20% 15%);
   --primary-light: hwb(29 30% 0% / 0.25);
   --primary-lighter: hwb(29 30% 0% / 0.1);
 
