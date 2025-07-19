@@ -54,7 +54,7 @@ const themeIcon = computed(() => themeStore.isDark ? 'light_mode' : 'dark_mode')
         @click="toggleScript" 
         aria-label="Yazı Türünü Değiştir"
       >
-        <component :is="currentIcon" width="32" height="32" fill="#000" />
+        <component :is="currentIcon" class="custom-icon" fill="currentColor" />
       </button>
     </div>
 
@@ -68,6 +68,12 @@ const themeIcon = computed(() => themeStore.isDark ? 'light_mode' : 'dark_mode')
 
 
 <style scoped>
+/* Navbar'a kutu modellemesi ekleniyor */
+.navbar *,
+.navbar *::before,
+.navbar *::after {
+  box-sizing: border-box;
+}
 
 /* Navbar Temel Yapısı */
 .navbar {
@@ -80,49 +86,102 @@ const themeIcon = computed(() => themeStore.isDark ? 'light_mode' : 'dark_mode')
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.5rem;
+  padding: 0 0.5rem;
   z-index: 102;
+  gap: 0.5rem; /* Sol ve sağ bölümler arasında boşluk */
 }
 
-/* Sol Bölüm */
+/* Sol ve Sağ Bölümler */
 .navbar-left, .navbar-right {
   display: flex;
   align-items: center;
   gap: 0.25rem;
 }
 
+/* Sol bölümün esnekliği ve taşma yönetimi */
+.navbar-left {
+  flex-shrink: 1; /* Gerektiğinde küçülebilir */
+  min-width: 0; /* Küçülmeye izin verir */
+  overflow: hidden; /* Taşmayı gizler */
+}
+
+/* Başlık stilleri ve taşma yönetimi */
 .title {
   font-size: 1.2rem;
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; /* Taşan metinler için '...' */
+  transition: transform 0.2s ease;
 }
 
 .short-title { display: none; }
-.home-link { padding: 0.2rem; }
 
-button,
+/* Ana sayfa linki */
 .home-link {
-  color: inherit;
-  padding: 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem;
   border-radius: 0.5rem;
+  text-decoration: none;
+  color: inherit;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.home-link .zakir {
+  flex-shrink: 0; /* İkonun küçülmesini engelle */
+  transition: transform 0.3s ease;
+}
+
+/* Sağ taraftaki butonlar */
+.navbar-right {
+  flex-shrink: 0; /* Butonların küçülmesini engelle */
+}
+
+.navbar-right button {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.3s ease;
-  user-select: none;
+  width: 3rem;
   height: 3rem;
-  text-decoration: none;
+  border-radius: 50%; /* Dairesel butonlar */
+  background: transparent;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  padding: 0;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
+/* İkonların boyutu */
+.material-symbols {
+  font-size: 26px;
+}
 
-/* Buton Hover ve Aktif Durumları */
-button:hover,
+.custom-icon {
+  width: 26px;
+  height: 26px;
+}
+
+/* Hover ve Aktif Durumları */
+.navbar-right button:hover,
 .home-link:hover {
-  background-color: rgba(0, 0, 0, 0.15);
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
-button:active,
+.navbar-right button:active,
 .home-link:active {
   transform: scale(0.9);
+}
+
+.home-link:hover .zakir {
+  transform: translateX(-4px) scale(1.2) rotate(-9deg);
+}
+.home-link:hover .title {
+  transform: translateX(-4px) scale(1.2) rotate(2deg);
 }
 
 
@@ -142,33 +201,6 @@ button:active,
   z-index: 1000;
 }
 
-/* ---------------------------- */
-
-.home-link:hover {
-  background-color: rgba(0, 0, 0, 0.15);
-  transform: translateY(-2px);
-}
-
-.home-link:active {
-  transform: translateY(0) scale(0.95); /* Güncellendi */
-}
-
-.home-link:hover .zakir {
-  transform: scale(1.05) rotate(-9deg);
-}
-
-.home-link:hover .title {
-  transform: translateX(-4px) rotate(2deg);
-}
-
-/* Logo ve başlık için ayrı hover efektleri */
-.home-link .zakir,
-.home-link .title {
-  transition: transform 0.3s ease;
-}
-
-
-/* Animasyon */
 @keyframes slideDown {
   from {
     transform: translate(-50%, -20px);
@@ -180,13 +212,19 @@ button:active,
   }
 }
 
-/* Responsive tasarım için media queries */
-@media (max-width: 22rem) {
+/* Responsive tasarım */
+/* iPhone SE gibi dar ekranlar (375px) */
+@media (max-width: 24rem) {
   .full-title { display: none; }
   .short-title { display: inline; }
+  .navbar {
+    padding: 0 0.25rem;
+    gap: 0.25rem;
+  }
 }
 
-@media (max-width: 16rem) {
+/* Çok dar ekranlar (örn. 280px) */
+@media (max-width: 17.5rem) {
   .title { display: none; }
 }
 </style>
