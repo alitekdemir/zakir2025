@@ -111,7 +111,7 @@ const themeIcon = computed(() => themeStore.isDark ? 'light_mode' : 'dark_mode')
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis; /* Taşan metinler için '...' */
-  transition: transform 0.2s ease;
+  transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .short-title { display: none; }
@@ -120,6 +120,7 @@ const themeIcon = computed(() => themeStore.isDark ? 'light_mode' : 'dark_mode')
 .home-link {
   display: inline-flex;
   align-items: center;
+  gap: 0.5rem;
   padding: 0.25rem;
   border-radius: 0.5rem;
   text-decoration: none;
@@ -131,7 +132,7 @@ const themeIcon = computed(() => themeStore.isDark ? 'light_mode' : 'dark_mode')
 
 .home-link .zakir {
   flex-shrink: 0; /* İkonun küçülmesini engelle */
-  transition: transform 0.3s ease;
+  transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 /* Sağ taraftaki butonlar */
@@ -145,7 +146,7 @@ const themeIcon = computed(() => themeStore.isDark ? 'light_mode' : 'dark_mode')
   justify-content: center;
   width: 3rem;
   height: 3rem;
-  border-radius: 50%; /* Dairesel butonlar */
+  border-radius: 0.75rem; /* Daha modern yuvarlak kare */
   background: transparent;
   border: none;
   color: inherit;
@@ -153,23 +154,36 @@ const themeIcon = computed(() => themeStore.isDark ? 'light_mode' : 'dark_mode')
   padding: 0;
   user-select: none;
   -webkit-tap-highlight-color: transparent;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  transition: all 0.2s ease-in-out;
 }
 
 /* İkonların boyutu */
 .material-symbols {
   font-size: 26px;
+  color: rgba(255, 255, 255, 0.8);
+  transition: color 0.2s ease-in-out;
 }
 
 .custom-icon {
   width: 26px;
   height: 26px;
+  color: rgba(255, 255, 255, 0.8);
+  transition: color 0.2s ease-in-out;
 }
 
-/* Hover ve Aktif Durumları */
-.navbar-right button:hover,
+/* --- Hover ve Aktif Durumları --- */
+
 .home-link:hover {
+  background-color: transparent; /* Arkaplanı değiştirmeyelim */
+}
+
+.navbar-right button:hover {
   background-color: rgba(255, 255, 255, 0.1);
+}
+
+.navbar-right button:hover .material-symbols,
+.navbar-right button:hover .custom-icon {
+  color: rgba(255, 255, 255, 1); /* İkonu daha parlak yap */
 }
 
 .navbar-right button:active,
@@ -177,12 +191,14 @@ const themeIcon = computed(() => themeStore.isDark ? 'light_mode' : 'dark_mode')
   transform: scale(0.9);
 }
 
+/* Zakir ve Title için özel hover animasyonu */
 .home-link:hover .zakir {
   transform: translateX(-4px) scale(1.2) rotate(-9deg);
 }
 .home-link:hover .title {
   transform: translateX(-4px) scale(1.2) rotate(2deg);
 }
+
 
 
 /* Bildirim Alanı */
@@ -213,7 +229,6 @@ const themeIcon = computed(() => themeStore.isDark ? 'light_mode' : 'dark_mode')
 }
 
 /* Responsive tasarım */
-/* iPhone SE gibi dar ekranlar (375px) */
 @media (max-width: 24rem) {
   .full-title { display: none; }
   .short-title { display: inline; }
@@ -223,7 +238,6 @@ const themeIcon = computed(() => themeStore.isDark ? 'light_mode' : 'dark_mode')
   }
 }
 
-/* Çok dar ekranlar (örn. 280px) */
 @media (max-width: 17.5rem) {
   .title { display: none; }
 }
