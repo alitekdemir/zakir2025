@@ -22,8 +22,8 @@ export const badgeConfigs = {
   firstTesbihat: {
     id: 'firstTesbihat',
     icon: Ilk,
-    title: 'İlk Adım',
-    description: 'Zikir yolculuğundaki ilk adımı attın. Hoş geldin!',
+    title: 'Bismillah', //İlk Adım
+    description: 'Nur Talebesi\'nin en mühim bir vazifesi olan namaz tesbihatına başladın. Allah kabul etsin.',
     sound: marioSound,
     requirements: ['İlk tesbihatını tamamla'],
     order: 1
@@ -32,7 +32,7 @@ export const badgeConfigs = {
     id: 'streak3',
     icon: ArdArda3Gun,
     title: 'İstikrar',
-    description: '3 gün boyunca devam ettin. Bir alışkanlık doğuyor!',
+    description: '3 gündür devam ediyorsun. Bu yolda ne kadar kararlı olduğunu gösterdin.',
     sound: defaultSound,
     requirements: ['3 gün kesintisiz uygulama kullanımı'],
     order: 2
@@ -40,8 +40,8 @@ export const badgeConfigs = {
   streak5: {
     id: 'streak5',
     icon: ArdArda5Gun,
-    title: 'Alışkanlık',
-    description: '5 günlük seri! Bu artık bir alışkanlık.',
+    title: 'Sebat',
+    description: '5 günlük bu seri, manevi disiplininin ve iradenin bir kanıtı, Ne mutlu sana!',
     sound: defaultSound,
     requirements: ['5 gün kesintisiz uygulama kullanımı'],
     order: 3
@@ -50,7 +50,7 @@ export const badgeConfigs = {
     id: 'streak7',
     icon: ArdArda7Gun,
     title: 'Azim',
-    description: 'Bir hafta boyunca her gün buradaydın. Azmin takdire şayan!',
+    description: 'Bir haftadır kalbini zikirle nurlandırıyorsun. Yolun ve yönün hep hak olsun!',
     sound: defaultSound,
     requirements: ['7 gün kesintisiz uygulama kullanımı'],
     order: 4
@@ -58,8 +58,8 @@ export const badgeConfigs = {
   streak10: {
     id: 'streak10',
     icon: ArdArda10Gun,
-    title: 'Sebat',
-    description: '10 günlük bu yolculuk, manevi bir sebatın göstergesi.',
+    title: 'Metanet',
+    description: '10 gündür sarsılmadan vazifene devam etmen, metanetinin bir delilidir.',
     sound: defaultSound,
     requirements: ['10 gün kesintisiz uygulama kullanımı'],
     order: 5
@@ -68,7 +68,7 @@ export const badgeConfigs = {
     id: 'streak15',
     icon: ArdArda15Gun,
     title: 'Sadakat',
-    description: '15 gündür bizimlesin. Bu yolculuğa olan sadakatin ilham verici.',
+    description: 'Ayın yarısını zikirle aydınlattın. Gecen de gündüzün de nur olsun.',
     sound: tetrisSound,
     requirements: ['15 gün kesintisiz uygulama kullanımı'],
     order: 6
@@ -76,8 +76,8 @@ export const badgeConfigs = {
   oneDay5: {
     id: 'oneDay5',
     icon: X1x5,
-    title: 'Hızlı Başlangıç',
-    description: 'Bir günde 5 tesbihat! Mükemmel bir başlangıç.',
+    title: 'Şevk ve Gayret',
+    description: 'Bugün üzerine adeta bereket yağmış. Bir günde 5 tesbihat!',
     sound: defaultSound,
     requirements: ['24 saat içinde 5 tesbihat tamamla'],
     order: 7
@@ -86,7 +86,7 @@ export const badgeConfigs = {
     id: 'threeDay5',
     icon: X3x5,
     title: 'Bereketli Hafta',
-    description: '3 gün içinde 5 tesbihat. Manevi bereket seninle.',
+    description: 'Evet, mesleğimizde ihlas-ı tammeden sonra en büyük esas, sebat ve metanettir.',
     sound: defaultSound,
     requirements: ['3 gün içinde toplam 5 tesbihat tamamla'],
     order: 8
@@ -94,8 +94,8 @@ export const badgeConfigs = {
   sevenDay5: {
     id: 'sevenDay5',
     icon: X5x5,
-    title: 'Zikir Maratonu',
-    description: '7 günde 5 tesbihat. Gerçek bir maraton koştun!',
+    title: 'Vazifede İleri Adım',
+    description: 'Damlaya damlaya göl olur derler. Sen kısa sürede bir zikir denizi oluşturdun! Allah kabul etsin.',
     sound: defaultSound,
     requirements: ['7 gün içinde toplam 5 tesbihat tamamla'],
     order: 9
@@ -103,8 +103,8 @@ export const badgeConfigs = {
   ezber33: {
     id: 'ezber33',
     icon: Ezber33,
-    title: 'Hafız',
-    description: "Tesbihatın üçte birini ezberledin. Zihnin berraklaşıyor.",
+    title: 'İlk Talim',
+    description: "Tesbihatın üçte birini ezberledin. Tesbihatı sadece dilinle değil, kalbine de nakşediyorsun.",
     sound: defaultSound,
     requirements: ["Tesbihatın %33'ünü ezberle"],
     order: 10
@@ -112,20 +112,29 @@ export const badgeConfigs = {
   ezber66: {
     id: 'ezber66',
     icon: Ezber66,
-    title: 'Usta Hafız',
-    description: "Tesbihatın üçte ikisi artık zihninde. Büyük bir başarı!",
+    title: "Hıfz'a Gayret",
+    description: "Yolun çoğunu geride bıraktın. Ezberin mübarek olsun. Maşallah!",
     sound: tetrisSound,
     requirements: ["Tesbihatın %66'sını ezberle"],
     order: 11
+  },
+  ezber100: {
+    id: 'ezber100',
+    icon: Ezber100,
+    title: 'Tesbihat Hafızı',
+    description: 'Elhamdulillah! Namaz tesbihatını eksiksiz ezberleyerek bu mühim vazifeyi tamamladın ve "Tesbihat Hafızı" oldun. Ezberin mübarek olsun. Maşallah!',
+    sound: tetrisSound,
+    requirements: ["Tesbihatın %100'sını ezberle"],
+    order: 12
   },
   zakir: {
     id: 'zakir',
     icon: Zakir,
     title: 'Gerçek Zâkir',
-    description: 'Tüm rozetleri topladın ve bu yolculukta zirveye ulaştın!',
+    description: 'Bu yolculukta kemâle ulaştın. Zikrin, halin oldu. Sen artık bir Zâkir\'sin.',
     sound: tetrisSound,
     requirements: ['Diğer tüm rozetleri kazan'],
-    order: 12
+    order: 13
   }
 }
 
