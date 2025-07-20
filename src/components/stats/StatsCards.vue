@@ -1,14 +1,16 @@
 <!-- src/components/stats/StatsCards.vue -->
 <script setup>
-import { onMounted } from 'vue'
-
+import { computed } from 'vue'
 import { useStatsStore } from '../../assets/statsStore.js';
+
 const statsStore = useStatsStore()
 
-onMounted(() => {
-  // Stats store zaten main.js'de başlatılıyor
-})
-
+const formattedDaysSinceFirstUse = computed(() => {
+  const days = statsStore.getDaysFromFirstUse;
+  if (days === 0) return 'Bugün';
+  if (days === 1) return 'Dün';
+  return `${days} gün önce`;
+});
 </script>
 
 <template>
@@ -26,20 +28,20 @@ onMounted(() => {
       <div class="stat-icon">📅</div>
       <div class="stat-content">
         <h4>Başlangıç</h4>
-        <p>{{ statsStore.getDaysFromFirstUse }} gün önce</p>
+        <p>{{ formattedDaysSinceFirstUse }}</p>
       </div>
     </div>
 
     <div class="stat-box">
       <div class="stat-icon">🔥</div>
       <div class="stat-content">
-        <h4>Art Arda Gün</h4>
+        <h4>Günlük Seri</h4>
         <p>{{ statsStore.streak }} gün</p>
       </div>
     </div>
 
     <div class="stat-box">
-      <div class="stat-icon">📊</div>
+      <div class="stat-icon">📿</div>
       <div class="stat-content">
         <h4>Haftalık Tesbihat</h4>
         <p>{{ statsStore.getWeeklyTesbihatCount }} kez</p>

@@ -16,6 +16,13 @@ const props = defineProps({
 
 const emit = defineEmits(['close'])
 
+const playSound = () => {
+  if (props.badge.isAchieved && props.badge.sound) {
+    const audio = new Audio(props.badge.sound);
+    audio.play();
+  }
+}
+
 const formatDate = (dateString) => {
   if (!dateString) return 'Henüz kazanılmadı'
   return new Date(dateString).toLocaleDateString('tr-TR', {
@@ -34,7 +41,7 @@ const formatDate = (dateString) => {
       <div class="badge-details">
         <h2>{{ badge.title }}</h2>
 
-        <div class="badge-icon">
+        <div class="badge-icon" @click="playSound" :class="{ 'is-achieved': badge.isAchieved }">
           <!-- Icon'u component olarak render et -->
           <component 
             :is="badgeConfigs[badge.id]?.icon"
@@ -115,6 +122,10 @@ const formatDate = (dateString) => {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.badge-icon.is-achieved {
+  cursor: pointer;
 }
 
 .badge-icon :deep(svg) {

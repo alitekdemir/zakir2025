@@ -37,18 +37,27 @@ export const useStatsStore = defineStore('stats', {
       const stored = localStorage.getItem('app-stats');
       if (stored) {
         try {
-          const stats = JSON.parse(stored);
-          delete stats.homepageTimer;
-          Object.assign(this.$state, stats);
+          const storedStats = JSON.parse(stored);
+          delete storedStats.homepageTimer;
+          Object.assign(this.$state, storedStats);
         } catch (error) {
           console.error('Stats yüklenirken hata:', error);
           this.resetStats();
         }
       }
+
+      // --- VERİ ONARIM VE GÜNCELLEME ADIMI ---
+      // localStorage'dan gelen statik rozet verilerini her zaman en güncel olanla değiştir.
+      for (const badgeId in badgeConfigs) {
+          if (this.badges[badgeId]) {
+              this.badges[badgeId].title = badgeConfigs[badgeId].title;
+              this.badges[badgeId].description = badgeConfigs[badgeId].description;
+              this.badges[badgeId].icon = badgeConfigs[badgeId].icon;
+              this.badges[badgeId].sound = badgeConfigs[badgeId].sound;
+              this.badges[badgeId].order = badgeConfigs[badgeId].order;
+          }
+      }
       
-      // --- VERİ ONARIM ADIMI ---
-      // totalScreenTime'ı, günlük kayıtların toplamı olarak yeniden hesapla
-      // Bu, geçmişten gelen veri tutarsızlıklarını düzeltir.
       const calculatedTotalTime = Object.values(this.dailyUsage).reduce((sum, dailySeconds) => sum + dailySeconds, 0);
       if (this.totalScreenTime !== calculatedTotalTime) {
           console.warn('Veri tutarsızlığı düzeltildi. totalScreenTime güncellendi.');
@@ -70,18 +79,21 @@ export const useStatsStore = defineStore('stats', {
       this.homepageTimer = setInterval(() => {
         const today = new Date().toISOString().split('T')[0];
 
+        // Tüm süreleri tek bir yerden artır
         this.timeSpentOnHomepage++;
         this.totalScreenTime++;
         
+        // Günlük kullanımı güncelle
         if (!this.dailyUsage[today]) {
           this.dailyUsage[today] = 0;
+          // Yeni bir gün, streak'i güncelle ve rozetleri kontrol et
           this.updateStreak();
         }
         this.dailyUsage[today]++;
 
+        // Her 10 saniyede bir kaydet (rozet kontrolü buradan kaldırıldı)
         if (this.timeSpentOnHomepage % 10 === 0) {
-            this.checkBadges();
-            this.saveStats(); // Periyodik olarak kaydet
+            this.saveStats();
         }
 
       }, 1000);
@@ -218,6 +230,7 @@ export const useStatsStore = defineStore('stats', {
         date.setDate(date.getDate() - 1);
       }
       this.streak = currentStreak;
+      this.checkBadges(); // Streak güncellendiğinde rozetleri kontrol et
     },
 
     // ============= RESET VE SAVE =============
@@ -283,6 +296,17 @@ export const useStatsStore = defineStore('stats', {
             totalSeconds += state.dailyUsage[dateStr] || 0;
         }
         return totalSeconds;
+    },
+
+    getWeeklyTesbihatCount: (state) => {
+      let total = 0;
+      for (let i = 0; i < 7; i++) {
+        const date = new Date();
+        date.setDate(date.getDate() - i);
+        const dateStr = date.toISOString().split('T')[0];
+        total += state.dailyTesbihatCounts[dateStr] || 0;
+      }
+      return total;
     },
 
     memorizedProgress: (state) => {
