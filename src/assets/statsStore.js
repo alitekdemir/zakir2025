@@ -271,7 +271,7 @@ export const useStatsStore = defineStore('stats', {
       const totalSeconds = state.totalScreenTime;
       const hours = Math.floor(totalSeconds / 3600);
       const minutes = Math.floor((totalSeconds % 3600) / 60);
-      const seconds = totalSeconds % 60;
+      const seconds = Math.floor(totalSeconds % 60);
       return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
     },
 
@@ -300,7 +300,7 @@ export const useStatsStore = defineStore('stats', {
 
     getWeeklyTesbihatCount: (state) => {
       let total = 0;
-      for (let i = 0; i < 7; i++) {
+      for (let i = .0; i < 7; i++) {
         const date = new Date();
         date.setDate(date.getDate() - i);
         const dateStr = date.toISOString().split('T')[0];
