@@ -82,17 +82,6 @@ const initializeTheme = async () => {
 const initializeStats = async () => {
   const statsStore = useStatsStore()
   await statsStore.initializeStats()
-  await statsStore.startSession()
-  
-  // Sayfa görünürlük değişikliklerini dinle
-  document.addEventListener('visibilitychange', () => {
-    statsStore.handleVisibilityChange()
-  })
-  
-  // Sayfa kapanırken oturumu sonlandır
-  window.addEventListener('beforeunload', () => {
-    statsStore.endSession()
-  })
 }
 
 

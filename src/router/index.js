@@ -1,5 +1,6 @@
 // src/router/index.js
 import { createRouter, createWebHistory } from 'vue-router'
+import { useStatsStore } from '../assets/statsStore.js';
 import HomeView from './Home.vue'
 import Hakkinda from './Hakkinda.vue'
 import Fazilet from './TesbihatinFaziletleri.vue'
@@ -36,14 +37,26 @@ const router = createRouter({
       path: '/geri-bildirim',
       component: GeriBildirim
     },
-    // {
-    //   path: '/privacy',
-    //   component: () => import('../components/views/privacy.vue')
-    // }
   ]
 })
 
+router.beforeEach((to, from, next) => {
+  const statsStore = useStatsStore();
+
+  // Uygulama ilk açıldığında veya doğrudan anasayfaya gelindiğinde
+  if (from.name === undefined && to.name === 'home') {
+      statsStore.startTimeTracking();
+  } 
+  // Başka bir sayfadan anasayfaya gelindiğinde
+  else if (to.name === 'home' && from.name !== 'home') {
+    statsStore.startTimeTracking();
+  } 
+  // Anasayfadan başka bir sayfaya geçildiğinde
+  else if (from.name === 'home' && to.name !== 'home') {
+    statsStore.stopTimeTracking();
+  }
+  
+  next();
+});
+
 export default router
-
-
-// component: () => import('../components/views/Ayarlar.vue') şeklinde import edilmeden yazılabilir
