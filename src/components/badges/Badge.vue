@@ -28,7 +28,7 @@ defineEmits(['click'])
       <div class="progress-bar">
         <div 
           class="progress" 
-          :style="{ width: `${progress}%` }"
+          :style="{ width: `${Math.round(progress)}%` }"
         ></div>
       </div>
     </div>

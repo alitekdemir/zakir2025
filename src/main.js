@@ -11,6 +11,7 @@ import { registerSW } from 'virtual:pwa-register'
 import { APP_VERSION, ASSETS_VERSION } from '../public/version'
 import { vibrate, setupGlobalVibration } from './assets/vibrate'
 import { useThemeStore } from './assets/themeStore'
+import { useStatsStore } from './assets/statsStore'
 
 // Pinia store'u oluştur
 const pinia = createPinia()
@@ -77,6 +78,23 @@ const initializeTheme = async () => {
   await themeStore.applyTheme()
 }
 
+// Stats store'u başlat
+const initializeStats = async () => {
+  const statsStore = useStatsStore()
+  await statsStore.initializeStats()
+  await statsStore.startSession()
+  
+  // Sayfa görünürlük değişikliklerini dinle
+  document.addEventListener('visibilitychange', () => {
+    statsStore.handleVisibilityChange()
+  })
+  
+  // Sayfa kapanırken oturumu sonlandır
+  window.addEventListener('beforeunload', () => {
+    statsStore.endSession()
+  })
+}
+
 
 // Uygulama başlangıcı
 const initializeApp = async () => {
@@ -103,6 +121,9 @@ const initializeApp = async () => {
 
     // Temayı yükle
     await initializeTheme()
+
+    // Stats'ı başlat
+    await initializeStats()
 
     // Service worker'ı kaydet
     registerServiceWorker()

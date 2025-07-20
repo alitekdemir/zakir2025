@@ -1,8 +1,7 @@
 <!-- src/router/Home.vue -->
 <script setup>
 import { onMounted, onUnmounted, watch, computed } from 'vue'
-import { useStatsTimeStore } from '../components/stats/statsTimeStore.js';
-import { useStatsBadgesStore } from '../components/badges/statsBadgesStore.js';
+import { useStatsStore } from '../assets/statsStore.js';
 import { useProgress, widgetWeights } from '../assets/useProgress.js';
 
 import ProgressBar from '../components/stats/ProgressBar.vue';
@@ -13,8 +12,7 @@ import Header from '../components/Header.vue';
 import InstallPWAPrompt from '../components/InstallPWAPrompt.vue';
 import ZakirGullu from '../components/ZakirGullu.vue';
 
-const statsStore = useStatsTimeStore()
-const badgesStore = useStatsBadgesStore()
+const statsStore = useStatsStore()
 const { progress: score } = useProgress()
 
 // Navigator görünürlüğü
@@ -28,25 +26,16 @@ const progressPercentage = computed(() => {
 
 // Progress değişikliklerini izle
 watch(progressPercentage, (newPercentage) => {
-  badgesStore.checkProgressBadges(newPercentage)
+  statsStore.checkProgressBadges(newPercentage)
 })
 
 onMounted(() => {
-  statsStore.initializeStats()
-  statsStore.startSession()
-  
-  // Sayfa görünürlük değişikliklerini dinle
-  document.addEventListener('visibilitychange', () => {
-    statsStore.handleVisibilityChange()
-  })
-  
-  // İlk yüklemede mevcut ilerlemeyi kontrol et
-  badgesStore.checkProgressBadges(progressPercentage.value)
+  // Stats store zaten main.js'de başlatılıyor, burada sadece progress kontrolü yapalım
+  statsStore.checkProgressBadges(progressPercentage.value)
 })
 
 onUnmounted(() => {
-  statsStore.endSession()
-  document.removeEventListener('visibilitychange', statsStore.handleVisibilityChange)
+  // Session yönetimi artık main.js'de yapılıyor
 })
 
 // Uygulamadan çıkışta son bir güncelleme yap

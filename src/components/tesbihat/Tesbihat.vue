@@ -3,29 +3,24 @@
 import { ref, computed } from 'vue'
 import DuaWidget from '../DuaWidget.vue';
 import { duaList } from './duaList.js';
-import { useStatsTimeStore } from '../stats/statsTimeStore.js';
-import { useStatsBadgesStore } from '../badges/statsBadgesStore.js';
+import { useStatsStore } from '../../assets/statsStore.js';
 import BadgeSplash from '../badges/BadgeSplash.vue';
 
-const timeStore = useStatsTimeStore();
-const badgesStore = useStatsBadgesStore();
+const statsStore = useStatsStore();
 
 const canComplete = computed(() => {
-  if (!timeStore.lastTesbihatTime) return true;
-  const timeDiff = Date.now() - new Date(timeStore.lastTesbihatTime);
+  if (!statsStore.lastTesbihatTime) return true;
+  const timeDiff = Date.now() - new Date(statsStore.lastTesbihatTime);
   return timeDiff >= 300000; // 5 dakika
 });
 
 const completeTesbihat = async () => {
-  const result = timeStore.completeTesbihat();
+  const result = statsStore.completeTesbihat();
   
   if (result) {
-    // Rozetleri kontrol et
-    await badgesStore.checkBadges();
-    
-    // alert('Tesbihat tamamlandı!');
+    console.log('✅ Tesbihat tamamlandı!', result);
   } else {
-    // alert('Lütfen iki tamamlama arasında en az 5 dakika bekleyin.');
+    console.log('⏱️ Lütfen iki tamamlama arasında en az 5 dakika bekleyin.');
   }
 };
 </script>
@@ -58,10 +53,10 @@ const completeTesbihat = async () => {
     </div>
     
     <BadgeSplash
-    v-if="badgesStore.latestBadge"
-    :badge="badgesStore.latestBadge"
+    v-if="statsStore.latestBadge"
+    :badge="statsStore.latestBadge"
     :show="true"
-    @close="badgesStore.clearLatestBadge()"
+    @close="statsStore.clearLatestBadge()"
     />
     
   </div>

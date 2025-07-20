@@ -1,16 +1,15 @@
 <!-- src/components/stats/LastWeek.vue -->
 <script setup>
 import { computed } from 'vue'
-import { useStatsTimeStore } from './statsTimeStore.js'
+import { useStatsStore } from '../../assets/statsStore.js'
 
-const stats = useStatsTimeStore()
-
+const statsStore = useStatsStore()
 
 const weeklyData = computed(() => {
   const last7Days = {}
   for (let i = 6; i >= 0; i--) {
     const date = new Date(Date.now() - i * 86400000).toISOString().split('T')[0]
-    last7Days[date] = stats.dailyUsage[date] || 0
+    last7Days[date] = statsStore.dailyUsage[date] || 0
   }
   return last7Days
 })

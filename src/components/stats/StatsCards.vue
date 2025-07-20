@@ -2,11 +2,11 @@
 <script setup>
 import { onMounted } from 'vue'
 
-  import { useStatsTimeStore } from './statsTimeStore.js';
-  const timeStore = useStatsTimeStore()
+import { useStatsStore } from '../../assets/statsStore.js';
+const statsStore = useStatsStore()
 
-  onMounted(() => {
-  timeStore.initializeStats()
+onMounted(() => {
+  // Stats store zaten main.js'de başlatılıyor
 })
 
 </script>
@@ -18,7 +18,7 @@ import { onMounted } from 'vue'
       <div class="stat-icon">⏱️</div>
       <div class="stat-content">
         <h4>Kullanım Süresi</h4>
-        <p>{{ timeStore.getFormattedScreenTime }}</p>
+        <p>{{ statsStore.getFormattedScreenTime }}</p>
       </div>
     </div>
 
@@ -26,7 +26,7 @@ import { onMounted } from 'vue'
       <div class="stat-icon">📅</div>
       <div class="stat-content">
         <h4>Başlangıç</h4>
-        <p>{{ timeStore.getDaysFromFirstUse }} gün önce</p>
+        <p>{{ statsStore.getDaysFromFirstUse }} gün önce</p>
       </div>
     </div>
 
@@ -34,7 +34,7 @@ import { onMounted } from 'vue'
       <div class="stat-icon">🔥</div>
       <div class="stat-content">
         <h4>Art Arda Gün</h4>
-        <p>{{ timeStore.streak }} gün</p>
+        <p>{{ statsStore.streak }} gün</p>
       </div>
     </div>
 
@@ -42,7 +42,7 @@ import { onMounted } from 'vue'
       <div class="stat-icon">📊</div>
       <div class="stat-content">
         <h4>Haftalık Tesbihat</h4>
-        <p>{{ timeStore.weeklyTesbihatCount }} kez</p>
+        <p>{{ statsStore.getWeeklyTesbihatCount }} kez</p>
       </div>
     </div>
   </div>

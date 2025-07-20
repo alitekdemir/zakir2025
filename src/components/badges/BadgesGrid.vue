@@ -1,10 +1,10 @@
 <!-- src/components/badges/BadgesGrid.vue -->
 <script setup>
 import { ref, onMounted } from 'vue'
-import { useStatsBadgesStore } from './statsBadgesStore.js';
+import { useStatsStore } from '../../assets/statsStore.js';
 import { badgeConfigs } from './badgeConfigs.js';
 
-const badgesStore = useStatsBadgesStore()
+const statsStore = useStatsStore()
 
 import Badge from './Badge.vue';
 import BadgeModal from './BadgeModal.vue';
@@ -19,8 +19,8 @@ const handleBadgeClick = (badge) => {
 }
 
 onMounted(() => {
-  badgesStore.initializeBadges()
-  badgesStore.checkBadges()
+  // Stats store zaten main.js'de başlatılıyor
+  statsStore.checkBadges()
 })
 
 const testSplash = () => {
@@ -35,9 +35,7 @@ const testSplash = () => {
   }
   
   // Store'daki latestBadge'i güncelliyoruz
-  badgesStore.$patch({
-    latestBadge: testBadge
-  })
+  statsStore.latestBadge = testBadge
 }
 
 </script>
@@ -49,14 +47,14 @@ const testSplash = () => {
       <div class="header-right">
         <!-- <button @click="testSplash" class="test-button">Test Splash</button> -->
         <span class="badges-count">
-          {{ badgesStore.earnedBadgesCount }}/{{ badgesStore.totalBadgesCount }}
+          {{ statsStore.earnedBadgesCount }}/{{ statsStore.totalBadgesCount }}
         </span>
       </div>
     </header>
 
     <div class="badges-grid">
       <Badge
-        v-for="badge in badgesStore.badges"
+        v-for="badge in statsStore.getOrderedBadges"
         :key="badge.id"
         v-bind="badge"
         @click="handleBadgeClick(badge)"
@@ -79,10 +77,10 @@ const testSplash = () => {
     />
 
     <BadgeSplash
-      v-if="badgesStore.latestBadge"
-      :badge="badgesStore.latestBadge"
+      v-if="statsStore.latestBadge"
+      :badge="statsStore.latestBadge"
       :show="true"
-      @close="badgesStore.clearLatestBadge()"
+      @close="statsStore.clearLatestBadge()"
     />
   </section>
 </template>

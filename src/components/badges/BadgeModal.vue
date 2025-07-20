@@ -46,11 +46,11 @@ const formatDate = (dateString) => {
         
         
         <div class="progress-section">
-          <span class="progress-text">{{ badge.progress }}%</span>
+          <span class="progress-text">{{ Math.round(badge.progress) }}%</span>
           <div class="progress-bar">
             <div 
               class="progress" 
-              :style="{ width: `${badge.progress}%` }"
+              :style="{ width: `${Math.round(badge.progress)}%` }"
               :class="{ achieved: badge.isAchieved }"
             ></div>
           </div>

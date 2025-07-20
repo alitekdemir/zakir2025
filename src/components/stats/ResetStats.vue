@@ -1,16 +1,13 @@
 <!-- src/components/stats/ResetStats.vue -->
 <script setup>
 import { ref } from 'vue'
-import { useStatsBadgesStore } from '../badges/statsBadgesStore'
-import { useStatsTimeStore } from './statsTimeStore'
+import { useStatsStore } from '../../assets/statsStore.js'
 
-const timeStore = useStatsTimeStore()
-const badgesStore = useStatsBadgesStore()
+const statsStore = useStatsStore()
 const showResetModal = ref(false)
 
 const resetStats = () => {
-  timeStore.resetStats()
-  badgesStore.resetBadges()
+  statsStore.resetStats()
   showResetModal.value = false
   // Sayfayı yenile
   window.location.reload()
