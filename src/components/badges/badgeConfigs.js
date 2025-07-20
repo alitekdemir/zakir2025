@@ -120,11 +120,11 @@ export const badgeConfigs = {
   },
   ezber100: {
     id: 'ezber100',
-    icon: Ezber100,
+    icon: Ezber66,
     title: 'Tesbihat Hafızı',
     description: 'Elhamdulillah! Namaz tesbihatını eksiksiz ezberleyerek bu mühim vazifeyi tamamladın ve "Tesbihat Hafızı" oldun. Ezberin mübarek olsun. Maşallah!',
     sound: tetrisSound,
-    requirements: ["Tesbihatın %100'sını ezberle"],
+    requirements: ["Tesbihatın tamamını ezberle"],
     order: 12
   },
   zakir: {
