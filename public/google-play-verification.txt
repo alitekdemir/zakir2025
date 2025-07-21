@@ -1,0 +1,2 @@
+Bu dosya, Ali Tekdemir'e ait olan "Zakir - Namaz Tesbihatı" (paket adı: app.web.zakir_tesbihat.twa) uygulamasının Google Play inceleme süreci için bir doğrulama kanıtıdır.
+(This file is a verification proof for the Google Play review process of the app "Zakir - Namaz Tesbihatı" (package: app.web.zakir_tesbihat.twa) owned by Ali Tekdemir.)
