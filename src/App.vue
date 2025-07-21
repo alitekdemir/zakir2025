@@ -8,7 +8,6 @@ import SplashScreen from './components/SplashScreen.vue'
 const showSplash = ref(localStorage.getItem('show-splash-screen') !== 'false')
 import Navbar from './components/Navbar.vue'
 import Home from './router/Home.vue'
-// import ProgressBar from './components/stats/ProgressBar.vue'
 
 // ProgressBar birden fazla yerde kullanımı için ana App içinde oluşturuldu
 import { createProgress } from './assets/useProgress';
@@ -40,8 +39,6 @@ onUnmounted(() => {
   <SplashScreen v-if="showSplash" :show="showSplash" />
   <div class="app" v-show="!showSplash">
     <Navbar />
-    <!-- ProgressBar sadece home sayfasında gösterilsin -->
-    <ProgressBar v-if="$route.name === 'home'" />
     <router-view v-if="$route.name !== 'home'" />
     <Home v-else />
     <TourGuide ref="tourGuideRef" />
