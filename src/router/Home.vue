@@ -5,7 +5,7 @@ import { useStatsStore } from '../assets/statsStore.js';
 import { useProgress, widgetWeights } from '../assets/useProgress.js';
 
 import ProgressBar from '../components/stats/ProgressBar.vue';
-import DuaNavigator from '../components/stats/DuaNavigator.vue';
+// import DuaNavigator from '../components/stats/DuaNavigator.vue';
 import { duaList } from '../components/tesbihat/duaList.js';
 import Tesbihat from '../components/tesbihat/Tesbihat.vue';
 import Header from '../components/Header.vue';
@@ -48,10 +48,10 @@ window.addEventListener('beforeunload', () => {
   <div class="home-container">
     <Header />
     <ProgressBar />
-    <DuaNavigator :duaList="duaList" />
-    <!-- <main class="tesbihat-wrapper"> -->
+    <!-- <DuaNavigator :duaList="duaList" /> -->
+    <main class="tesbihat-wrapper">
       <Tesbihat />
-    <!-- </main> -->
+    </main>
     <ZakirGullu />
     <InstallPWAPrompt />
   </div>
@@ -67,7 +67,7 @@ window.addEventListener('beforeunload', () => {
 
 .tesbihat-wrapper {
   width: 100%;
-  /* padding: 0 0.5rem; */
+  padding: 1rem 0.25rem;
   display: flex;
   flex-direction: column;
   align-items: center;
