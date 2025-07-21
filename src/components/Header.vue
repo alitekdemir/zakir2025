@@ -1,10 +1,15 @@
 <!-- src/components/Header.vue -->
+<script setup>
+// import ProgressBar from '../components/stats/ProgressBar.vue';
+</script>
+
 <template>
   <header class="flex-container column header">
     <span class="subtitle subtitle-large">Risale-i Nur talebeleri için, kolay ezberlenen</span>
     <span class="subtitle subtitle-small">Risale-i Nur talebeleri için,</span>
     <span class="subtitle subtitle-small">kolay ezberlenen</span>
     <span class="title">ÖZLÜ TESBİHAT</span>
+    <!-- <ProgressBar /> -->
   </header>
 </template>
 
@@ -13,7 +18,7 @@
 .header {
   color: white;
   background: var(--primary);
-  padding: 2rem 0.5rem;
+  padding: 1.5rem 0.5rem 0.1rem;
 }
 
 .title {

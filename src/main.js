@@ -1,6 +1,7 @@
 // src/main.js
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 import App from './App.vue'
 import router from './router'
 import VueScrollTo from 'vue-scrollto'
@@ -12,9 +13,11 @@ import { APP_VERSION, ASSETS_VERSION } from '../public/version'
 import { vibrate, setupGlobalVibration } from './assets/vibrate'
 import { useThemeStore } from './assets/themeStore'
 import { useStatsStore } from './assets/statsStore'
+import { useFontSettings } from './assets/composables/useFontSettings'
 
 // Pinia store'u oluştur
 const pinia = createPinia()
+pinia.use(piniaPluginPersistedstate)
 
 let app = null; // Global app değişkeni
 
@@ -78,6 +81,12 @@ const initializeTheme = async () => {
   await themeStore.applyTheme()
 }
 
+// Font ayarlarını yükleme fonksiyonu
+const initializeFonts = async () => {
+  const { initializeFontSettings } = useFontSettings()
+  await initializeFontSettings()
+}
+
 // Stats store'u başlat
 const initializeStats = async () => {
   const statsStore = useStatsStore()
@@ -99,20 +108,22 @@ const initializeApp = async () => {
       checkForUpdates()
     ])
 
-    // Yeni uygulamayı oluştur ve mount et
+    // Yeni uygulamayı oluştur
     app = createApp(App)
-    app.use(pinia) // Pinia'yı ekle
-
+    
+    // Pinia'yı ve diğer eklentileri kullan
+    app.use(pinia)
     app.directive('vibrate', vibrate)
     app.use(router)
     app.use(VueScrollTo)
-    app.mount('#app')
 
-    // Temayı yükle
+    // Ayarları (tema, font vb.) mount işleminden önce yükle
     await initializeTheme()
-
-    // Stats'ı başlat
+    await initializeFonts()
     await initializeStats()
+
+    // Uygulamayı mount et
+    app.mount('#app')
 
     // Service worker'ı kaydet
     registerServiceWorker()
